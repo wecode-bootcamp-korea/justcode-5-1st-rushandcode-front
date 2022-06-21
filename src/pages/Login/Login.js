@@ -37,20 +37,20 @@ function Login() {
         <Link className={css.member} to="/login">
           회원
         </Link>
-        <Link className={css.nonMember} to="/signup">
+        <Link className={css.non_member} to="/signup">
           비회원
         </Link>
       </div>
-      <div className={css.loginForm}>
-        <div className={css.idInput}>
-          <span className={css.idIcon}>
+      <div className={css.login_form}>
+        <div className={css.id_input}>
+          <span className={css.id_icon}>
             <img
               src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/344/external-user-user-tanah-basah-glyph-tanah-basah-7.png"
               alt="id"
             />
           </span>
           <input
-            className={css.loginInput}
+            className={css.login_input}
             name="identify"
             type="email"
             placeholder="아이디"
@@ -60,15 +60,15 @@ function Login() {
             }}
           />
         </div>
-        <div className={css.pwInput}>
-          <span className={css.pwIcon}>
+        <div className={css.pw_input}>
+          <span className={css.pw_icon}>
             <img
               src="https://img.icons8.com/material-rounded/344/lock--v1.png"
               alt="pw"
             />
           </span>
           <input
-            className={css.loginInput}
+            className={css.login_input}
             name="password"
             type="password"
             minLength={5}
@@ -79,21 +79,21 @@ function Login() {
             }}
           />
         </div>
-        <div className={css.saveIdCheckbox}>
+        <div className={css.save_id_checkbox}>
           <input type="checkbox" id="checkbox" />
-          <span className={css.saveId}>아이디 저장</span>
+          <span className={css.save_id}>아이디 저장</span>
         </div>
         <button
-          className={`${css.loginButton} ${valid ? css.active : css.inactive}`}
+          className={`${css.login_button} ${valid ? css.active : css.inactive}`}
           disabled={!valid}
           onClick={buttonOnClick}
         >
           로그인
         </button>
       </div>
-      <div className={css.forgetPassword}>
+      <div className={css.forget_password}>
         <span>
-          <Link className={css.goToSignup} to="/signup">
+          <Link className={css.go_to_signup} to="/signup">
             회원가입
           </Link>
         </span>

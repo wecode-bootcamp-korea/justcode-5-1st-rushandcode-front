@@ -7,8 +7,7 @@ $border-color: $theme-color;
   height: 350px;
   margin: -50px 0px 0px -50px;
   top: 30%;
-  left: 30%;
-  padding: 0px 140px;
+  left: 40%;
   position: absolute;
 }
 
@@ -32,12 +31,12 @@ $border-color: $theme-color;
     color: $border-color;
   }
 
-  .nonMember {
+  .non_member {
     color: #b3b3b3;
   }
 }
 
-.loginForm {
+.login_form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,7 +44,7 @@ $border-color: $theme-color;
   margin-top: 30px;
 }
 
-.idInput {
+.id_input {
   margin-bottom: 10px;
   padding-left: 10px;
   position: relative;
@@ -53,24 +52,22 @@ $border-color: $theme-color;
   border: 1px solid #8f8f8f;
   width: 100%;
   height: 50px;
-  .idIcon {
+  .id_icon {
     align-self: center;
+    img {
+      width: 23px;
+    }
   }
-  .loginInput {
+  .login_input {
     text-align: center;
     width: 100%;
     padding: 10px 20px 10px 0px;
     border: none;
     outline: none;
   }
-  .idIcon {
-    img {
-      width: 23px;
-    }
-  }
 }
 
-.pwInput {
+.pw_input {
   margin-bottom: 10px;
   padding-left: 10px;
   position: relative;
@@ -78,37 +75,35 @@ $border-color: $theme-color;
   border: 1px solid #8f8f8f;
   width: 100%;
   height: 50px;
-  .pwIcon {
+  .pw_icon {
     align-self: center;
+    img {
+      width: 23px;
+    }
   }
-  .loginInput {
+  .login_input {
     text-align: center;
     width: 100%;
     padding: 10px 20px 10px 0px;
     border: none;
     outline: none;
   }
-  .pwIcon {
-    img {
-      width: 23px;
-    }
-  }
 }
 
-.saveIdCheckbox {
+.save_id_checkbox {
   padding-top: 8px;
   padding-bottom: 8px;
   width: 100%;
   align-items: center;
   float: left;
-  .saveId {
+  .save_id {
     color: #8f8f8f;
     font-size: 14px;
     padding-left: 8px;
   }
 }
 
-.loginButton {
+.login_button {
   margin-top: 10px;
   width: 100%;
   height: 50px;
@@ -126,7 +121,7 @@ $border-color: $theme-color;
   }
 }
 
-.forgetPassword {
+.forget_password {
   display: flex;
   text-decoration: none;
   color: #b3b3b3;
@@ -134,7 +129,7 @@ $border-color: $theme-color;
   margin-top: 25px;
   text-align: center;
   justify-content: space-evenly;
-  .goToSignup {
+  .go_to_signup {
     text-decoration-line: none;
     color: #b3b3b3;
   }
