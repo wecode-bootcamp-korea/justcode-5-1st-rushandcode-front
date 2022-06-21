@@ -20,6 +20,7 @@ const Outter = styled.div`
 
 const Inner = styled.div`
   position: relative;
+  cursor: pointer;
   background-image: url('${props => props.src}');
   background-size: cover;
   background-position: center;

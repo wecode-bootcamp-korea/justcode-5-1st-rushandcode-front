@@ -1,0 +1,128 @@
+.container {
+  margin: 0 auto;
+  width: 580px;
+  position: relative;
+  right: 160px;
+}
+
+.selectContainer {
+  display: flex;
+  margin: 50px 0;
+}
+
+.home,
+.lush {
+  font-size: 12px;
+  margin: 2.5px 10px;
+  min-width: 30px;
+}
+
+.mainCategory,
+.subCategory {
+  margin: 0 10px;
+  position: relative;
+  bottom: 3px;
+  & select {
+    width: 146px;
+    border: 1px solid lightgray;
+    padding: 2px;
+  }
+}
+
+.procuctName {
+  font-size: 28px;
+}
+
+.hashtags {
+  color: gray;
+  margin: 30px 0;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid gray;
+}
+
+.text {
+  margin: 30px 0;
+  font-size: 14px;
+}
+
+.price {
+  display: flex;
+  margin: 50px 0;
+  font-size: 14px;
+}
+
+.priceNum {
+  margin: 0 10px;
+  padding: 0 10px;
+}
+
+.weight {
+  display: flex;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.weightNum {
+  margin: 0 10px;
+}
+
+.buyCount {
+  display: flex;
+  font-size: 14px;
+  margin: 20px 0;
+  padding: 40px 0;
+  border-bottom: 1px solid gray;
+  .count {
+    padding: 0 30px 0 0;
+  }
+  .buyInput {
+    border: 1px solid gray;
+    padding: 4px;
+    position: relative;
+    bottom: 6px;
+    input {
+      width: 53px;
+      border: none;
+      outline: none;
+      text-align: center;
+    }
+  }
+  button {
+    border: 0;
+    cursor: pointer;
+    background-color: transparent;
+  }
+}
+
+.sum {
+  display: flex;
+  justify-content: right;
+  margin: 10px;
+  padding: 10px;
+  font-size: 14px;
+  .sumNum {
+    padding: 0 10px;
+    margin: -4px 0;
+    font-size: 24px;
+  }
+}
+
+.buttons {
+  display: flex;
+  .cart,
+  .order {
+    width: 285px;
+    height: 50px;
+    font-size: 15px;
+    border: 1px solid black;
+    margin: 10px;
+    cursor: pointer;
+  }
+  .cart {
+    background-color: white;
+  }
+  .order {
+    background-color: black;
+    color: white;
+  }
+}
