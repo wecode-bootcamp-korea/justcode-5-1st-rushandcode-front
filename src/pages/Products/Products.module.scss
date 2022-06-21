@@ -1,2 +1,147 @@
-.container {
+/* 임의 nav/footer */
+nav {
+  width: 100%;
+  height: 100px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  background-color: black;
+}
+footer {
+  bottom: 0;
+  width: 100%;
+  height: 200px; //600
+  background-color: #f2f2f2;
+}
+
+/* ------------------------------------------------------------- */
+
+/* 상품 페이지 - Top Banner */
+.product_top_banner {
+  &_bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+    text-align: center;
+    background: url(https://www.lush.co.kr/data/editor/goods/200624/bath_095552.jpg)
+      no-repeat 50% 0;
+    p {
+      text-align: center;
+      color: white;
+    }
+    .banner_title {
+      margin-bottom: 20px;
+      font-size: 68px;
+      font-weight: 600;
+      letter-spacing: 0.5em;
+      text-indent: 0.5em;
+    }
+    .banner_sub {
+      font-size: 26px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+    }
+  }
+}
+
+/* 상품 페이지 */
+.products {
+  max-width: 1180px;
+  margin: 77px auto 0 auto;
+}
+
+/* 상품 페이지 - 카테고리 */
+.list_header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  border-bottom: 2px solid black;
+  h2 {
+    color: #333;
+    font-weight: 700;
+    font-size: 28px;
+  }
+  .select_box {
+    width: 100px;
+    padding: 5px;
+    border-color: rgb(192, 192, 192);
+    font-family: 'Noto Sans KR', sans-serif;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none; /* 사파리, 크롬 하위버전용 */
+    -moz-appearance: none; /* 사파리, 크롬 하위버전용 */
+    &::-ms-expand {
+      display: none; /* 익스플로러용 */
+    }
+  }
+}
+.list_category {
+  display: flex;
+  padding: 15px 0;
+  li {
+    height: 40px;
+    padding: 5px 0;
+    margin-right: 25px;
+    &:last-child {
+      margin-right: 0;
+    }
+    span {
+      color: #8f8f8f;
+      font-size: 14px;
+    }
+    .on {
+      color: #000;
+      transition: 0.3s;
+    }
+  }
+}
+
+/* 상품 페이지 - 상품 목록 */
+.product_list {
+  width: 100%;
+  overflow: hidden;
+  li {
+    float: left;
+    width: 25%;
+    margin-bottom: 30px;
+    text-align: center;
+    .prd_label {
+      span {
+        display: inline-block;
+        width: 60px;
+        height: 20px;
+        margin: 5px 2px;
+        line-height: 20px;
+        border-radius: 10px;
+        color: white;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      &_new {
+        background-color: #007a29;
+      }
+      &_vegan {
+        background-color: #92ac00;
+      }
+    }
+    .prd_name {
+      line-height: 22px;
+      .prd_hashtag {
+        color: #888;
+        font-size: 14px;
+        span:first-child {
+          padding-right: 5px;
+        }
+      }
+    }
+    .prd_price {
+      margin-top: 15px;
+      line-height: 30px;
+      span:first-child {
+        padding-right: 5px;
+      }
+    }
+  }
 }
