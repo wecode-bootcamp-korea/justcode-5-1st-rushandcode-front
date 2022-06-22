@@ -1,10 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Image = ({ src, size, width, height, ...props }) => {
+const Image = ({ src, size, width, height, setImage, ...props }) => {
   return (
     <Outter>
-      <Inner {...props} src={src} size={size} width={width} height={height} />
+      <Inner
+        {...props}
+        src={src}
+        size={size}
+        width={width}
+        height={height}
+        onClick={() => (setImage ? setImage(src) : {})}
+      />
     </Outter>
   );
 };
@@ -12,6 +19,7 @@ const Image = ({ src, size, width, height, ...props }) => {
 Image.defaultProps = {
   src: 'https://cdn.pixabay.com/photo/2021/08/02/20/35/architecture-6517841_960_720.jpg',
   addstyle: () => {},
+  onClick: () => {},
 };
 
 const Outter = styled.div`
@@ -19,7 +27,6 @@ const Outter = styled.div`
 `;
 
 const Inner = styled.div`
-  position: relative;
   cursor: pointer;
   background-image: url('${props => props.src}');
   background-size: cover;

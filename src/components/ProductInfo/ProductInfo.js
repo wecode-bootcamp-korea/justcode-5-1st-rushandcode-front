@@ -47,7 +47,7 @@ function ProductInfo() {
         <div className={css.count}>구매수량</div>
         <div className={css.buy_input}>
           <button>-</button>
-          <input value={1} />
+          {/* <input value={1} /> */}
           <button>+</button>
         </div>
         <div className={css.price_num}>₩ 17000</div>
