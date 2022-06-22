@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Image = ({ src, size, ...props }) => {
+const Image = ({ src, size, width, height, ...props }) => {
   return (
     <Outter>
-      <Inner {...props} src={src} size={size} />
+      <Inner {...props} src={src} size={size} width={width} height={height} />
     </Outter>
   );
 };
@@ -26,8 +26,8 @@ const Inner = styled.div`
   background-position: center;
   background-size: cover;
   object-fit: cover;
-  width: ${props => props.size}px;
-  height: ${props => props.size}px;
+  width: ${props => (props.width ? props.width : props.size)}px;
+  height: ${props => (props.height ? props.height : props.size)}px;
   ${props => props.addstyle()};
 `;
 export default Image;
