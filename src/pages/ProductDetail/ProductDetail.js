@@ -6,7 +6,7 @@ import css from './ProductDetail.module.scss';
 function ProductDetail() {
   return (
     <div className={css.container}>
-      <div className={css.imagesContainer}>
+      <div className={css.images_container}>
         <Image
           size={380}
           src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Ym9keSUyMHdhc2h8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"

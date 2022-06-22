@@ -5,7 +5,7 @@
   right: 160px;
 }
 
-.selectContainer {
+.select_container {
   display: flex;
   margin: 50px 0;
 }
@@ -17,8 +17,8 @@
   min-width: 30px;
 }
 
-.mainCategory,
-.subCategory {
+.main_category,
+.sub_category {
   margin: 0 10px;
   position: relative;
   bottom: 3px;
@@ -29,7 +29,7 @@
   }
 }
 
-.procuctName {
+.procuct_name {
   font-size: 28px;
 }
 
@@ -51,7 +51,7 @@
   font-size: 14px;
 }
 
-.priceNum {
+.price_num {
   margin: 0 10px;
   padding: 0 10px;
 }
@@ -62,11 +62,11 @@
   font-size: 14px;
 }
 
-.weightNum {
+.weight_num {
   margin: 0 10px;
 }
 
-.buyCount {
+.buy_count {
   display: flex;
   font-size: 14px;
   margin: 20px 0;
@@ -75,7 +75,7 @@
   .count {
     padding: 0 30px 0 0;
   }
-  .buyInput {
+  .buy_input {
     border: 1px solid gray;
     padding: 4px;
     position: relative;
@@ -100,7 +100,7 @@
   margin: 10px;
   padding: 10px;
   font-size: 14px;
-  .sumNum {
+  .sum_num {
     padding: 0 10px;
     margin: -4px 0;
     font-size: 24px;
