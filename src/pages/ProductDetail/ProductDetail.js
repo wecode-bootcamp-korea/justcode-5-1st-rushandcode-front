@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from '../../elements/Image';
-import ProductInfo from '../../components/ProductInfo.js/ProductInfo';
+import ProductInfo from '../../components/ProductInfo/ProductInfo';
 import css from './ProductDetail.module.scss';
 
 function ProductDetail() {
