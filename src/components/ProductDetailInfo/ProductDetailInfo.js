@@ -1,16 +1,12 @@
 import React from 'react';
 import css from './ProductDetailInfo.module.scss';
-import { Link } from 'react-router-dom';
 import Image from '../../elements/Image';
+import ProductTab from '../ProductTab/ProductTab';
 
 function ProductDetailInfo() {
   return (
     <div>
-      <section className={css.tab}>
-        <Link to>상품상세정보</Link>
-        <Link to>상품후기</Link>
-        <Link to>배송/교환 및 반품안내</Link>
-      </section>
+      <ProductTab />
       <section className={css.desc}>
         <div className={css.category}>배쓰 밤</div>
         <div className={css.name}>더티</div>

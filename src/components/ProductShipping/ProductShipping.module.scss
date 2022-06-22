@@ -1,0 +1,16 @@
+.container {
+  .exchange_container {
+    margin: 50px 0;
+  }
+
+  .ship_desc,
+  .exchange_desc {
+    display: flex;
+    justify-content: left;
+    position: relative;
+    left: 100px;
+    font-size: 14px;
+    line-height: 30px;
+    color: #333333;
+  }
+}

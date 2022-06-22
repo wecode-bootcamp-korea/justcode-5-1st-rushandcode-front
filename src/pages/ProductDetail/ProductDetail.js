@@ -3,6 +3,7 @@ import Image from '../../elements/Image';
 import ProductInfo from '../../components/ProductInfo/ProductInfo';
 import ProductDetailInfo from '../../components/ProductDetailInfo/ProductDetailInfo';
 import css from './ProductDetail.module.scss';
+import ProductShipping from '../../components/ProductShipping/ProductShipping';
 
 function ProductDetail() {
   return (
@@ -31,6 +32,7 @@ function ProductDetail() {
         <ProductInfo />
       </div>
       <ProductDetailInfo />
+      <ProductShipping />
     </>
   );
 }
