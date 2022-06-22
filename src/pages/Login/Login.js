@@ -4,28 +4,56 @@ import { Link, useNavigate } from 'react-router-dom';
 import css from './Login.module.scss';
 
 function Login() {
-  const navigate = useNavigate();
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
 
+  const navigate = useNavigate();
+  const gotomain = () => {
+    navigate('/');
+  };
+
+  const dataFetch = () => {
+    fetch(
+      'http://localhost:3000/data/userData.json'
+      // ,{
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({
+      //     user_id: id,
+      //     password: password,
+      //   }),
+      // }
+    )
+      .then(res => res.json())
+      .then(res => {
+        // if (res.access_token) {
+        //   localStorage.setItem('access_token', res.access_token);
+        //   localStorage.setItem('user_id', res.user_id);
+        if (res[0].user_id) {
+        } else {
+          const error = new Error('잘못된 아이디이거나 비밀번호입니다.');
+          error.statusCode = 400;
+          throw error;
+        }
+      })
+      .then(() => {
+        gotomain();
+      })
+      .catch(err => {
+        alert(err.message);
+        setId('');
+        setPassword('');
+      });
+  };
+
   const validation = (idText, pwText) => {
-    if (!idText.includes('@')) {
+    if (idText.length < 1) {
       return false;
     }
     if (pwText.length < 7) {
       return false;
     }
     return true;
-  };
-
-  const buttonOnClick = () => {
-    if (validation(id, password)) {
-      navigate('/');
-    } else {
-      alert('로그인에 실패하였습니다.');
-      setId('');
-      setPassword('');
-    }
   };
 
   const valid = validation(id, password);
@@ -51,7 +79,7 @@ function Login() {
           </span>
           <input
             className={css.login_input}
-            name="identify"
+            name="id"
             type="email"
             placeholder="아이디"
             value={id}
@@ -86,7 +114,7 @@ function Login() {
         <button
           className={`${css.login_button} ${valid ? css.active : css.inactive}`}
           disabled={!valid}
-          onClick={buttonOnClick}
+          onClick={dataFetch}
         >
           로그인
         </button>
