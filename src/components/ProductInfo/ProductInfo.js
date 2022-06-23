@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import css from './ProductInfo.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 function ProductInfo() {
+  const [count, setCount] = useState(1);
+
+  const countUp = () => {
+    setCount(count + 1);
+  };
+  const countDown = () => {
+    setCount(count - 1);
+  };
+
+  let price = 17000 * count;
   return (
     <div className={css.container}>
       <div className={css.select_container}>
@@ -37,7 +47,7 @@ function ProductInfo() {
       <div className={css.text}>Good to Know</div>
       <div className={css.price}>
         <div>판매가</div>
-        <div className={css.price_num}>₩ 17000</div>
+        <div className={css.price_num}>₩ {price}</div>
       </div>
       <div className={css.weight}>
         <div>상품무게</div>
@@ -46,19 +56,19 @@ function ProductInfo() {
       <div className={css.buy_count}>
         <div className={css.count}>구매수량</div>
         <div className={css.buy_input}>
-          <button>-</button>
-          {/* <input value={1} /> */}
-          <button>+</button>
+          <button onClick={countDown}>-</button>
+          <input disabled type="number" value={count} />
+          <button onClick={countUp}>+</button>
         </div>
-        <div className={css.price_num}>₩ 17000</div>
+        <div className={css.price_num}>₩ {price}</div>
       </div>
       <div className={css.sum}>
         <div>총 제품금액</div>
-        <div className={css.sum_num}>₩ 17000</div>
+        <div className={css.sum_num}>₩ {price}</div>
       </div>
       <div className={css.sum}>
         <div>총 합계금액</div>
-        <div className={css.sum_num}>₩ 17000</div>
+        <div className={css.sum_num}>₩ {price}</div>
       </div>
       <div className={css.buttons}>
         <button className={css.cart}>장바구니</button>
