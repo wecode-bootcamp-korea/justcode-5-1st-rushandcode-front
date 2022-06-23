@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "user_id": "werrrrr",
+    "content": "Welcome to world best coding bootcamp!",
+    "stars": 1,
+    "created_at": "2020-04-21"
+  },
+  {
+    "id": 2,
+    "user_id": "hello",
+    "content": "Hi there.",
+    "stars": 3,
+    "created_at": "2020-04-22"
+  },
+  {
+    "id": 3,
+    "user_id": "asdfjjj033",
+    "content": "Hey.",
+    "stars": 5,
+    "created_at": "2020-04-02"
+  }
+]

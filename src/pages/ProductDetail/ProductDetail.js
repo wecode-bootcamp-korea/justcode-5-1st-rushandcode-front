@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from '../../elements/Image';
 import ProductInfo from '../../components/ProductInfo/ProductInfo';
 import ProductDetailInfo from '../../components/ProductDetailInfo/ProductDetailInfo';
