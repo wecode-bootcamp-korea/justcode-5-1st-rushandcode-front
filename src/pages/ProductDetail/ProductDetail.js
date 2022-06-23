@@ -12,7 +12,7 @@ function ProductDetail() {
   );
 
   return (
-    <>
+    <div className={css.product_detail_container}>
       <div className={css.container}>
         <div className={css.images_container}>
           <Image size={380} src={image} />
@@ -39,7 +39,7 @@ function ProductDetail() {
       <ProductDetailInfo />
       <ProductReview />
       <ProductShipping />
-    </>
+    </div>
   );
 }
 
