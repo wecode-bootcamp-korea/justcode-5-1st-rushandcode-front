@@ -73,7 +73,6 @@ $border-color: $theme-color;
 .table {
   margin-top: 50px;
   padding-bottom: 30px;
-  //   border: 1px solid #8f8f8f;
   width: 100%;
   border-bottom: 1px solid black;
 
@@ -81,7 +80,6 @@ $border-color: $theme-color;
     display: flex;
     align-items: center;
     justify-content: left;
-    padding-bottom: 15px;
 
     .th_id {
       width: 170px;
@@ -103,11 +101,25 @@ $border-color: $theme-color;
     }
   }
 
+  .id_invalid {
+    padding-bottom: 10px;
+    margin-left: 170px;
+    font-size: 14px;
+    color: red;
+  }
+
+  .id_valid {
+    padding-bottom: 10px;
+    margin-left: 170px;
+    font-size: 14px;
+    color: green;
+  }
+
   .tr_pw {
     display: flex;
     align-items: center;
     justify-content: left;
-    padding-bottom: 15px;
+    padding-top: 15px;
 
     .th_pw {
       width: 170px;
@@ -129,11 +141,25 @@ $border-color: $theme-color;
     }
   }
 
+  .password_invalid {
+    padding-bottom: 10px;
+    margin-left: 170px;
+    font-size: 14px;
+    color: red;
+  }
+
+  .password_valid {
+    padding-bottom: 10px;
+    margin-left: 170px;
+    font-size: 14px;
+    color: green;
+  }
+
   .tr_pw_check {
     display: flex;
     align-items: center;
     justify-content: left;
-    padding-bottom: 15px;
+    padding-top: 15px;
 
     .th_pw_check {
       width: 170px;
@@ -159,7 +185,7 @@ $border-color: $theme-color;
     display: flex;
     align-items: center;
     justify-content: left;
-    padding-bottom: 15px;
+    padding-top: 15px;
 
     .th_name {
       width: 170px;
@@ -185,7 +211,7 @@ $border-color: $theme-color;
     display: flex;
     align-items: center;
     justify-content: left;
-    padding-bottom: 15px;
+    padding-top: 15px;
 
     .th_nick_name {
       padding-left: 25px;
@@ -208,7 +234,7 @@ $border-color: $theme-color;
     display: flex;
     align-items: center;
     justify-content: left;
-    padding-bottom: 15px;
+    padding-top: 15px;
 
     .th_email {
       padding-left: 25px;
@@ -251,7 +277,7 @@ $border-color: $theme-color;
     display: flex;
     align-items: center;
     justify-content: left;
-    padding-bottom: 15px;
+    padding-top: 15px;
 
     .th_phone {
       padding-left: 25px;
@@ -286,7 +312,7 @@ $border-color: $theme-color;
     display: flex;
     align-items: center;
     justify-content: left;
-    padding-bottom: 15px;
+    padding-top: 15px;
 
     .th_address {
       padding-left: 25px;
@@ -351,5 +377,14 @@ $border-color: $theme-color;
     color: white;
     background-color: black;
     font-size: 16px;
+
+    &.active {
+      cursor: pointer;
+      background-color: black;
+    }
+
+    &.inactive {
+      background-color: black;
+    }
   }
 }

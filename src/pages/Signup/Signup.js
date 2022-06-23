@@ -1,10 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import css from './Signup.module.scss';
 
 const point = 'https://img.icons8.com/emoji/344/red-square-emoji.png';
 
 function Signup() {
+  const [id, setId] = useState('');
+  const [password, setPassword] = useState('');
+  const [checkPassword, setCheckPassword] = useState('');
+  const [name, setName] = useState('');
+
+  const navigate = useNavigate();
+  const gotologin = () => {
+    navigate('/login');
+  };
+
+  const validation = (idText, pwText, checkPwText, nameText) => {
+    if (idText.length < 4) {
+      return false;
+    }
+    if (pwText.length < 7) {
+      return false;
+    }
+    if (pwText !== checkPwText) {
+      return false;
+    }
+    if (nameText.length < 1) {
+      return false;
+    }
+    return true;
+  };
+
+  const buttonOnClick = () => {
+    if (validation(id, password, checkPassword, name)) {
+      gotologin();
+    } else alert('회원가입에 실패하였습니다.');
+  };
+
+  const valid = validation(id, password, checkPassword, name);
+
   return (
     <div className={css.container}>
       <div className={css.signup_upper_portion}>
@@ -35,9 +70,18 @@ function Signup() {
               className={css.id_input}
               name="id"
               type="text"
-              placeholder=""
+              value={id}
+              onChange={e => {
+                setId(e.target.value);
+              }}
             />
           </div>
+          {id.length > 0 && id.length < 4 && (
+            <div className={css.id_invalid}>최소 4 이상 입력해주세요.</div>
+          )}
+          {id.length >= 4 && (
+            <div className={css.id_valid}>사용가능한 아이디 입니다.</div>
+          )}
           <div className={css.tr_pw}>
             <span className={css.th_pw}>
               <img src={point} alt="point" />
@@ -47,9 +91,20 @@ function Signup() {
               className={css.pw_input}
               name="password"
               type="password"
-              placeholder=""
+              value={password}
+              onChange={e => {
+                setPassword(e.target.value);
+              }}
             />
           </div>
+          {password.length > 0 && password.length < 7 && (
+            <div className={css.password_invalid}>
+              최소 7 이상 입력해주세요.
+            </div>
+          )}
+          {password.length >= 7 && (
+            <div className={css.password_valid}>안전한 비밀번호 입니다.</div>
+          )}
           <div className={css.tr_pw_check}>
             <span className={css.th_pw_check}>
               <img src={point} alt="point" />
@@ -59,9 +114,17 @@ function Signup() {
               className={css.pw_check_input}
               name="passwordCheck"
               type="password"
-              placeholder=""
+              value={checkPassword}
+              onChange={e => {
+                setCheckPassword(e.target.value);
+              }}
             />
           </div>
+          {checkPassword.length > 0 && password !== checkPassword && (
+            <div className={css.password_invalid}>
+              비밀번호가 서로 다릅니다.
+            </div>
+          )}
           <div className={css.tr_name}>
             <span className={css.th_name}>
               <img src={point} alt="point" />
@@ -71,7 +134,10 @@ function Signup() {
               className={css.name_input}
               name="name"
               type="text"
-              placeholder=""
+              value={name}
+              onChange={e => {
+                setName(e.target.value);
+              }}
             />
           </div>
           <div className={css.tr_nick_name}>
@@ -80,17 +146,11 @@ function Signup() {
               className={css.nick_name_input}
               name="nickName"
               type="text"
-              placeholder=""
             />
           </div>
           <div className={css.tr_email}>
             <span className={css.th_email}>이메일</span>
-            <input
-              className={css.email_input}
-              name="email"
-              type="text"
-              placeholder=""
-            />
+            <input className={css.email_input} name="email" type="text" />
             <select>
               <option>직접입력</option>
               <option>naver.com</option>
@@ -125,12 +185,7 @@ function Signup() {
           </div>
           <div className={css.tr_address_1}>
             <span className={css.th_address}>주소</span>
-            <input
-              className={css.address_input}
-              name="email"
-              type="text"
-              placeholder=""
-            />
+            <input className={css.address_input} name="email" type="text" />
             <button className={css.search_button}>우편번호 검색</button>
           </div>
           <div className={css.tr_address_2}>
@@ -138,18 +193,24 @@ function Signup() {
               className={css.address_input_1}
               name="Address1"
               type="text"
-              placeholder=""
             />
             <input
               className={css.address_input_2}
               name="Address2"
               type="text"
-              placeholder=""
             />
           </div>
         </div>
         <div className={css.divider}>
-          <button className={css.signup_button}>회원가입</button>
+          <button
+            className={`${css.signup_button} ${
+              valid ? css.active : css.inactive
+            }`}
+            disabled={!valid}
+            onClick={buttonOnClick}
+          >
+            회원가입
+          </button>
         </div>
       </div>
     </div>
