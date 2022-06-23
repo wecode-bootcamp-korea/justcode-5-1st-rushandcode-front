@@ -1,8 +1,101 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import css from './Products.module.scss';
+import SelectFilter from './SelectFilter';
+import Productslist from './ProductList.js';
 
 function Products() {
+  const selectFilterOption = [
+    {
+      id: 1,
+      value: 'recommend',
+      name: '추천순',
+    },
+    {
+      id: 2,
+      value: 'popular',
+      name: '인기순',
+    },
+    {
+      id: 3,
+      value: 'lowPrice',
+      name: '낮은가격순',
+    },
+    {
+      id: 4,
+      value: 'highPrice',
+      name: '높은가격순',
+    },
+    {
+      id: 5,
+      value: 'manyReviews',
+      name: '리뷰많은순',
+    },
+  ];
+
+  const prdData = [
+    {
+      id: 1,
+      name: '배쓰1',
+      price: 19000,
+    },
+    {
+      id: 2,
+      name: '배쓰2',
+      price: 18000,
+    },
+    {
+      id: 3,
+      name: '배쓰3',
+      price: 29000,
+    },
+    {
+      id: 4,
+      name: '배쓰4',
+      price: 19500,
+    },
+    {
+      id: 5,
+      name: '배쓰5',
+      price: 22000,
+    },
+    {
+      id: 6,
+      name: '배쓰6',
+      price: 34000,
+    },
+    {
+      id: 7,
+      name: '배쓰7',
+      price: 95000,
+    },
+    {
+      id: 8,
+      name: '배쓰8',
+      price: 78000,
+    },
+    {
+      id: 9,
+      name: '배쓰9',
+      price: 55000,
+    },
+    {
+      id: 10,
+      name: '배쓰10',
+      price: 12300,
+    },
+    {
+      id: 11,
+      name: '배쓰11',
+      price: 14400,
+    },
+    {
+      id: 12,
+      name: '배쓰12',
+      price: 25600,
+    },
+  ];
+
   return (
     <div>
       <div className={css.container}>
@@ -21,17 +114,7 @@ function Products() {
           <div className={css.contents}>
             <div className={css.list_header}>
               <h2>배쓰</h2>
-              <select
-                name="product"
-                id="product-select"
-                className={css.select_box}
-              >
-                <option value="">추천순</option>
-                <option value="">판매인기순</option>
-                <option value="">낮은가격순</option>
-                <option value="">높은가격순</option>
-                <option value="">리뷰많은순</option>
-              </select>
+              <SelectFilter option={selectFilterOption} />
             </div>
             <ul className={css.list_category}>
               <li>
@@ -61,380 +144,7 @@ function Products() {
             </ul>
             <article className={css.product_container}>
               <div className={css.product_box}>
-                <ul className={css.product_list}>
-                  <li>
-                    <div className={css.prd_img}>
-                      <Link to="">
-                        <img
-                          src="https://www.lush.co.kr/data/goods/22/04/14/1000002148/1000002148_main_085.jpg"
-                          alt="상품명"
-                        />
-                      </Link>
-                    </div>
-                    <div className={css.prd_label}>
-                      <Link to="">
-                        <span className={css.prd_label_new}>NEW</span>
-                      </Link>
-                      <Link to="">
-                        <span className={css.prd_label_vegan}>VEGAN</span>
-                      </Link>
-                    </div>
-                    <div className={css.prd_name}>
-                      <Link to="">
-                        <div>라이트 더 나이트</div>
-                        <div className={css.prd_hashtag}>
-                          <span>#배쓰밤</span>
-                          <span>#EID</span>
-                        </div>
-                      </Link>
-                    </div>
-                    <div className={css.prd_price}>
-                      <span>₩</span>
-                      <span>19,000</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className={css.prd_img}>
-                      <Link to="">
-                        <img
-                          src="https://www.lush.co.kr/data/goods/22/04/14/1000002148/1000002148_main_085.jpg"
-                          alt="상품명"
-                        />
-                      </Link>
-                    </div>
-                    <div className={css.prd_label}>
-                      <Link to="">
-                        <span className={css.prd_label_new}>NEW</span>
-                      </Link>
-                      <Link to="">
-                        <span className={css.prd_label_vegan}>VEGAN</span>
-                      </Link>
-                    </div>
-                    <div className={css.prd_name}>
-                      <Link to="">
-                        <div>라이트 더 나이트</div>
-                        <div className={css.prd_hashtag}>
-                          <span>#배쓰밤</span>
-                          <span>#EID</span>
-                        </div>
-                      </Link>
-                    </div>
-                    <div className={css.prd_price}>
-                      <span>₩</span>
-                      <span>19,000</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className={css.prd_img}>
-                      <Link to="">
-                        <img
-                          src="https://www.lush.co.kr/data/goods/22/04/14/1000002148/1000002148_main_085.jpg"
-                          alt="상품명"
-                        />
-                      </Link>
-                    </div>
-                    <div className={css.prd_label}>
-                      <Link to="">
-                        <span className={css.prd_label_new}>NEW</span>
-                      </Link>
-                      <Link to="">
-                        <span className={css.prd_label_vegan}>VEGAN</span>
-                      </Link>
-                    </div>
-                    <div className={css.prd_name}>
-                      <Link to="">
-                        <div>라이트 더 나이트</div>
-                        <div className={css.prd_hashtag}>
-                          <span>#배쓰밤</span>
-                          <span>#EID</span>
-                        </div>
-                      </Link>
-                    </div>
-                    <div className={css.prd_price}>
-                      <span>₩</span>
-                      <span>19,000</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className={css.prd_img}>
-                      <Link to="">
-                        <img
-                          src="https://www.lush.co.kr/data/goods/22/04/14/1000002148/1000002148_main_085.jpg"
-                          alt="상품명"
-                        />
-                      </Link>
-                    </div>
-                    <div className={css.prd_label}>
-                      <Link to="">
-                        <span className={css.prd_label_new}>NEW</span>
-                      </Link>
-                      <Link to="">
-                        <span className={css.prd_label_vegan}>VEGAN</span>
-                      </Link>
-                    </div>
-                    <div className={css.prd_name}>
-                      <Link to="">
-                        <div>라이트 더 나이트</div>
-                        <div className={css.prd_hashtag}>
-                          <span>#배쓰밤</span>
-                          <span>#EID</span>
-                        </div>
-                      </Link>
-                    </div>
-                    <div className={css.prd_price}>
-                      <span>₩</span>
-                      <span>19,000</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className={css.prd_img}>
-                      <Link to="">
-                        <img
-                          src="https://www.lush.co.kr/data/goods/22/04/14/1000002148/1000002148_main_085.jpg"
-                          alt="상품명"
-                        />
-                      </Link>
-                    </div>
-                    <div className={css.prd_label}>
-                      <Link to="">
-                        <span className={css.prd_label_new}>NEW</span>
-                      </Link>
-                      <Link to="">
-                        <span className={css.prd_label_vegan}>VEGAN</span>
-                      </Link>
-                    </div>
-                    <div className={css.prd_name}>
-                      <Link to="">
-                        <div>라이트 더 나이트</div>
-                        <div className={css.prd_hashtag}>
-                          <span>#배쓰밤</span>
-                          <span>#EID</span>
-                        </div>
-                      </Link>
-                    </div>
-                    <div className={css.prd_price}>
-                      <span>₩</span>
-                      <span>19,000</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className={css.prd_img}>
-                      <Link to="">
-                        <img
-                          src="https://www.lush.co.kr/data/goods/22/04/14/1000002148/1000002148_main_085.jpg"
-                          alt="상품명"
-                        />
-                      </Link>
-                    </div>
-                    <div className={css.prd_label}>
-                      <Link to="">
-                        <span className={css.prd_label_new}>NEW</span>
-                      </Link>
-                      <Link to="">
-                        <span className={css.prd_label_vegan}>VEGAN</span>
-                      </Link>
-                    </div>
-                    <div className={css.prd_name}>
-                      <Link to="">
-                        <div>라이트 더 나이트</div>
-                        <div className={css.prd_hashtag}>
-                          <span>#배쓰밤</span>
-                          <span>#EID</span>
-                        </div>
-                      </Link>
-                    </div>
-                    <div className={css.prd_price}>
-                      <span>₩</span>
-                      <span>19,000</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className={css.prd_img}>
-                      <Link to="">
-                        <img
-                          src="https://www.lush.co.kr/data/goods/22/04/14/1000002148/1000002148_main_085.jpg"
-                          alt="상품명"
-                        />
-                      </Link>
-                    </div>
-                    <div className={css.prd_label}>
-                      <Link to="">
-                        <span className={css.prd_label_new}>NEW</span>
-                      </Link>
-                      <Link to="">
-                        <span className={css.prd_label_vegan}>VEGAN</span>
-                      </Link>
-                    </div>
-                    <div className={css.prd_name}>
-                      <Link to="">
-                        <div>라이트 더 나이트</div>
-                        <div className={css.prd_hashtag}>
-                          <span>#배쓰밤</span>
-                          <span>#EID</span>
-                        </div>
-                      </Link>
-                    </div>
-                    <div className={css.prd_price}>
-                      <span>₩</span>
-                      <span>19,000</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className={css.prd_img}>
-                      <Link to="">
-                        <img
-                          src="https://www.lush.co.kr/data/goods/22/04/14/1000002148/1000002148_main_085.jpg"
-                          alt="상품명"
-                        />
-                      </Link>
-                    </div>
-                    <div className={css.prd_label}>
-                      <Link to="">
-                        <span className={css.prd_label_new}>NEW</span>
-                      </Link>
-                      <Link to="">
-                        <span className={css.prd_label_vegan}>VEGAN</span>
-                      </Link>
-                    </div>
-                    <div className={css.prd_name}>
-                      <Link to="">
-                        <div>라이트 더 나이트</div>
-                        <div className={css.prd_hashtag}>
-                          <span>#배쓰밤</span>
-                          <span>#EID</span>
-                        </div>
-                      </Link>
-                    </div>
-                    <div className={css.prd_price}>
-                      <span>₩</span>
-                      <span>19,000</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className={css.prd_img}>
-                      <Link to="">
-                        <img
-                          src="https://www.lush.co.kr/data/goods/22/04/14/1000002148/1000002148_main_085.jpg"
-                          alt="상품명"
-                        />
-                      </Link>
-                    </div>
-                    <div className={css.prd_label}>
-                      <Link to="">
-                        <span className={css.prd_label_new}>NEW</span>
-                      </Link>
-                      <Link to="">
-                        <span className={css.prd_label_vegan}>VEGAN</span>
-                      </Link>
-                    </div>
-                    <div className={css.prd_name}>
-                      <Link to="">
-                        <div>라이트 더 나이트</div>
-                        <div className={css.prd_hashtag}>
-                          <span>#배쓰밤</span>
-                          <span>#EID</span>
-                        </div>
-                      </Link>
-                    </div>
-                    <div className={css.prd_price}>
-                      <span>₩</span>
-                      <span>19,000</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className={css.prd_img}>
-                      <Link to="">
-                        <img
-                          src="https://www.lush.co.kr/data/goods/22/04/14/1000002148/1000002148_main_085.jpg"
-                          alt="상품명"
-                        />
-                      </Link>
-                    </div>
-                    <div className={css.prd_label}>
-                      <Link to="">
-                        <span className={css.prd_label_new}>NEW</span>
-                      </Link>
-                      <Link to="">
-                        <span className={css.prd_label_vegan}>VEGAN</span>
-                      </Link>
-                    </div>
-                    <div className={css.prd_name}>
-                      <Link to="">
-                        <div>라이트 더 나이트</div>
-                        <div className={css.prd_hashtag}>
-                          <span>#배쓰밤</span>
-                          <span>#EID</span>
-                        </div>
-                      </Link>
-                    </div>
-                    <div className={css.prd_price}>
-                      <span>₩</span>
-                      <span>19,000</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className={css.prd_img}>
-                      <Link to="">
-                        <img
-                          src="https://www.lush.co.kr/data/goods/22/04/14/1000002148/1000002148_main_085.jpg"
-                          alt="상품명"
-                        />
-                      </Link>
-                    </div>
-                    <div className={css.prd_label}>
-                      <Link to="">
-                        <span className={css.prd_label_new}>NEW</span>
-                      </Link>
-                      <Link to="">
-                        <span className={css.prd_label_vegan}>VEGAN</span>
-                      </Link>
-                    </div>
-                    <div className={css.prd_name}>
-                      <Link to="">
-                        <div>라이트 더 나이트</div>
-                        <div className={css.prd_hashtag}>
-                          <span>#배쓰밤</span>
-                          <span>#EID</span>
-                        </div>
-                      </Link>
-                    </div>
-                    <div className={css.prd_price}>
-                      <span>₩</span>
-                      <span>19,000</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className={css.prd_img}>
-                      <Link to="">
-                        <img
-                          src="https://www.lush.co.kr/data/goods/22/04/14/1000002148/1000002148_main_085.jpg"
-                          alt="상품명"
-                        />
-                      </Link>
-                    </div>
-                    <div className={css.prd_label}>
-                      <Link to="">
-                        <span className={css.prd_label_new}>NEW</span>
-                      </Link>
-                      <Link to="">
-                        <span className={css.prd_label_vegan}>VEGAN</span>
-                      </Link>
-                    </div>
-                    <div className={css.prd_name}>
-                      <Link to="">
-                        <div>라이트 더 나이트</div>
-                        <div className={css.prd_hashtag}>
-                          <span>#배쓰밤</span>
-                          <span>#EID</span>
-                        </div>
-                      </Link>
-                    </div>
-                    <div className={css.prd_price}>
-                      <span>₩</span>
-                      <span>19,000</span>
-                    </div>
-                  </li>
-                </ul>
+                <Productslist data={prdData} />
               </div>
             </article>
           </div>

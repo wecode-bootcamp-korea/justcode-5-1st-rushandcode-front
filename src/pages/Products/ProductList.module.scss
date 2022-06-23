@@ -1,0 +1,47 @@
+/* 상품 페이지 - 상품 목록 */
+.product_list {
+  width: 100%;
+  overflow: hidden;
+  li {
+    float: left;
+    width: 25%;
+    margin-bottom: 30px;
+    text-align: center;
+    .prd_label {
+      span {
+        display: inline-block;
+        width: 60px;
+        height: 20px;
+        margin: 5px 2px;
+        line-height: 20px;
+        border-radius: 10px;
+        color: white;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      &_new {
+        background-color: #007a29;
+      }
+      &_vegan {
+        background-color: #92ac00;
+      }
+    }
+    .prd_name {
+      line-height: 22px;
+      .prd_hashtag {
+        color: #888;
+        font-size: 14px;
+        span:first-child {
+          padding-right: 5px;
+        }
+      }
+    }
+    .prd_price {
+      margin-top: 15px;
+      line-height: 30px;
+      span:first-child {
+        padding-right: 5px;
+      }
+    }
+  }
+}
