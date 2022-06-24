@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import css from './ReviewModal.module.scss';
 
 const ReviewModal = props => {
+  useEffect(() => {
+    open
+      ? (document.body.style.overflow = 'hidden')
+      : (document.body.style.overflow = 'unset');
+  });
   const { open, close, header, content } = props;
   return (
     <div className={open ? `${css.openModal} ${css.modal}` : css.modal}>
