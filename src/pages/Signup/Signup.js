@@ -203,9 +203,7 @@ function Signup() {
         </div>
         <div className={css.divider}>
           <button
-            className={`${css.signup_button} ${
-              valid ? css.active : css.inactive
-            }`}
+            className={`${css.signup_button} ${valid && css.active}`}
             disabled={!valid}
             onClick={buttonOnClick}
           >
