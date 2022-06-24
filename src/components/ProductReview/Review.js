@@ -16,6 +16,7 @@ function Review() {
       <ReviewModal
         close={closeModal}
         open={modalOpen}
+        content="test"
         header="상품후기 수정하기"
       />
       <div className={css.review_info}>

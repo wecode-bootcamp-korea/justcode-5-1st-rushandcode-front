@@ -2,7 +2,7 @@ import React from 'react';
 import css from './ReviewModal.module.scss';
 
 const ReviewModal = props => {
-  const { open, close, header } = props;
+  const { open, close, header, content } = props;
   return (
     <div className={open ? `${css.openModal} ${css.modal}` : css.modal}>
       {open ? (
@@ -22,7 +22,7 @@ const ReviewModal = props => {
               <option>★</option>
             </select>
             <div className={css.textarea_header} />
-            <textarea>{props.children}</textarea>
+            <textarea>{content}</textarea>
           </main>
           <footer>
             <button>리뷰등록</button>
