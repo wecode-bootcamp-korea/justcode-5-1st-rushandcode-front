@@ -3,6 +3,7 @@
   align-items: center;
   position: relative;
   bottom: 150px;
+  right: 10px;
   margin: 0 auto;
   padding: 20px;
   width: 1170px;
@@ -29,6 +30,7 @@
   }
   .buttons {
     display: flex;
+    width: 100px;
     button {
       width: 50px;
       height: 26px;

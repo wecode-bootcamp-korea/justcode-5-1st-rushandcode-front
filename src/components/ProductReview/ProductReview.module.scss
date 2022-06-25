@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    right: 420px;
+    right: 405px;
     :nth-child(3) {
       position: relative;
       right: 20px;
@@ -31,6 +31,7 @@
     width: 1200px;
     margin: 20px auto;
     position: relative;
+    right: 5px;
     border: 1px solid lightgray;
     .rate {
       padding: 20px 0 20px 20px;
@@ -84,5 +85,6 @@
   height: 2px;
   background-color: gray;
   position: relative;
+  right: 5px;
   bottom: 50px;
 }

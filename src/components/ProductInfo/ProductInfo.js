@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import css from './ProductInfo.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
-function ProductInfo() {
+function ProductInfo(props) {
+  const { productInfo } = props;
   const [count, setCount] = useState(1);
 
   const countUp = () => {
@@ -15,8 +16,27 @@ function ProductInfo() {
     }
   };
 
-  let price = 17000;
+  const reviewLength = productInfo?.productReviews?.length;
+  const weight = productInfo?.weight;
+
+  let { price } = productInfo;
   let totalPrice = price * count;
+
+  const [mainCategory, setMainCategory] = useState('');
+  const handleMainSelect = e => {
+    setMainCategory(e.target.value);
+  };
+  useEffect(() => {
+    setMainCategory(productInfo.main_category);
+  }, [productInfo.main_category]);
+
+  const [subCategory, setSubCategory] = useState('');
+  const handleSubSelect = e => {
+    setSubCategory(e.target.value);
+  };
+  useEffect(() => {
+    setSubCategory(productInfo.sub_category);
+  }, [productInfo.sub_category]);
 
   return (
     <div className={css.container}>
@@ -27,7 +47,7 @@ function ProductInfo() {
         <FontAwesomeIcon icon={faAngleRight} color="lightgray" />
 
         <div className={css.main_category}>
-          <select name="main-category" id="main-category-select">
+          <select value={mainCategory} onChange={handleMainSelect}>
             <option value="배쓰">배쓰</option>
             <option value="샤워">샤워</option>
             <option value="보디">보디</option>
@@ -37,7 +57,7 @@ function ProductInfo() {
         <FontAwesomeIcon icon={faAngleRight} color="lightgray" />
 
         <div className={css.sub_category}>
-          <select name="sub-category" id="sub-category-select">
+          <select value={subCategory} onChange={handleSubSelect}>
             <option value="배쓰 밤">배쓰 밤</option>
             <option value="버블 바">버블 바</option>
             <option value="배쓰 오일">배쓰 오일</option>
@@ -47,7 +67,7 @@ function ProductInfo() {
 
       <div className={css.procuct_name}>더티</div>
       <div className={css.hashtags}>#배쓰밤 #파더스 #아빠에게</div>
-      <div className={css.text}>2개의 후기 보기</div>
+      <div className={css.text}>{reviewLength}개의 후기 보기</div>
       <div className={css.text}>Good to Know</div>
       <div className={css.price}>
         <div>판매가</div>
@@ -55,7 +75,7 @@ function ProductInfo() {
       </div>
       <div className={css.weight}>
         <div>상품무게</div>
-        <div className={css.weight_num}>190g</div>
+        <div className={css.weight_num}>{weight}g</div>
       </div>
       <div className={css.buy_count}>
         <div className={css.count}>구매수량</div>
