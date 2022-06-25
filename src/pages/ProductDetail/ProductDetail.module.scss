@@ -1,17 +1,20 @@
-.container {
-  display: flex;
-}
+.product_detail_container {
+  overflow: hidden;
+  .container {
+    display: flex;
+  }
 
-.images_container {
-  position: relative;
-  left: 150px;
-  top: 100px;
-  margin: 50px auto;
-  min-width: 700px;
-}
+  .images_container {
+    position: relative;
+    left: 150px;
+    top: 100px;
+    margin: 50px auto;
+    min-width: 700px;
+  }
 
-.images {
-  width: 400px;
-  margin: 30px;
-  display: flex;
+  .images {
+    width: 400px;
+    margin: 30px;
+    display: flex;
+  }
 }
