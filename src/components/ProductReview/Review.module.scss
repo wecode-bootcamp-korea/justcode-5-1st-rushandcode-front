@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  bottom: 150px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 1170px;
+  border-bottom: 1px solid lightgray;
+  .review_info {
+    width: 200px;
+    .rate {
+      padding: 10px 0;
+      font-size: 17px;
+    }
+    .date {
+      padding: 20px 0;
+      font-size: 14px;
+    }
+    .username {
+      font-size: 14px;
+    }
+  }
+  .text {
+    font-size: 14px;
+    width: 900px;
+    word-break: break-all;
+    line-height: 24px;
+  }
+  .buttons {
+    display: flex;
+    button {
+      width: 50px;
+      height: 26px;
+      position: relative;
+      top: 40px;
+      margin: 4px;
+      background: #c7c7c7;
+      color: white;
+      border: 0;
+      cursor: pointer;
+    }
+  }
+}
