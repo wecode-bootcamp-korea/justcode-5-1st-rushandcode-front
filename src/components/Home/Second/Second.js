@@ -1,9 +1,29 @@
+import React, { useRef } from 'react';
 import css from './Second.module.scss';
 
 function Second() {
+  const slider = useRef();
+
+  const first_button = () => {
+    slider.current.style.transform = 'translate(0vw)';
+    slider.current.style.transition = 'transform 1s';
+  };
+  const second_button = () => {
+    slider.current.style.transform = 'translate(-60vw)';
+    slider.current.style.transition = 'transform 1s';
+  };
+  const third_button = () => {
+    slider.current.style.transform = 'translate(-120vw)';
+    slider.current.style.transition = 'transform 1s';
+  };
+  const fourth_button = () => {
+    slider.current.style.transform = 'translate(-180vw)';
+    slider.current.style.transition = 'transform 1s';
+  };
+
   return (
     <div className={css.wraper}>
-      <div className={css.container}>
+      <div ref={slider} className={css.container}>
         <div className={css.inner}>
           <img
             className={css.img}
@@ -90,10 +110,10 @@ function Second() {
         </div>
       </div>
       <div className={css.wrap_button}>
-        <button className={css.button} />
-        <button className={css.button} />
-        <button className={css.button} />
-        <button className={css.button} />
+        <button className={css.button} onClick={first_button} />
+        <button className={css.button} onClick={second_button} />
+        <button className={css.button} onClick={third_button} />
+        <button className={css.button} onClick={fourth_button} />
       </div>
     </div>
   );

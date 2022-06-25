@@ -1,10 +1,33 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import css from './Third.module.scss';
 
 function Third() {
+  const pages = 3;
+  const [page, setPage] = useState(0);
+  const refContainer = useRef();
+
+  const prev = () => {
+    if (page <= 0) {
+      setPage(pages);
+    } else {
+      setPage(page - 1);
+    }
+  };
+  const next = () => {
+    if (page >= pages) {
+      setPage(0);
+    } else {
+      setPage(page + 1);
+    }
+  };
+
+  useEffect(() => {
+    refContainer.current.style.transform = `translate(-${page * 25}vw)`;
+    refContainer.current.style.transition = 'transform 1s';
+  }, [page]);
   return (
     <div className={css.wrap_container}>
-      <div className={css.container}>
+      <div ref={refContainer} className={css.container}>
         <div className={css.inner}>
           <img
             className={css.img}
@@ -34,8 +57,8 @@ function Third() {
           />
         </div>
       </div>
-      <div className={css.arrow_left} />
-      <div className={css.arrow_right} />
+      <div className={css.prev} onClick={prev} />
+      <div className={css.next} onClick={next} />
     </div>
   );
 }
