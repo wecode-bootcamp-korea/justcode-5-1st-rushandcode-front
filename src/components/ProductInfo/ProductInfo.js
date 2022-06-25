@@ -10,10 +10,14 @@ function ProductInfo() {
     setCount(count + 1);
   };
   const countDown = () => {
-    setCount(count - 1);
+    if (count > 1) {
+      setCount(count - 1);
+    }
   };
 
-  let price = 17000 * count;
+  let price = 17000;
+  let totalPrice = price * count;
+
   return (
     <div className={css.container}>
       <div className={css.select_container}>
@@ -60,15 +64,15 @@ function ProductInfo() {
           <input disabled type="number" value={count} />
           <button onClick={countUp}>+</button>
         </div>
-        <div className={css.price_num}>₩ {price}</div>
+        <div className={css.price_num}>₩ {totalPrice}</div>
       </div>
       <div className={css.sum}>
         <div>총 제품금액</div>
-        <div className={css.sum_num}>₩ {price}</div>
+        <div className={css.sum_num}>₩ {totalPrice}</div>
       </div>
       <div className={css.sum}>
         <div>총 합계금액</div>
-        <div className={css.sum_num}>₩ {price}</div>
+        <div className={css.sum_num}>₩ {totalPrice}</div>
       </div>
       <div className={css.buttons}>
         <button className={css.cart}>장바구니</button>
