@@ -31,7 +31,7 @@ function Nav() {
               }}
             >
               <Link to="">제품</Link>
-              {hideMenu ? <span className={css.selected}></span> : null}
+              {hideMenu && <span className={css.selected}></span>}
             </li>
             <li className={css.nav_intro}>
               <Link to="">러쉬 소개</Link>
