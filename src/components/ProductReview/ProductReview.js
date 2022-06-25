@@ -35,7 +35,7 @@ function ProductReview(props) {
         <div className={css.review_top}>
           <h3 className={css.review_title}>Product Reviews</h3>
           <span>★★★★★</span>
-          <span>{reviewList.length}</span>
+          {reviewList && <span>{reviewList.length}</span>}
         </div>
         <p className={css.review_desc}>
           나만의 꿀팁이나 제품을 사용하는 생생한 모습을 보여주세요!
