@@ -1,3 +1,112 @@
-.container {
-  color: 'black';
+.home_container {
+  position: relative;
+}
+.wrap_third {
+  position: absolute;
+  right: 0;
+  top: 25%;
+}
+.wrap_banner {
+  display: flex;
+}
+.second_banner_wraper{
+  padding-top: 80px;
+  padding-bottom: 120px;
+}
+
+.bannerText {
+  font-size: 40px;
+  font-weight: bolder;
+  margin-bottom: 25px;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  height: 471px;
+  justify-content: center;
+  margin-top: 50px;
+}
+.left {
+  width: 50%;
+  height: 100%;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+}
+.right1 {
+  width: 100%;
+  height: 50%;
+}
+.right2 {
+  display: flex;
+  width: 100%;
+  height: 50%;
+}
+.right2-1 {
+  width: 50%;
+  height: 100%;
+}
+.right2-2 {
+  width: 50%;
+  height: 100%;
+}
+.leftImg {
+  width: 100%;
+  height: 100%;
+}
+.right1Img {
+  width: 100%;
+  height: 100%;
+}
+.right21Img {
+  width: 100%;
+  height: 100%;
+}
+.right22Img {
+  width: 100%;
+  height: 100%;
+}
+
+.lastBanner {
+  display: flex;
+  width: 100%;
+  height: 472px;
+  margin-top: 60px;
+  margin-bottom: 100px;
+}
+.lastBannerLeft {
+  width: 70%;
+  height: 100%;
+}
+.lastBannerRight {
+  width: 30%;
+  height: 100%;
+}
+.lastBannerRightImg {
+  width: 100%;
+  height: 100%;
+}
+.lastBannerMainText {
+  font-weight: bolder;
+  font-size: 42px;
+}
+.lastBannerSubText {
+  font-size: 16px;
+  width: 400px;
+  margin: 0;
+}
+.lastBannerText {
+  padding-left: 200px;
+  padding-top: 150px;
+  padding-right: 50px;
+  padding-bottom: 200px;
+}
+
+.banner_text {
+  font-weight: bolder;
+  font-size: 40px;
 }

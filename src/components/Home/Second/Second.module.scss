@@ -1,0 +1,34 @@
+.wraper {
+  width: 60vw;
+  overflow: hidden;
+}
+.container {
+  width: 240vw;
+  display: flex;
+}
+.inner {
+  width: 60vw;
+  //transform: translate(-60vw);
+}
+.img {
+  width: 100%;
+  height: 270px;
+}
+.wrap_button {
+  display: flex;
+  justify-content: center;
+}
+.button {
+  border-radius: 100%;
+  background-color: transparent;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  border: 2.5px solid black;
+  outline: none;
+  cursor: pointer;
+}
+.button:focus {
+  background-color: black;
+  opacity: 1;
+}
