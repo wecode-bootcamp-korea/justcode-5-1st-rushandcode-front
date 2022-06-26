@@ -13,6 +13,7 @@ function Third() {
       setPage(page - 1);
     }
   };
+
   const next = () => {
     if (page >= pages) {
       setPage(0);
@@ -25,6 +26,7 @@ function Third() {
     refContainer.current.style.transform = `translate(-${page * 25}vw)`;
     refContainer.current.style.transition = 'transform 1s';
   }, [page]);
+
   return (
     <div className={css.wrap_container}>
       <div ref={refContainer} className={css.container}>
