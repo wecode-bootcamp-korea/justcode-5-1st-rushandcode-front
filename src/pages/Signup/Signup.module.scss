@@ -7,7 +7,7 @@ $border-color: $theme-color;
   height: 100%;
   margin: -50px 0px 0px -10px;
   top: 10%;
-  position: absolute;
+  // position: absolute;
 }
 
 .signup_upper_portion {
@@ -101,11 +101,49 @@ $border-color: $theme-color;
     }
   }
 
+  .red_input {
+    margin-bottom: 10px;
+    position: relative;
+    border: 2px solid #cb201f;
+    width: 400px;
+    height: 40px;
+    padding-inline-start: 15px;
+    outline: 0;
+  }
+
   .id_invalid {
     padding-bottom: 10px;
     margin-left: 170px;
     font-size: 14px;
-    color: red;
+    color: black;
+  }
+  .display_none {
+    display: none;
+  }
+  .red_invalid {
+    padding-bottom: 10px;
+    margin-left: 170px;
+    font-size: 14px;
+    color: #cb201f;
+  }
+  .red_border {
+    margin-bottom: 10px;
+    position: relative;
+    border: 1px solid #8f8f8f;
+    width: 400px;
+    height: 40px;
+    padding-inline-start: 15px;
+    outline: 0;
+    border: 2px solid #cb201f;
+  }
+  .normal_border {
+    margin-bottom: 10px;
+    position: relative;
+    border: 1px solid #8f8f8f;
+    width: 400px;
+    height: 40px;
+    padding-inline-start: 15px;
+    outline: 0;
   }
 
   .id_valid {
@@ -139,13 +177,16 @@ $border-color: $theme-color;
       padding-inline-start: 15px;
       outline: 0;
     }
+    .red_input {
+      border: 2px solid #cb201f;
+    }
   }
 
   .password_invalid {
     padding-bottom: 10px;
     margin-left: 170px;
     font-size: 14px;
-    color: red;
+    color: black;
   }
 
   .password_valid {
@@ -178,6 +219,9 @@ $border-color: $theme-color;
       height: 40px;
       padding-inline-start: 15px;
       outline: 0;
+    }
+    .red_input {
+      border: 2px solid #cb201f;
     }
   }
 
@@ -377,9 +421,10 @@ $border-color: $theme-color;
     color: white;
     background-color: black;
     font-size: 16px;
+    cursor: pointer;
 
-    &.active {
-      cursor: pointer;
-    }
+    // &.active {
+    //   cursor: pointer;
+    // }
   }
 }
