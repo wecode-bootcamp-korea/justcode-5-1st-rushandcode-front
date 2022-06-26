@@ -6,9 +6,12 @@ import ProductDetailInfo from '../../components/ProductDetailInfo/ProductDetailI
 import css from './ProductDetail.module.scss';
 import ProductShipping from '../../components/ProductShipping/ProductShipping';
 import ProductReview from '../../components/ProductReview/ProductReview';
+import NotFound from '../../components/NotFound/NotFound';
 
 function ProductDetail() {
   const id = useLocation().pathname.split('/')[2];
+  const isExist = id > 0 && id < 108;
+
   const [productInfo, setProductInfo] = useState([]);
   useEffect(() => {
     fetch(`http://localhost:10010/products/${id}`, {
@@ -16,9 +19,11 @@ function ProductDetail() {
     })
       .then(res => res.json())
       .then(data => {
-        setProductInfo(data?.products[0]);
+        if (isExist) {
+          setProductInfo(data?.products[0]);
+        }
       });
-  }, [id, productInfo.productReviews?.length]);
+  }, [id, isExist, productInfo?.productReviews?.length]);
 
   const imageList = productInfo.productImages;
   const [image, setImage] = useState(null);
@@ -29,29 +34,34 @@ function ProductDetail() {
 
   const reviewList = productInfo?.productReviews;
   const content = productInfo?.content;
-
   return (
-    <div className={css.product_detail_container}>
-      <div className={css.container}>
-        <div className={css.images_container}>
-          <Image size={380} src={image} />
-          <div className={css.images}>
-            {imageList && (
-              <Image size={65} src={imageList[0].url} setImage={setImage} />
-            )}
-            {imageList && (
-              <Image size={65} src={imageList[1].url} setImage={setImage} />
-            )}
-            {imageList && (
-              <Image size={65} src={imageList[2].url} setImage={setImage} />
-            )}
+    <div>
+      {isExist ? (
+        <div className={css.product_detail_container}>
+          <div className={css.container}>
+            <div className={css.images_container}>
+              <Image size={380} src={image} />
+              <div className={css.images}>
+                {imageList && (
+                  <Image size={65} src={imageList[0].url} setImage={setImage} />
+                )}
+                {imageList && (
+                  <Image size={65} src={imageList[1].url} setImage={setImage} />
+                )}
+                {imageList && (
+                  <Image size={65} src={imageList[2].url} setImage={setImage} />
+                )}
+              </div>
+            </div>
+            <ProductInfo productInfo={productInfo} />
           </div>
+          <ProductDetailInfo imageList={imageList} content={content} />
+          <ProductReview reviewList={reviewList} />
+          <ProductShipping />
         </div>
-        <ProductInfo productInfo={productInfo} />
-      </div>
-      <ProductDetailInfo imageList={imageList} content={content} />
-      <ProductReview reviewList={reviewList} />
-      <ProductShipping />
+      ) : (
+        <NotFound productDetail={true} />
+      )}
     </div>
   );
 }
