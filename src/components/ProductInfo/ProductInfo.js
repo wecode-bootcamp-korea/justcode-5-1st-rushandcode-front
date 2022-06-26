@@ -16,7 +16,7 @@ function ProductInfo(props) {
     }
   };
 
-  const reviewLength = productInfo?.productReviews?.length;
+  const reviewLength = productInfo?.productReviews?.length || 0;
   const weight = productInfo?.weight;
 
   let { price } = productInfo;
