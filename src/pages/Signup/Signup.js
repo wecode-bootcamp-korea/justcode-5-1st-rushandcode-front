@@ -17,25 +17,24 @@ function Signup() {
   };
 
   const sendUserSignUp = () => {
-    fetch(
-      //'http://localhost:3000/data/userData.json'
-      ' http://localhost:10010/signup',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          user_name: id,
-          password: password,
-          name: name,
-        }),
-      }
-    )
+    fetch('http://localhost:10010/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        user_name: id,
+        password: password,
+        name: name,
+      }),
+    })
       .then(res => res.json())
       .then(res => {
         alert(res.message);
-      })
-      .then(() => {
-        gotologin();
+        if (res.message === '회원가입을 축하드립니다.') {
+          alert('회원가입을 축하드립니다.');
+          gotologin();
+        } else {
+          alert(res.message);
+        }
       })
       .catch(err => {
         alert(err.message);
