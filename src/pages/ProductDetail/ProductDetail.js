@@ -1,44 +1,66 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Image from '../../elements/Image';
 import ProductInfo from '../../components/ProductInfo/ProductInfo';
 import ProductDetailInfo from '../../components/ProductDetailInfo/ProductDetailInfo';
 import css from './ProductDetail.module.scss';
 import ProductShipping from '../../components/ProductShipping/ProductShipping';
 import ProductReview from '../../components/ProductReview/ProductReview';
+import NotFound from '../../components/NotFound/NotFound';
 
 function ProductDetail() {
-  const [image, setImage] = useState(
-    'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Ym9keSUyMHdhc2h8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60'
-  );
+  const id = useLocation().pathname.split('/')[2];
+  const isExist = id > 0 && id < 108;
 
+  const [productInfo, setProductInfo] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:10010/products/${id}`, {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (isExist) {
+          setProductInfo(data?.products[0]);
+        }
+      });
+  }, [id, isExist, productInfo?.productReviews?.length]);
+
+  const imageList = productInfo.productImages;
+  const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    setImage(imageList && imageList[0].url);
+  }, [imageList]);
+
+  const reviewList = productInfo?.productReviews;
   return (
-    <div className={css.product_detail_container}>
-      <div className={css.container}>
-        <div className={css.images_container}>
-          <Image size={380} src={image} />
-          <div className={css.images}>
-            <Image
-              size={65}
-              src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Ym9keSUyMHdhc2h8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
-              setImage={setImage}
-            />
-            <Image
-              size={65}
-              src="https://images.unsplash.com/photo-1585751119414-ef2636f8aede?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGJvZHklMjB3YXNofGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-              setImage={setImage}
-            />
-            <Image
-              size={65}
-              src="https://images.unsplash.com/photo-1616622236995-cb00e537365e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGJvZHklMjB3YXNofGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-              setImage={setImage}
-            />
+    <div>
+      {isExist ? (
+        <div className={css.product_detail_container}>
+          <div className={css.container}>
+            <div className={css.images_container}>
+              <Image size={380} src={image} />
+              <div className={css.images}>
+                {imageList && (
+                  <Image size={65} src={imageList[0].url} setImage={setImage} />
+                )}
+                {imageList && (
+                  <Image size={65} src={imageList[1].url} setImage={setImage} />
+                )}
+                {imageList && (
+                  <Image size={65} src={imageList[2].url} setImage={setImage} />
+                )}
+              </div>
+            </div>
+            <ProductInfo productInfo={productInfo} />
           </div>
+          <ProductDetailInfo productInfo={productInfo} />
+          <ProductReview reviewList={reviewList} />
+          <ProductShipping />
         </div>
-        <ProductInfo />
-      </div>
-      <ProductDetailInfo />
-      <ProductReview />
-      <ProductShipping />
+      ) : (
+        <NotFound productDetail={true} />
+      )}
     </div>
   );
 }
