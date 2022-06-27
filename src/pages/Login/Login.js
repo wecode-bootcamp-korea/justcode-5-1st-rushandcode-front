@@ -23,15 +23,17 @@ function Login() {
     })
       .then(res => res.json())
       .then(res => {
-        // if (res.token) {
-        //   console.log(res);
-        //   localStorage.setItem(['token', res.token]);
-        //   localStorage.setItem('user_name', res.user_name);
-        // } else {
-        //   const error = new Error('잘못된 아이디이거나 비밀번호입니다.');
-        //   error.statusCode = 400;
-        //   throw error;
-        //}
+        // console.log(res);
+        if (res.data) {
+          localStorage.setItem(['data', res.data[0]]);
+          localStorage.setItem(['data', res.data[1].user_name]);
+          localStorage.setItem(['data', res.data[1].user_id]);
+          localStorage.setItem('user_name', res.user_name);
+        } else {
+          const error = new Error('잘못된 아이디이거나 비밀번호입니다.');
+          error.statusCode = 400;
+          throw error;
+        }
       })
       .then(() => {
         gotomain();
