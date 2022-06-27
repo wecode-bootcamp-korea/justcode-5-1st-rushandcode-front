@@ -1,6 +1,6 @@
 .review_container {
   margin: 100px auto;
-  width: 1500px;
+  width: 1300px;
   .review_top {
     display: flex;
     align-items: center;
@@ -14,7 +14,6 @@
     .review_title {
       font-size: 30px;
     }
-
     span {
       line-height: 30px;
       margin: 0 20px;
@@ -24,7 +23,7 @@
     font-size: 18px;
     color: #333333;
     position: relative;
-    left: 145px;
+    left: 45px;
     padding: 8px 0 0;
   }
   .review_input {
