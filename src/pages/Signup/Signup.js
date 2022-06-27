@@ -16,6 +16,32 @@ function Signup() {
     navigate('/login');
   };
 
+  const sendUserSignUp = () => {
+    fetch(
+      'http://localhost:3000/data/userData.json'
+      // ' http://localhost:10010/signup'
+      // ,{
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({
+      //     user_id: id,
+      //     password: password,
+      //     name: name,
+      //   }),
+      // }
+    )
+      .then(res => res.json())
+      .then(res => {
+        alert('회원가입 성공');
+      })
+      .then(() => {
+        gotologin();
+      })
+      .catch(err => {
+        alert(err.message);
+      });
+  };
+
   const validation = (idText, pwText, checkPwText, nameText) => {
     if (idText.length < 4) {
       return false;
@@ -30,12 +56,6 @@ function Signup() {
       return false;
     }
     return true;
-  };
-
-  const buttonOnClick = () => {
-    if (validation(id, password, checkPassword, name)) {
-      gotologin();
-    } else alert('회원가입에 실패하였습니다.');
   };
 
   const valid = validation(id, password, checkPassword, name);
@@ -67,79 +87,146 @@ function Signup() {
               아이디
             </span>
             <input
+              id="id_input"
               className={css.id_input}
               name="id"
               type="text"
               value={id}
               onChange={e => {
                 setId(e.target.value);
+                const length = e.target.value.length;
+                const el = document.getElementById('id_comment');
+                const el2 = document.getElementById('id_input');
+                if (length === 0) {
+                  el.className = `${css.display_none}`;
+                  el2.className = `${css.id_input}`;
+                } else if (length < 4) {
+                  el.textContent = '최소 4 이상 입력해주세요.';
+                  el.className = `${css.id_invalid}`;
+                  el2.className = `${css.red_input}`;
+                } else {
+                  el.textContent = '사용가능한 아이디입니다.';
+                  el.className = `${css.id_valid}`;
+                  el2.className = `${css.id_input}`;
+                }
               }}
             />
           </div>
-          {id.length > 0 && id.length < 4 && (
-            <div className={css.id_invalid}>최소 4 이상 입력해주세요.</div>
-          )}
-          {id.length >= 4 && (
-            <div className={css.id_valid}>사용가능한 아이디 입니다.</div>
-          )}
+          {/* 아이디 comment 부분 입니다. */}
+          <div id="id_comment" />
+
           <div className={css.tr_pw}>
             <span className={css.th_pw}>
               <img src={point} alt="point" />
               비밀번호
             </span>
             <input
-              className={css.pw_input}
+              id="pw_input"
+              className={`${css.pw_input}`}
               name="password"
               type="password"
               value={password}
               onChange={e => {
                 setPassword(e.target.value);
+
+                const num = e.target.value.search(/[0-9]/g); // 입력한 pw에 숫자가 포함되어 있으면 0이상 숫자 전달됨.
+                const eng = e.target.value.search(/[a-z]/gi); // 입력한 pw에 영문이 포함되어 있으면 0이상 숫자 전달됨.
+                const spe = e.target.value.search(
+                  /[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi
+                ); // 입력한 pw에 특수문가거 포함되어 있으면 0이상 숫자 전달됨.
+
+                const length = e.target.value.length;
+                const el = document.getElementById('pw_comment');
+                const el2 = document.getElementById('pw_input');
+                // 안전한 비밀번호인지 확인
+                // isSafe 값이 1 : 안전함(영문,숫자,특수문자 중 2개 이상 들어감. 0 : 안전하지 않음.
+                const isSafe =
+                  (num >= 0 && eng >= 0) ||
+                  (num >= 0 && spe >= 0) ||
+                  (eng >= 0 && spe >= 0);
+
+                if (length === 0) {
+                  el.className = `${css.display_none}`;
+                  el2.className = `${css.pw_input}`;
+                } else if (length < 7) {
+                  el.textContent = '최소 7 이상 입력해주세요.';
+                  el.className = `${css.password_invalid}`;
+                  el2.className = `${css.red_border}`;
+                } else {
+                  if (isSafe === true) {
+                    el.textContent = '안전한 비밀번호 입니다.';
+                    el.className = `${css.password_valid}`;
+                    el2.className = `${css.pw_input}`;
+                  } else {
+                    el.textContent =
+                      '사용불가! 영문대/소문자, 숫자, 특수문자 중 2가지 이상 조합하세요.';
+                    el.className = `${css.password_invalid}`;
+                    el2.className = `${css.red_border}`;
+                  }
+                }
               }}
             />
           </div>
-          {password.length > 0 && password.length < 7 && (
-            <div className={css.password_invalid}>
-              최소 7 이상 입력해주세요.
-            </div>
-          )}
-          {password.length >= 7 && (
-            <div className={css.password_valid}>안전한 비밀번호 입니다.</div>
-          )}
+          {/* 비번 comment 부분 입니다. */}
+          <div id="pw_comment" />
+
           <div className={css.tr_pw_check}>
             <span className={css.th_pw_check}>
               <img src={point} alt="point" />
               비밀번호 확인
             </span>
             <input
-              className={css.pw_check_input}
+              id="pw_check_input"
+              className={`${css.pw_check_input} ${
+                checkPassword.length > 0 &&
+                password !== checkPassword &&
+                css.red_input
+              }`}
               name="passwordCheck"
               type="password"
               value={checkPassword}
               onChange={e => {
                 setCheckPassword(e.target.value);
+                const length = e.target.value.length;
+                const el = document.getElementById('pw_check_comment');
+
+                if (length === 0) {
+                  el.className = `${css.display_none}`;
+                } else if (password !== e.target.value) {
+                  el.textContent = '비밀번호가 다릅니다.';
+                  el.className = `${css.password_invalid}`;
+                } else {
+                  el.className = `${css.display_none}`;
+                }
               }}
             />
           </div>
-          {checkPassword.length > 0 && password !== checkPassword && (
-            <div className={css.password_invalid}>
-              비밀번호가 서로 다릅니다.
-            </div>
-          )}
+          {/* 비번확인 comment 부분 입니다. */}
+          <div id="pw_check_comment" />
           <div className={css.tr_name}>
             <span className={css.th_name}>
               <img src={point} alt="point" />
               이름
             </span>
             <input
+              id="name_input"
               className={css.name_input}
               name="name"
               type="text"
               value={name}
               onChange={e => {
                 setName(e.target.value);
+                const el = document.getElementById('name_comment');
+                const el2 = document.getElementById('name_input');
+
+                el.className = `${css.display_none}`;
+                el2.className = `${css.name_input}`;
               }}
             />
           </div>
+          {/* 이름 comment 부분 입니다. */}
+          <div id="name_comment" />
+
           <div className={css.tr_nick_name}>
             <span className={css.th_nick_name}>닉네임</span>
             <input
@@ -203,9 +290,42 @@ function Signup() {
         </div>
         <div className={css.divider}>
           <button
-            className={`${css.signup_button} ${valid && css.active}`}
-            disabled={!valid}
-            onClick={buttonOnClick}
+            className={css.signup_button}
+            onClick={e => {
+              e.preventDefault();
+              if (valid) {
+                sendUserSignUp();
+              } else {
+                if (id.length < 4) {
+                  const el = document.getElementById('id_comment');
+                  el.className = `${css.red_invalid}`;
+                  el.textContent = '필수항목입니다.';
+                  const el2 = document.getElementById('id_input');
+                  el2.className = `${css.red_border}`;
+                }
+                if (password.length < 7) {
+                  const el = document.getElementById('pw_comment');
+                  el.className = `${css.red_invalid}`;
+                  el.textContent = '필수항목입니다.';
+                  const el2 = document.getElementById('pw_input');
+                  el2.className = `${css.red_border}`;
+                }
+                if (checkPassword.length === 0) {
+                  const el = document.getElementById('pw_check_comment');
+                  el.className = `${css.red_invalid}`;
+                  el.textContent = '필수항목입니다.';
+                  const el2 = document.getElementById('pw_check_input');
+                  el2.className = `${css.red_border}`;
+                }
+                if (name.length === 0) {
+                  const el = document.getElementById('name_comment');
+                  el.className = `${css.red_invalid}`;
+                  el.textContent = '필수항목입니다.';
+                  const el2 = document.getElementById('name_input');
+                  el2.className = `${css.red_border}`;
+                }
+              }
+            }}
           >
             회원가입
           </button>

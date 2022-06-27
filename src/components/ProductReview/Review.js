@@ -29,7 +29,7 @@ function Review(props) {
       return;
     }
   };
-  
+
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => {
     setModalOpen(true);
