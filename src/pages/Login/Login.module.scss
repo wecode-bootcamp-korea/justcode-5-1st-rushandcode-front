@@ -2,21 +2,21 @@ $theme-color: black;
 $border-color: $theme-color;
 
 .container {
-  align-self: center;
-  width: 350px;
-  height: 350px;
-  margin: -50px 0px 0px -50px;
-  top: 30%;
-  left: 40%;
-  position: absolute;
+  position: relative;
+}
+
+.login_box {
+  margin: 50px 515px;
+  width: 25vw;
+  height: 500px;
 }
 
 .login {
-  font-family: 'Gothic', cursive;
   font-weight: bold;
   font-size: 28px;
   text-align: center;
   padding-bottom: 50px;
+  padding-top: 50px;
 }
 
 .membership {
