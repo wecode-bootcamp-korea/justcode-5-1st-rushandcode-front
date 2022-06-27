@@ -33,7 +33,6 @@ function ProductDetail() {
   }, [imageList]);
 
   const reviewList = productInfo?.productReviews;
-  const content = productInfo?.content;
   return (
     <div>
       {isExist ? (
@@ -55,7 +54,7 @@ function ProductDetail() {
             </div>
             <ProductInfo productInfo={productInfo} />
           </div>
-          <ProductDetailInfo imageList={imageList} content={content} />
+          <ProductDetailInfo productInfo={productInfo} />
           <ProductReview reviewList={reviewList} />
           <ProductShipping />
         </div>

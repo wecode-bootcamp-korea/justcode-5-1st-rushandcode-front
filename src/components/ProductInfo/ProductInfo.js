@@ -5,8 +5,9 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 function ProductInfo(props) {
   const { productInfo } = props;
-  const [count, setCount] = useState(1);
+  const { hashtags, name } = productInfo;
 
+  const [count, setCount] = useState(1);
   const countUp = () => {
     setCount(count + 1);
   };
@@ -22,7 +23,8 @@ function ProductInfo(props) {
   let { price } = productInfo;
   let totalPrice = price * count;
 
-  const [mainCategory, setMainCategory] = useState('');
+  const main = productInfo.main_ategory;
+  const [mainCategory, setMainCategory] = useState(main);
   const handleMainSelect = e => {
     setMainCategory(e.target.value);
   };
@@ -30,7 +32,8 @@ function ProductInfo(props) {
     setMainCategory(productInfo.main_category);
   }, [productInfo.main_category]);
 
-  const [subCategory, setSubCategory] = useState('');
+  const sub = productInfo.sub_category;
+  const [subCategory, setSubCategory] = useState(sub);
   const handleSubSelect = e => {
     setSubCategory(e.target.value);
   };
@@ -65,8 +68,8 @@ function ProductInfo(props) {
         </div>
       </div>
 
-      <div className={css.procuct_name}>더티</div>
-      <div className={css.hashtags}>#배쓰밤 #파더스 #아빠에게</div>
+      <div className={css.procuct_name}>{name}</div>
+      <div className={css.hashtags}>{hashtags}</div>
       <div className={css.text}>{reviewLength}개의 후기 보기</div>
       <div className={css.text}>Good to Know</div>
       <div className={css.price}>
