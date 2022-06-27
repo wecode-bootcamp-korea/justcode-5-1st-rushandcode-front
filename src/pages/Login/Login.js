@@ -23,12 +23,10 @@ function Login() {
     })
       .then(res => res.json())
       .then(res => {
-        // console.log(res);
         if (res.data) {
-          localStorage.setItem(['data', res.data[0]]);
-          localStorage.setItem(['data', res.data[1].user_name]);
-          localStorage.setItem(['data', res.data[1].user_id]);
-          localStorage.setItem('user_name', res.user_name);
+          localStorage.setItem('token', res.data[0]);
+          localStorage.setItem('user_name', res.data[1].user_name);
+          localStorage.setItem('user_id', res.data[1].id);
         } else {
           const error = new Error('잘못된 아이디이거나 비밀번호입니다.');
           error.statusCode = 400;
