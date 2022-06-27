@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import css from './SelectFilter.module.scss';
+import { Link } from 'react-router-dom';
+import css from './ProductsSelectFilter.module.scss';
 
-function SelectFilter(props) {
+function ProductsSelectFilter(props) {
+  const { data, mainCategory, subCategory } = props;
   const [appear, setAppear] = useState(false);
 
   const clickDropList = e => {
@@ -23,16 +25,16 @@ function SelectFilter(props) {
     };
   }, [outsideRef]);
 
-  const [selectFilter, setSelectFilter] = useState(false);
+  // const [selectFilter, setSelectFilter] = useState(false);
 
-  const clickChangeFilter = e => {
-    setSelectFilter(!selectFilter);
-  };
+  // const clickChangeFilter = e => {
+  //   //setSelectFilter(!selectFilter);
+  // };
 
   return (
     <div className={css.select_filter} ref={outsideRef}>
       <div
-        className={[css.drop_list, css.drop_list_title].join(' ')}
+        className={`${css.drop_list} ${css.drop_list_title}`}
         onClick={clickDropList}
       >
         추천순
@@ -44,24 +46,24 @@ function SelectFilter(props) {
         className={css.select_filter_drop}
         style={{ display: appear ? 'block' : 'none' }}
       >
-        {props.option.map(option => (
-          <li
-            key={option.id}
-            value={option.id}
-            name={option.name}
-            className={
-              selectFilter
-                ? [css.drop_list, css.active].join(' ')
-                : css.drop_list
-            }
-            onClick={clickChangeFilter}
-          >
-            {option.name}
-          </li>
-        ))}
+        <li className={css.drop_list}>
+          <Link to="">추천순</Link>
+        </li>
+        <li className={css.drop_list}>
+          <Link to="">인기순</Link>
+        </li>
+        <li className={css.drop_list}>
+          <Link to="">낮은가격순</Link>
+        </li>
+        <li className={css.drop_list}>
+          <Link to="">높은가격순</Link>
+        </li>
+        <li className={css.drop_list}>
+          <Link to="">리뷰많은순</Link>
+        </li>
       </ul>
     </div>
   );
 }
 
-export default SelectFilter;
+export default ProductsSelectFilter;

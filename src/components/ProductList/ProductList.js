@@ -3,16 +3,15 @@ import { Link } from 'react-router-dom';
 import css from './ProductList.module.scss';
 
 function Productslist(props) {
+  const { data, mainCategory, subCategory } = props;
+  console.log(data);
   return (
     <ul className={css.product_list}>
-      {props.data.map(data => (
+      {data.map(data => (
         <li key={data.id}>
           <div className={css.prd_img}>
             <Link to="">
-              <img
-                src="https://www.lush.co.kr/data/goods/22/04/14/1000002148/1000002148_main_085.jpg"
-                alt="상품명"
-              />
+              <img src={data.productImages[0].url} alt="상품명" />
             </Link>
           </div>
           <div className={css.prd_label}>
@@ -27,8 +26,7 @@ function Productslist(props) {
             <Link to="">
               <div>{data.name}</div>
               <div className={css.prd_hashtag}>
-                <span>#배쓰밤</span>
-                <span>#EID</span>
+                <span>{data.hashtags}</span>
               </div>
             </Link>
           </div>
