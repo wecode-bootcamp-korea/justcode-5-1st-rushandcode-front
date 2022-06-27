@@ -1,0 +1,51 @@
+/* 상품 페이지 - 카테고리 */
+.select_filter {
+  position: relative;
+  width: 112px;
+  height: 34px;
+  border: 1px solid rgb(192, 192, 192);
+  background-color: white;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer;
+  .select_filter_drop {
+    display: none;
+    position: absolute;
+    top: 32px;
+    left: -1px;
+    width: 112px;
+    border: 1px solid rgb(192, 192, 192);
+    background-color: white;
+  }
+  .drop_list_title {
+    color: #333;
+  }
+  .drop_list,
+  li.drop_list {
+    width: 112px;
+    height: 30px;
+    padding: 8px;
+    font-size: 14px;
+    span {
+      position: absolute;
+      top: 0;
+      right: 5px;
+      width: 18px;
+      height: 30px;
+      background-color: hsl(0, 0%, 90%);
+    }
+    .drop_list_arrow_down {
+      background: url(https://www.lush.co.kr/data/skin/front/howling/img/etc/select-arrow-down-11x7.png)
+        no-repeat 50% 55%;
+    }
+    .drop_list_arrow_up {
+      background: url(https://www.lush.co.kr/data/skin/front/howling/img/etc/select-arrow-up-11x7.png)
+        no-repeat 50% 50%;
+    }
+  }
+  li:hover {
+    background-color: #eee;
+  }
+  .active {
+    background-color: #eee;
+  }
+}
