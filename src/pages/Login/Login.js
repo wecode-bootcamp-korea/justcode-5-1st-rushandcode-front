@@ -23,7 +23,6 @@ function Login() {
     })
       .then(res => res.json())
       .then(res => {
-        // console.log(res);
         if (res.data) {
           localStorage.setItem('token', res.data[0]);
           localStorage.setItem('user_name', res.data[1].user_name);

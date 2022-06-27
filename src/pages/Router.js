@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Nav from '../components/Nav/Nav';
 import Login from '../pages/Login/Login';
 import Signup from '../pages/Signup/Signup';
 import Home from '../pages/Home/Home';
@@ -12,12 +13,14 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/productdetail" element={<ProductDetail />} />
+        <Route path="/productdetail/:id" element={<ProductDetail />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </BrowserRouter>

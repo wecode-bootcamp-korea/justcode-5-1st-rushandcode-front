@@ -3,37 +3,34 @@ import css from './ProductDetailInfo.module.scss';
 import Image from '../../elements/Image';
 import ProductTab from '../ProductTab/ProductTab';
 
-function ProductDetailInfo() {
+function ProductDetailInfo(props) {
+  const { productInfo } = props;
+  const { productImages, content, name } = productInfo;
+  const subCategory = productInfo.sub_category;
+
   return (
     <div>
       <ProductTab />
       <section className={css.desc}>
-        <div className={css.category}>배쓰 밤</div>
-        <div className={css.name}>더티</div>
+        <div className={css.category}>{subCategory}</div>
+        <div className={css.name}>{name}</div>
         <div className={css.first_image}>
           <Image
             width={986}
             height={400}
-            src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Ym9keSUyMHdhc2h8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
+            src={productImages && productImages[3].url}
           />
         </div>
-        <div className={css.desc_text}>
-          러쉬 시그니처 향기가 드디어 배쓰 밤으로! 스피어민트의 기분 좋은 활기!
-          상쾌한 스피어민트, 타임 허브와 타라곤의 만남은 당신에게 잊히기 않는
-          향기를 선물해 줄 거에요.
-        </div>
+        <div className={css.desc_text}>{content}</div>
         <div className={css.second_image}>
           <Image
             width={986}
             height={400}
-            src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Ym9keSUyMHdhc2h8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
+            src={productImages && productImages[4].url}
           />
         </div>
         <div className={css.third_image}>
-          <Image
-            size={500}
-            src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Ym9keSUyMHdhc2h8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
-          />
+          <Image size={500} src={productImages && productImages[5].url} />
         </div>
       </section>
     </div>
