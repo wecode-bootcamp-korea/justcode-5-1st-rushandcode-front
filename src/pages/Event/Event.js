@@ -1,5 +1,5 @@
 import React from 'react';
-
+import EventInfo from '../../components/EventInfo/EventInfo';
 import css from './Event.module.scss';
 
 function Event() {
@@ -25,9 +25,7 @@ function Event() {
           <span>종료된 이벤트</span>
         </div>
       </div>
-      <div className={css.event_box}>
-        <div className={css.event_info}>이벤트 내용</div>
-      </div>
+      <EventInfo />
     </div>
   );
 }
