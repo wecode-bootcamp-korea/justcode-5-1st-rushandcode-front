@@ -1,4 +1,16 @@
 /* 상품 페이지 - 카테고리 */
+.list_header {
+  display: flex;
+  justify-content: space-between;
+  height: 45px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid black;
+  h2 {
+    color: #333;
+    font-weight: 700;
+    font-size: 28px;
+  }
+}
 .select_filter {
   position: relative;
   width: 112px;
