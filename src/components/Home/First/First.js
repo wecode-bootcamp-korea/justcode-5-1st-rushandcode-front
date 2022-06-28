@@ -1,28 +1,51 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import css from './First.module.scss';
 
 function First() {
   const slider = useRef();
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const ToTalIndex = 4;
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (currentIndex < ToTalIndex) {
+        setCurrentIndex(prev => prev + 1);
+        slider.current.style.transform = `translate(-${currentIndex * 100}vw)`;
+        slider.current.style.transition = `transform 2s`;
+      } else if (currentIndex === ToTalIndex) {
+        setCurrentIndex(0);
+        slider.current.style.transform = `translate(${currentIndex}vw)`;
+        slider.current.style.transition = `transform 3s`;
+      }
+    }, 3000);
+  }, [currentIndex]);
+
   const first_button = () => {
     slider.current.style.transform = `translate(0vw)`;
     slider.current.style.transition = `transform 1s`;
+    setCurrentIndex(0);
   };
   const second_button = () => {
     slider.current.style.transform = `translate(-100vw)`;
     slider.current.style.transition = `transform 1s`;
+    setCurrentIndex(1);
   };
   const third_button = () => {
     slider.current.style.transform = `translate(-200vw)`;
     slider.current.style.transition = `transform 1s`;
+    setCurrentIndex(2);
   };
   const fourth_button = () => {
     slider.current.style.transform = `translate(-300vw)`;
     slider.current.style.transition = `transform 1s`;
+    setCurrentIndex(3);
   };
   const fifth_button = () => {
     slider.current.style.transform = `translate(-400vw)`;
     slider.current.style.transition = `transform 1s`;
+    setCurrentIndex(4);
   };
 
   return (
