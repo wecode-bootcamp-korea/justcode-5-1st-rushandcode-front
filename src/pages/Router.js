@@ -8,6 +8,7 @@ import Products from '../pages/Products/Products';
 import ProductDetail from '../pages/ProductDetail/ProductDetail';
 import ScrollToTop from '../components/Scroll/ScrollRestoration';
 import Footer from '../components/Footer/Footer';
+import NotFound from '../components/NotFound/NotFound';
 
 function App() {
   return (

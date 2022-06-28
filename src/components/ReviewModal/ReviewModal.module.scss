@@ -1,0 +1,118 @@
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.6);
+  button {
+    outline: none;
+    cursor: pointer;
+    border: 0;
+  }
+  section {
+    width: 860px;
+    height: 462px;
+    margin: 0 auto;
+    border-radius: 0.3rem;
+    background-color: #fff;
+    overflow: hidden;
+    header {
+      position: relative;
+      padding: 16px 0 16px 0px;
+      margin: 0 30px;
+      border-bottom: 2px solid gray;
+      font-weight: 700;
+      button {
+        position: absolute;
+        bottom: -12px;
+        right: 8px;
+        width: 30px;
+        font-size: 55px;
+        text-align: center;
+        color: #999;
+        background-color: transparent;
+      }
+    }
+    main {
+      padding: 16px;
+      margin: 20px 0;
+      width: 300px;
+      height: 300px;
+      select {
+        width: 796.5px;
+        border: 1px solid #e8e8e8;
+        color: #ffcc00;
+        font-size: 15px;
+        outline: none;
+        height: 30px;
+        margin: 0 0 0 15px;
+      }
+      .textarea_header {
+        position: relative;
+        top: 16px;
+        left: 1px;
+        width: 795px;
+        height: 30px;
+        border: 1px solid #e8e8e8;
+        border-bottom: 0;
+        background-color: #f8f8f8;
+        margin: 0 0 0 15px;
+      }
+      textarea {
+        margin: 16px;
+        width: 795px;
+        height: 200px;
+        border: 1px solid #e8e8e8;
+        outline: none;
+        resize: none;
+      }
+    }
+    footer {
+      text-align: right;
+      width: 795px;
+      height: 60px;
+      border: 1px solid #e8e8e8;
+      border-top: 0;
+      position: relative;
+      bottom: 30px;
+      left: 32px;
+      button {
+        height: 97%;
+        width: 100px;
+        position: relative;
+        top: 2px;
+        padding: 6px 12px;
+        color: #fff;
+        background-color: #666666;
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+.openModal {
+  display: flex;
+  align-items: center;
+  animation: modal-bg-show 0.3s;
+}
+@keyframes modal-show {
+  from {
+    opacity: 0;
+    margin-top: -50px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+@keyframes modal-bg-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
