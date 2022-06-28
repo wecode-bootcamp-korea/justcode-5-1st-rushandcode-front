@@ -2,7 +2,7 @@ import React from 'react';
 import css from './ProductsTopBanner.module.scss';
 
 function ProductsTopBanner(props) {
-  const { data, mainCategory, subCategory } = props;
+  const { mainCategory, subCategory } = props;
 
   const bathImage = {
     backgroundImage: `url(${'https://images.unsplash.com/photo-1588097237448-45f7aadebae1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'})`,

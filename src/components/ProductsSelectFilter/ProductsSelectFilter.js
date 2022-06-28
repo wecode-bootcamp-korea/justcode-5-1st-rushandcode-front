@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import css from './ProductsSelectFilter.module.scss';
 
 function ProductsSelectFilter(props) {
-  const { data, mainCategory, subCategory, sort } = props;
+  const { mainCategory, subCategory, sort } = props;
   const [appear, setAppear] = useState(false);
 
   const clickDropList = e => {
@@ -24,6 +24,9 @@ function ProductsSelectFilter(props) {
       document.removeEventListener('click', handleClickOutside);
     };
   }, [outsideRef]);
+
+  const mainURL = `/products?mainCategory=${mainCategory}`;
+  const mainSubURL = `/products?mainCategory=${mainCategory}&subCategory=${subCategory}`;
 
   return (
     <div className={css.list_header}>
@@ -63,9 +66,7 @@ function ProductsSelectFilter(props) {
                 }
                 onClick={clickDropList}
               >
-                <Link to={`/products?mainCategory=${mainCategory}&sort=sell`}>
-                  인기순
-                </Link>
+                <Link to={`${mainURL}&sort=sell`}>인기순</Link>
               </li>
               <li
                 className={
@@ -75,9 +76,7 @@ function ProductsSelectFilter(props) {
                 }
                 onClick={clickDropList}
               >
-                <Link to={`/products?mainCategory=${mainCategory}&sort=asc`}>
-                  낮은가격순
-                </Link>
+                <Link to={`${mainURL}&sort=asc`}>낮은가격순</Link>
               </li>
               <li
                 className={
@@ -87,20 +86,14 @@ function ProductsSelectFilter(props) {
                 }
                 onClick={clickDropList}
               >
-                <Link to={`/products?mainCategory=${mainCategory}&sort=desc`}>
-                  높은가격순
-                </Link>
+                <Link to={`${mainURL}&sort=desc`}>높은가격순</Link>
               </li>
             </>
           )}
           {mainCategory && subCategory && (
             <>
               <li className={css.drop_list} onClick={clickDropList}>
-                <Link
-                  to={`/products?mainCategory=${mainCategory}&subCategory=${subCategory}`}
-                >
-                  추천순
-                </Link>
+                <Link to={`${mainSubURL}`}>추천순</Link>
               </li>
               <li
                 className={
@@ -110,11 +103,7 @@ function ProductsSelectFilter(props) {
                 }
                 onClick={clickDropList}
               >
-                <Link
-                  to={`/products?mainCategory=${mainCategory}&subCategory=${subCategory}&sort=sell`}
-                >
-                  인기순
-                </Link>
+                <Link to={`${mainSubURL}&sort=sell`}>인기순</Link>
               </li>
               <li
                 className={
@@ -124,11 +113,7 @@ function ProductsSelectFilter(props) {
                 }
                 onClick={clickDropList}
               >
-                <Link
-                  to={`/products?mainCategory=${mainCategory}&subCategory=${subCategory}&sort=asc`}
-                >
-                  낮은가격순
-                </Link>
+                <Link to={`${mainSubURL}&sort=asc`}>낮은가격순</Link>
               </li>
               <li
                 className={
@@ -138,11 +123,7 @@ function ProductsSelectFilter(props) {
                 }
                 onClick={clickDropList}
               >
-                <Link
-                  to={`/products?mainCategory=${mainCategory}&subCategory=${subCategory}&sort=desc`}
-                >
-                  높은가격순
-                </Link>
+                <Link to={`${mainSubURL}&sort=desc`}>높은가격순</Link>
               </li>
             </>
           )}
