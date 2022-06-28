@@ -1,3 +1,136 @@
+$theme-color: black;
+$border-color: $theme-color;
+
 .container {
-  color: 'black';
+  position: relative;
+}
+
+.login_box {
+  margin: 50px 515px;
+  width: 25vw;
+  height: 500px;
+}
+
+.login {
+  font-weight: bold;
+  font-size: 28px;
+  text-align: center;
+  padding-bottom: 50px;
+  padding-top: 50px;
+}
+
+.membership {
+  display: flex;
+  padding-bottom: 20px;
+  text-decoration: none;
+  font-weight: 350;
+  font-size: 18px;
+  text-align: center;
+  justify-content: space-evenly;
+  .member {
+    color: $border-color;
+  }
+
+  .non_member {
+    color: #b3b3b3;
+  }
+}
+
+.login_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.id_input {
+  margin-bottom: 10px;
+  padding-left: 10px;
+  position: relative;
+  display: flex;
+  border: 1px solid #8f8f8f;
+  width: 100%;
+  height: 50px;
+  .id_icon {
+    align-self: center;
+    img {
+      width: 23px;
+    }
+  }
+  .login_input {
+    text-align: center;
+    width: 100%;
+    padding: 10px 20px 10px 0px;
+    border: none;
+    outline: none;
+  }
+}
+
+.pw_input {
+  margin-bottom: 10px;
+  padding-left: 10px;
+  position: relative;
+  display: flex;
+  border: 1px solid #8f8f8f;
+  width: 100%;
+  height: 50px;
+  .pw_icon {
+    align-self: center;
+    img {
+      width: 23px;
+    }
+  }
+  .login_input {
+    text-align: center;
+    width: 100%;
+    padding: 10px 20px 10px 0px;
+    border: none;
+    outline: none;
+  }
+}
+
+.save_id_checkbox {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 100%;
+  align-items: center;
+  float: left;
+  .save_id {
+    color: #8f8f8f;
+    font-size: 14px;
+    padding-left: 8px;
+  }
+}
+
+.login_button {
+  margin-top: 10px;
+  width: 100%;
+  height: 50px;
+  border-radius: 0px;
+  border: 0;
+  color: white;
+  background-color: black;
+  font-size: 16px;
+  &.active {
+    cursor: pointer;
+    background-color: black;
+  }
+  &.inactive {
+    background-color: black;
+  }
+}
+
+.forget_password {
+  display: flex;
+  text-decoration: none;
+  color: #b3b3b3;
+  font-size: 13.5px;
+  margin-top: 25px;
+  text-align: center;
+  justify-content: space-evenly;
+  .go_to_signup {
+    text-decoration-line: none;
+    color: #b3b3b3;
+  }
 }

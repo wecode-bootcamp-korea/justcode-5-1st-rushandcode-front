@@ -1,19 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import css from './ProductReview.module.scss';
 import ProductTab from '../ProductTab/ProductTab';
 import Review from './Review';
 
-function ProductReview() {
-  const [reviewList, setReiewList] = useState([]);
-  useEffect(() => {
-    fetch('http://localhost:3000/data/reviewData.json', {
-      method: 'GET',
-    })
-      .then(res => res.json())
-      .then(data => {
-        setReiewList(data);
-      });
-  }, []);
+function ProductReview(props) {
+  const { reviewList } = props;
 
   const [stars, setStars] = useState(0);
   const handleRadioInput = e => {
@@ -28,7 +19,7 @@ function ProductReview() {
   // 백엔드 API 완성 시 수정 예정
   // user_id - 로컬 스토리지에서 가져오기
   // product_id 부모 컴포넌트에서 props로 넘겨받기
-  // const data = { user_id: 'test', product_id: '12', stars, content: text };
+  // const data = { user_name: 'test', product_id: '12', stars, content: text };
 
   // const writeReviewBtn = () => {
   //   fetch('http://localhost:10010/reviews', {
@@ -44,7 +35,7 @@ function ProductReview() {
         <div className={css.review_top}>
           <h3 className={css.review_title}>Product Reviews</h3>
           <span>★★★★★</span>
-          <span>2</span>
+          {reviewList ? <span>{reviewList.length}</span> : <span>0</span>}
         </div>
         <p className={css.review_desc}>
           나만의 꿀팁이나 제품을 사용하는 생생한 모습을 보여주세요!
@@ -110,12 +101,12 @@ function ProductReview() {
           </div>
         </div>
         <div className={css.line} />
-        {reviewList.map(review => {
+        {reviewList?.map(review => {
           return (
             <Review
               key={review.id}
               id={review.id}
-              userId={review.user_id}
+              userName={review.user_name}
               review={review.content}
               stars={review.stars}
               createdAt={review.created_at}

@@ -3,6 +3,7 @@
   align-items: center;
   position: relative;
   bottom: 150px;
+  right: 10px;
   margin: 0 auto;
   padding: 20px;
   width: 1170px;
@@ -27,15 +28,19 @@
     word-break: break-all;
     line-height: 24px;
   }
-  button {
-    position: absolute;
-    width: 60px;
-    height: 26px;
-    right: 20px;
-    bottom: 20px;
-    background: #c7c7c7;
-    color: white;
-    border: 0;
-    cursor: pointer;
+  .buttons {
+    display: flex;
+    width: 100px;
+    button {
+      width: 50px;
+      height: 26px;
+      position: relative;
+      top: 40px;
+      margin: 4px;
+      background: #c7c7c7;
+      color: white;
+      border: 0;
+      cursor: pointer;
+    }
   }
 }
