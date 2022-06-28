@@ -7,6 +7,7 @@ function First() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const ToTalIndex = 4;
+  const them = 4;
 
   useEffect(() => {
     setTimeout(() => {
