@@ -12,20 +12,36 @@
 
 .home,
 .lush {
-  font-size: 12px;
-  margin: 2.5px 10px;
+  font-size: 14px;
+  margin: 1px 10px;
   min-width: 30px;
 }
 
 .main_category,
 .sub_category {
+  display: flex;
+  flex-direction: column;
   margin: 0 10px;
   position: relative;
-  bottom: 3px;
-  & select {
-    width: 146px;
-    border: 1px solid lightgray;
-    padding: 2px;
+  bottom: 6px;
+  width: 146px;
+  padding: 3px 10px;
+  cursor: pointer;
+  a {
+    font-size: 14px;
+    border: 1px solid #535353;
+    color: #535353;
+    padding: 4px 10px;
+  }
+  .mainList,
+  .subList {
+    display: none;
+    border-top: none;
+  }
+  &:hover {
+    a {
+      display: block;
+    }
   }
 }
 
