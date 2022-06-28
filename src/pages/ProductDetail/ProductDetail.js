@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Image from '../../elements/Image';
 import ProductInfo from '../../components/ProductInfo/ProductInfo';
