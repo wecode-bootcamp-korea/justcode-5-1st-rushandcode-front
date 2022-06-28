@@ -1,0 +1,40 @@
+.wrapercontainer {
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+}
+.container {
+  width: 500vw;
+  display: flex;
+}
+.inner {
+  width: 100vw;
+}
+.img {
+  width: 100%;
+  height: 580px;
+  margin-bottom: 50px;
+}
+.wrapbutton {
+  position: absolute;
+  right: 0;
+  top: 200px;
+}
+.button {
+  border-radius: 100%;
+  height: 15px;
+  width: 15px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  outline: none;
+  color: black;
+  display: block;
+  border-style: none;
+  background-color: transparent;
+  border: 2px solid grey;
+}
+
+.button:focus {
+  background-color: white;
+  opacity: 1;
+}
