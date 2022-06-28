@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
 import css from './Signup.module.scss';
-
-const point = 'https://img.icons8.com/emoji/344/red-square-emoji.png';
 
 function Signup() {
   const [id, setId] = useState('');
