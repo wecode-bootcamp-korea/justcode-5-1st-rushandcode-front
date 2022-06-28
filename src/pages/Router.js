@@ -6,11 +6,15 @@ import Signup from '../pages/Signup/Signup';
 import Home from '../pages/Home/Home';
 import Products from '../pages/Products/Products';
 import ProductDetail from '../pages/ProductDetail/ProductDetail';
+import ScrollToTop from '../components/Scroll/ScrollRestoration';
+import Footer from '../components/Footer/Footer';
 import NotFound from '../components/NotFound/NotFound';
+import Event from '../pages/Event/Event';
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -19,7 +23,9 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/productdetail/:id" element={<ProductDetail />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/event" element={<Event />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

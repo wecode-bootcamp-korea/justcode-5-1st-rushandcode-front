@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import css from './ProductInfo.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 function ProductInfo(props) {
+  const navigate = useNavigate;
+
   const { productInfo } = props;
   const { hashtags, name } = productInfo;
 
@@ -23,23 +27,24 @@ function ProductInfo(props) {
   let { price } = productInfo;
   let totalPrice = price * count;
 
-  const main = productInfo.main_ategory;
-  const [mainCategory, setMainCategory] = useState(main);
-  const handleMainSelect = e => {
-    setMainCategory(e.target.value);
-  };
+  const [mainCategory, setMainCategory] = useState('');
+  const [mainList, setMainList] = useState([]);
+
   useEffect(() => {
     setMainCategory(productInfo.main_category);
+    setMainList(['배쓰', '샤워', '보디']);
   }, [productInfo.main_category]);
 
   const sub = productInfo.sub_category;
-  const [subCategory, setSubCategory] = useState(sub);
-  const handleSubSelect = e => {
-    setSubCategory(e.target.value);
-  };
-  useEffect(() => {
-    setSubCategory(productInfo.sub_category);
-  }, [productInfo.sub_category]);
+
+  let subList;
+  if (mainCategory === '배쓰') {
+    subList = ['배쓰 밤', '버블 바', '배쓰 오일'];
+  } else if (mainCategory === '샤워') {
+    subList = ['솝', '샤워 젤', '보디 컨디셔너'];
+  } else if (mainCategory === '보디') {
+    subList = ['클렌저', '로션', '핸드 앤 풋'];
+  }
 
   return (
     <div className={css.container}>
@@ -50,21 +55,43 @@ function ProductInfo(props) {
         <FontAwesomeIcon icon={faAngleRight} color="lightgray" />
 
         <div className={css.main_category}>
-          <select value={mainCategory} onChange={handleMainSelect}>
-            <option value="배쓰">배쓰</option>
-            <option value="샤워">샤워</option>
-            <option value="보디">보디</option>
-          </select>
+          <Link to={`/products?mainCategory=${mainCategory}`}>
+            {mainCategory}
+          </Link>
+          {mainList
+            ?.filter(data => data !== mainCategory)
+            .map((main, idx) => (
+              <Link
+                to={`/products?mainCategory=${main}`}
+                key={idx}
+                value={main}
+                className={css.mainList}
+              >
+                {main}
+              </Link>
+            ))}
         </div>
 
         <FontAwesomeIcon icon={faAngleRight} color="lightgray" />
 
         <div className={css.sub_category}>
-          <select value={subCategory} onChange={handleSubSelect}>
-            <option value="배쓰 밤">배쓰 밤</option>
-            <option value="버블 바">버블 바</option>
-            <option value="배쓰 오일">배쓰 오일</option>
-          </select>
+          <Link
+            to={`/products?mainCategory=${mainCategory}&subCategory=${sub}`}
+          >
+            {sub}
+          </Link>
+          {subList
+            ?.filter(data => data !== sub)
+            .map((sub, idx) => (
+              <Link
+                to={`/products?mainCategory=${mainCategory}&subCategory=${sub}`}
+                key={idx}
+                value={sub}
+                className={css.subList}
+              >
+                {sub}
+              </Link>
+            ))}
         </div>
       </div>
 

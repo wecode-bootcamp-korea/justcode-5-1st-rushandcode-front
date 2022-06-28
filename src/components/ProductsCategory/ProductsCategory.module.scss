@@ -1,0 +1,24 @@
+.list_category {
+  display: flex;
+  padding: 15px 0;
+  li {
+    height: 40px;
+    padding: 5px 0;
+    margin-right: 25px;
+    &:last-child {
+      margin-right: 0;
+    }
+    span {
+      color: #8f8f8f;
+      font-size: 14px;
+    }
+    span:hover {
+      color: #000;
+      transition: 0.3s;
+    }
+    .on {
+      color: #000;
+      transition: 0.3s;
+    }
+  }
+}
