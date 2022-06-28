@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import css from './ReviewModal.module.scss';
 
 const ReviewModal = props => {
-  const { open, close, header, content, stars } = props;
+  const { open, close, header, content, stars, id, setIsUpdated } = props;
+
   useEffect(() => {
     open
       ? (document.body.style.overflow = 'hidden')
@@ -17,6 +18,25 @@ const ReviewModal = props => {
   const [select, setSelect] = useState(stars);
   const handleSelect = e => {
     setSelect(e.target.value);
+  };
+
+  const EditReviewBtn = () => {
+    if (text === '') {
+      alert('리뷰 내용을 입력해주세요!');
+    } else {
+      fetch(`http://localhost:10010/review/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id,
+          content: text,
+          stars: select,
+        }),
+      })
+        .then(res => res.json())
+        .then(close)
+        .then(setIsUpdated(true));
+    }
   };
 
   return (
@@ -41,7 +61,7 @@ const ReviewModal = props => {
             <textarea value={text} onChange={handleTextarea} />
           </main>
           <footer>
-            <button>리뷰등록</button>
+            <button onClick={EditReviewBtn}>리뷰등록</button>
           </footer>
         </section>
       ) : null}

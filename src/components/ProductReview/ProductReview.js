@@ -1,32 +1,49 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import css from './ProductReview.module.scss';
 import ProductTab from '../ProductTab/ProductTab';
 import Review from './Review';
 
 function ProductReview(props) {
-  const { reviewList } = props;
+  const { reviewList, setIsUpdated } = props;
+  const location = useLocation();
+  const productId = location.pathname.split('/')[2];
+  const userName = localStorage.getItem('user_name');
+  const userId = localStorage.getItem('user_id');
 
   const [stars, setStars] = useState(0);
   const handleRadioInput = e => {
     setStars(e.target.value);
   };
 
-  const [text, setText] = useState('');
+  const [content, setContent] = useState('');
+
   const handleTextInput = e => {
-    setText(e.target.value);
+    setContent(e.target.value);
   };
 
-  // 백엔드 API 완성 시 수정 예정
-  // user_id - 로컬 스토리지에서 가져오기
-  // product_id 부모 컴포넌트에서 props로 넘겨받기
-  // const data = { user_name: 'test', product_id: '12', stars, content: text };
-
-  // const writeReviewBtn = () => {
-  //   fetch('http://localhost:10010/reviews', {
-  //     method: 'POST',
-  //     body: JSON.stringify(data),
-  //   }).then(res => res.json());
-  // };
+  const writeReviewBtn = () => {
+    if (stars === 0) {
+      alert('평가를 입력해주세요!');
+    } else if (content === '') {
+      alert('리뷰 내용을 입력해주세요!');
+    } else {
+      fetch('http://localhost:10010/review', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          user_id: userId,
+          user_name: userName,
+          product_id: productId,
+          content,
+          stars: stars,
+        }),
+      })
+        .then(res => res.json())
+        .then(setContent(''))
+        .then(setIsUpdated(true));
+    }
+  };
 
   return (
     <div>
@@ -90,14 +107,10 @@ function ProductReview(props) {
             </li>
           </div>
           <div className={css.textarea}>
-            <textarea value={text} onChange={handleTextInput} />
+            <textarea value={content} onChange={handleTextInput} />
           </div>
           <div className={css.write_button}>
-            <button
-            // onClick={writeReviewBtn}
-            >
-              후기 작성
-            </button>
+            <button onClick={writeReviewBtn}>후기 작성</button>
           </div>
         </div>
         <div className={css.line} />
@@ -107,9 +120,11 @@ function ProductReview(props) {
               key={review.id}
               id={review.id}
               userName={review.user_name}
+              userId={review.user_id}
               review={review.content}
               stars={review.stars}
               createdAt={review.created_at}
+              setIsUpdated={setIsUpdated}
             />
           );
         })}
