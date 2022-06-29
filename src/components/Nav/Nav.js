@@ -52,7 +52,7 @@ function Nav() {
           <Link to="">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </Link>
-          <Link to="">
+          <Link to="/cart">
             <FontAwesomeIcon icon={faBasketShopping} />
           </Link>
           <span
