@@ -23,7 +23,29 @@ $border-color: $theme-color;
     padding-top: 20px;
   }
 
+  .event_text {
+    width: 65vw;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #8f8f8f;
+
+    .text_3 {
+      color: #8f8f8f;
+      margin-bottom: 16px;
+      font-weight: lighter;
+    }
+    .text_1 {
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .text_2 {
+      font-size: 16px;
+      padding-top: 10px;
+    }
+  }
+
   img {
+    width: 800px;
+    margin-top: 50px;
     margin-bottom: 100px;
   }
 
