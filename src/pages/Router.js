@@ -10,6 +10,7 @@ import ScrollToTop from '../components/Scroll/ScrollRestoration';
 import Footer from '../components/Footer/Footer';
 import NotFound from '../components/NotFound/NotFound';
 import Event from '../pages/Event/Event';
+import EventDetail from '../pages/EventDetail/EventDetail';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/productdetail/:id" element={<ProductDetail />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/event" element={<Event />} />
+        <Route path="/eventDetail/:id" element={<EventDetail />} />
       </Routes>
       <Footer />
     </BrowserRouter>
