@@ -11,6 +11,12 @@ function Home() {
 
   const scrollY = () => {
     setScroll(window.scrollY);
+    if (scroll > 1500) {
+      text.current.style.transform = 'translate(500px)';
+    } else if (scroll <= 1500) {
+      text.current.style.transform = 'translate(0)';
+      text.current.style.transition = 'transform 2s';
+    }
   };
 
   useEffect(() => {
@@ -18,14 +24,8 @@ function Home() {
     return () => {
       window.removeEventListener('scroll', scrollY);
     };
-  }, []);
+  });
 
-  if (scroll > 1500) {
-    text.current.style.transform = 'translate(500px)';
-  } else if (scroll <= 1500) {
-    text.current.style.transform = 'translate(0)';
-    text.current.style.transition = '2s ease-out';
-  }
   return (
     <div className={css.home_container}>
       <First />
