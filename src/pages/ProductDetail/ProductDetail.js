@@ -13,26 +13,28 @@ function ProductDetail() {
   const isExist = id > 0 && id < 108;
 
   const [productInfo, setProductInfo] = useState([]);
+  const [isUpdated, setIsUpdated] = useState(false);
   useEffect(() => {
+    setIsUpdated(false);
     fetch(`http://localhost:10010/products/${id}`, {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
         if (isExist) {
-          setProductInfo(data?.products[0]);
+          setProductInfo(data.products[0]);
         }
       });
-  }, [id, isExist, productInfo?.productReviews?.length]);
+  }, [id, isExist, isUpdated]);
 
   const imageList = productInfo.productImages;
   const [image, setImage] = useState(null);
-
   useEffect(() => {
     setImage(imageList && imageList[0].url);
   }, [imageList]);
 
   const reviewList = productInfo?.productReviews;
+
   return (
     <div>
       {isExist ? (
@@ -55,7 +57,7 @@ function ProductDetail() {
             <ProductInfo productInfo={productInfo} />
           </div>
           <ProductDetailInfo productInfo={productInfo} />
-          <ProductReview reviewList={reviewList} />
+          <ProductReview reviewList={reviewList} setIsUpdated={setIsUpdated} />
           <ProductShipping />
         </div>
       ) : (

@@ -3,11 +3,8 @@ import { Link } from 'react-router-dom';
 import css from './ProductInfo.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
 
 function ProductInfo(props) {
-  const navigate = useNavigate;
-
   const { productInfo } = props;
   const { hashtags, name } = productInfo;
 
