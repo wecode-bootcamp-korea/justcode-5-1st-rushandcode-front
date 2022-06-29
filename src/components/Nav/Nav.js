@@ -43,7 +43,7 @@ function Nav() {
               <Link to="">스파</Link>
             </li>
             <li className={css.nav_event}>
-              <Link to="">이벤트</Link>
+              <Link to="/event">이벤트</Link>
             </li>
           </ul>
         </div>
