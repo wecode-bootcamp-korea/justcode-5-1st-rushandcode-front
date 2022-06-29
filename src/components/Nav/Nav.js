@@ -11,6 +11,7 @@ import css from './Nav.module.scss';
 
 function Nav() {
   const [hideMenu, setHideMenu] = useState(false);
+  const [hideMyPage, setHideMyPage] = useState(false);
   return (
     <div className={css.container}>
       <nav className={css.nav}>
@@ -54,9 +55,44 @@ function Nav() {
           <Link to="">
             <FontAwesomeIcon icon={faBasketShopping} />
           </Link>
-          <Link to="">
+          <span
+            onMouseEnter={() => {
+              setHideMyPage(true);
+            }}
+            onMouseLeave={() => {
+              setHideMyPage(false);
+            }}
+          >
             <FontAwesomeIcon icon={faCircleUser} />
-          </Link>
+          </span>
+        </div>
+        <div
+          className={css.mypage}
+          style={{ display: hideMyPage ? 'block' : 'none' }}
+          onMouseEnter={() => {
+            setHideMyPage(true);
+          }}
+          onMouseLeave={() => {
+            setHideMyPage(false);
+          }}
+        >
+          <ul>
+            <li
+              onClick={() => {
+                setHideMyPage(false);
+              }}
+            >
+              <Link to="/login">로그인</Link>
+            </li>
+            <li
+              onClick={() => {
+                setHideMyPage(false);
+              }}
+            >
+              <Link to="/signup">회원가입</Link>
+            </li>
+          </ul>
+          {hideMyPage && <span className={css.selected}></span>}
         </div>
       </nav>
       <div
@@ -143,8 +179,8 @@ function Nav() {
                 setHideMenu(false);
               }}
             >
-              <Link to="/products?mainCategory=샤워&subCategory=샤워 컨디셔너">
-                샤워 컨디셔너
+              <Link to="/products?mainCategory=샤워&subCategory=보디 컨디셔너">
+                보디 컨디셔너
               </Link>
             </li>
           </ul>
