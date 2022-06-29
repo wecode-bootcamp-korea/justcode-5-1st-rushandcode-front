@@ -1,13 +1,72 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import css from './ProductList.module.scss';
 
-function Productslist(props) {
-  const { data, mainCategory, subCategory } = props;
-  console.log(data);
+function Productslist() {
+  function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  }
+
+  let query = useQuery();
+
+  let mainCategory = query.get('mainCategory');
+  let subCategory = query.get('subCategory');
+  let sort = query.get('sort');
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const baseURL = 'http://localhost:10010/products';
+    function productsURL(url) {
+      fetch(url)
+        .then(res => res.json())
+        .then(res => {
+          setProducts(res.products);
+        });
+    }
+    if (mainCategory && subCategory === null) {
+      productsURL(`${baseURL}?mainCategory=${mainCategory}`);
+      if (sort === 'desc') {
+        //높은가격순
+        productsURL(`${baseURL}?mainCategory=${mainCategory}&sort=desc`);
+      }
+      if (sort === 'asc') {
+        //낮은가격순
+        productsURL(`${baseURL}?mainCategory=${mainCategory}&sort=asc`);
+      }
+      if (sort === 'sell') {
+        //판매인기순
+        productsURL(`${baseURL}?mainCategory=${mainCategory}&sort=sell`);
+      }
+    }
+    if (mainCategory && subCategory) {
+      productsURL(
+        `${baseURL}?mainCategory=${mainCategory}&subCategory=${subCategory}`
+      );
+      if (sort === 'desc') {
+        //높은가격순
+        productsURL(
+          `${baseURL}?mainCategory=${mainCategory}&subCategory=${subCategory}&sort=desc`
+        );
+      }
+      if (sort === 'asc') {
+        //낮은가격순
+        productsURL(
+          `${baseURL}?mainCategory=${mainCategory}&subCategory=${subCategory}&sort=asc`
+        );
+      }
+      if (sort === 'sell') {
+        //판매인기순
+        productsURL(
+          `${baseURL}?mainCategory=${mainCategory}&subCategory=${subCategory}&sort=sell`
+        );
+      }
+    }
+  }, [mainCategory, subCategory, sort]);
+
   return (
     <ul className={css.product_list}>
-      {data.map(data => (
+      {products.map(data => (
         <li key={data.id}>
           <Link to={`/productDetail/${data.id}`}>
             <div className={css.prd_img}>

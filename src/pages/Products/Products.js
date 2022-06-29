@@ -8,7 +8,6 @@ import css from './Products.module.scss';
 
 function Products() {
   function useQuery() {
-    console.log(useLocation().search);
     return new URLSearchParams(useLocation().search);
   }
 
@@ -21,80 +20,50 @@ function Products() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    if (mainCategory && subCategory === null) {
-      fetch(`http://localhost:10010/products?mainCategory=${mainCategory}`)
+    const baseURL = 'http://localhost:10010/products';
+    function productsURL(url) {
+      fetch(url)
         .then(res => res.json())
         .then(res => {
           setProducts(res.products);
         });
+    }
+    if (mainCategory && subCategory === null) {
+      productsURL(`${baseURL}?mainCategory=${mainCategory}`);
       if (sort === 'desc') {
         //높은가격순
-        fetch(
-          `http://localhost:10010/products?mainCategory=${mainCategory}&sort=desc`
-        )
-          .then(res => res.json())
-          .then(res => {
-            setProducts(res.products);
-          });
+        productsURL(`${baseURL}?mainCategory=${mainCategory}&sort=desc`);
       }
       if (sort === 'asc') {
         //낮은가격순
-        fetch(
-          `http://localhost:10010/products?mainCategory=${mainCategory}&sort=asc`
-        )
-          .then(res => res.json())
-          .then(res => {
-            setProducts(res.products);
-          });
+        productsURL(`${baseURL}?mainCategory=${mainCategory}&sort=asc`);
       }
       if (sort === 'sell') {
         //판매인기순
-        fetch(
-          `http://localhost:10010/products?mainCategory=${mainCategory}&sort=sell`
-        )
-          .then(res => res.json())
-          .then(res => {
-            setProducts(res.products);
-          });
+        productsURL(`${baseURL}?mainCategory=${mainCategory}&sort=sell`);
       }
     }
     if (mainCategory && subCategory) {
-      fetch(
-        `http://localhost:10010/products?mainCategory=${mainCategory}&subCategory=${subCategory}`
-      )
-        .then(res => res.json())
-        .then(res => {
-          setProducts(res.products);
-        });
+      productsURL(
+        `${baseURL}?mainCategory=${mainCategory}&subCategory=${subCategory}`
+      );
       if (sort === 'desc') {
         //높은가격순
-        fetch(
-          `http://localhost:10010/products?mainCategory=${mainCategory}&subCategory=${subCategory}&sort=desc`
-        )
-          .then(res => res.json())
-          .then(res => {
-            setProducts(res.products);
-          });
+        productsURL(
+          `${baseURL}?mainCategory=${mainCategory}&subCategory=${subCategory}&sort=desc`
+        );
       }
       if (sort === 'asc') {
         //낮은가격순
-        fetch(
-          `http://localhost:10010/products?mainCategory=${mainCategory}&subCategory=${subCategory}&sort=asc`
-        )
-          .then(res => res.json())
-          .then(res => {
-            setProducts(res.products);
-          });
+        productsURL(
+          `${baseURL}?mainCategory=${mainCategory}&subCategory=${subCategory}&sort=asc`
+        );
       }
       if (sort === 'sell') {
         //판매인기순
-        fetch(
-          `http://localhost:10010/products?mainCategory=${mainCategory}&subCategory=${subCategory}&sort=sell`
-        )
-          .then(res => res.json())
-          .then(res => {
-            setProducts(res.products);
-          });
+        productsURL(
+          `${baseURL}?mainCategory=${mainCategory}&subCategory=${subCategory}&sort=sell`
+        );
       }
     }
   }, [mainCategory, subCategory, sort]);
@@ -103,20 +72,17 @@ function Products() {
     <div>
       <div className={css.container}>
         <ProductsTopBanner
-          data={products}
           mainCategory={mainCategory}
           subCategory={subCategory}
         />
         <div className={css.products}>
           <div className={css.contents}>
             <ProductsSelectFilter
-              data={products}
               mainCategory={mainCategory}
               subCategory={subCategory}
               sort={sort}
             />
             <ProductCategory
-              data={products}
               mainCategory={mainCategory}
               subCategory={subCategory}
             />

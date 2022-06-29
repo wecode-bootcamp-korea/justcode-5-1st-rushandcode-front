@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import css from './ProductsCategory.module.scss';
 
 function ProductCategory(props) {
-  const { data, mainCategory, subCategory } = props;
+  const { mainCategory, subCategory } = props;
 
   return (
     <>
