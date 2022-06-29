@@ -45,6 +45,14 @@ function ProductReview(props) {
     }
   };
 
+  const reviewAlert = () => {
+    if (userId === null) {
+      alert(
+        '쇼핑몰 회원님만 글작성이 가능합니다. \n로그인 후 리뷰를 등록해주세요.'
+      );
+    }
+  };
+
   return (
     <div>
       <ProductTab />
@@ -107,7 +115,11 @@ function ProductReview(props) {
             </li>
           </div>
           <div className={css.textarea}>
-            <textarea value={content} onChange={handleTextInput} />
+            <textarea
+              value={content}
+              onChange={handleTextInput}
+              onClick={reviewAlert}
+            />
           </div>
           <div className={css.write_button}>
             <button onClick={writeReviewBtn}>후기 작성</button>
