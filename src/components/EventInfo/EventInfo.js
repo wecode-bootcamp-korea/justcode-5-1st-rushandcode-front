@@ -10,7 +10,7 @@ function EventInfo() {
           <li className={css.event}>
             <Link to="/eventDetail/1">
               <img
-                src="https://lush.co.kr/data/board/upload/event/3c7354a06a9481b4"
+                src="https://i.pinimg.com/564x/7b/cf/9f/7bcf9fd06731087ef9edce2a35fd2cfa.jpg"
                 alt="이벤트_1"
               />
               <div className={css.event_text}>
@@ -25,7 +25,7 @@ function EventInfo() {
           <li className={css.event}>
             <Link to="/eventDetail/2">
               <img
-                src="https://lush.co.kr/data/board/upload/event/ce539fc58ea0ec80"
+                src="https://i.pinimg.com/564x/9d/bf/92/9dbf9231d012da9920795a8eaaa8e7de.jpg"
                 alt="이벤트_2"
               />
               <div className={css.event_text}>
@@ -40,7 +40,7 @@ function EventInfo() {
           <li className={css.event}>
             <Link to="/eventDetail/3">
               <img
-                src="https://lush.co.kr/data/board/upload/event/ec1557ebbe8dc637"
+                src="https://i.pinimg.com/564x/63/6f/05/636f0501be759428154047b42b357009.jpg"
                 alt="이벤트_3"
               />
               <div className={css.event_text}>
@@ -55,7 +55,7 @@ function EventInfo() {
           <li className={css.event}>
             <Link to="/eventDetail/4">
               <img
-                src="https://lush.co.kr/data/board/upload/event/67b595452707b470"
+                src="https://i.pinimg.com/564x/74/9e/c7/749ec7045cdef6bca3c4d1bbe0ad9670.jpg"
                 alt="이벤트_4"
               />
               <div className={css.event_text}>

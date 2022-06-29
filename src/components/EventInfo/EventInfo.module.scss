@@ -20,7 +20,9 @@
 
         img {
           width: 26.5vw;
+          max-height: 230px;
           margin-bottom: 25px;
+          object-fit: cover;
         }
         .event_text {
           text-align: center;
