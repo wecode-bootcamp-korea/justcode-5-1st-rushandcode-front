@@ -88,7 +88,7 @@ function ProductInfo(props) {
     }
     setCount(1);
     if (
-      window.confirm(`상품이 장바구니에 담겼습니다. \n바로 확인하시겠습니까?`)
+      window.confirm('상품이 장바구니에 담겼습니다. \n바로 확인하시겠습니까?')
     ) {
       navigate('/cart');
     }
