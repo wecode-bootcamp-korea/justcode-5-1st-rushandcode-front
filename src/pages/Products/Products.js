@@ -88,11 +88,7 @@ function Products() {
             />
             <article className={css.product_container}>
               <div className={css.product_box}>
-                <Productslist
-                  data={products}
-                  mainCategory={mainCategory}
-                  subCategory={subCategory}
-                />
+                <Productslist />
               </div>
             </article>
           </div>

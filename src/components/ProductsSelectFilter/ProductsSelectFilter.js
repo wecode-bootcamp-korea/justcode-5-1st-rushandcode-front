@@ -53,7 +53,14 @@ function ProductsSelectFilter(props) {
         >
           {mainCategory && subCategory === null && (
             <>
-              <li className={css.drop_list} onClick={clickDropList}>
+              <li
+                className={
+                  sort === null
+                    ? `${css.drop_list} ${css.active}`
+                    : css.drop_list
+                }
+                onClick={clickDropList}
+              >
                 <Link to={`/products?mainCategory=${mainCategory}`}>
                   추천순
                 </Link>
@@ -92,7 +99,14 @@ function ProductsSelectFilter(props) {
           )}
           {mainCategory && subCategory && (
             <>
-              <li className={css.drop_list} onClick={clickDropList}>
+              <li
+                className={
+                  sort === null
+                    ? `${css.drop_list} ${css.active}`
+                    : css.drop_list
+                }
+                onClick={clickDropList}
+              >
                 <Link to={`${mainSubURL}`}>추천순</Link>
               </li>
               <li
