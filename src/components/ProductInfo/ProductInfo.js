@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import css from './ProductInfo.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 function ProductInfo(props) {
+  const navigate = useNavigate();
+
   const { productInfo } = props;
   const { hashtags, name } = productInfo;
 
@@ -42,6 +44,55 @@ function ProductInfo(props) {
   } else if (mainCategory === '보디') {
     subList = ['클렌저', '로션', '핸드 앤 풋'];
   }
+  const productId = productInfo.id;
+  const data = { id: productId, count, totalPrice };
+  const addCart = () => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let isExist = false;
+    const idx = cart?.findIndex(c => c.id === data.id);
+
+    cart.forEach(cartEl => {
+      if (cartEl.id === data.id) {
+        isExist = true;
+      }
+    });
+    if (localStorage.getItem('cart') === null) {
+      localStorage.setItem('cart', JSON.stringify([data]));
+    } else {
+      if (!isExist) {
+        localStorage.setItem(
+          'cart',
+          JSON.stringify([data, ...JSON.parse(localStorage.getItem('cart'))])
+        );
+      } else {
+        cart.id = 'test';
+        localStorage.setItem(
+          'cart',
+          JSON.stringify(
+            cart.map((obj, index) => {
+              if (index === idx) {
+                return {
+                  ...obj,
+                  count: obj.count + data.count,
+                  totalPrice: obj.totalPrice + data.totalPrice,
+                };
+              } else {
+                return {
+                  ...obj,
+                };
+              }
+            })
+          )
+        );
+      }
+    }
+    setCount(1);
+    if (
+      window.confirm(`상품이 장바구니에 담겼습니다. \n바로 확인하시겠습니까?`)
+    ) {
+      navigate('/cart');
+    }
+  };
 
   return (
     <div className={css.container}>
@@ -122,7 +173,9 @@ function ProductInfo(props) {
         <div className={css.sum_num}>₩ {totalPrice}</div>
       </div>
       <div className={css.buttons}>
-        <button className={css.cart}>장바구니</button>
+        <button onClick={addCart} className={css.cart}>
+          장바구니
+        </button>
         <button className={css.order}>주문하기</button>
       </div>
     </div>
