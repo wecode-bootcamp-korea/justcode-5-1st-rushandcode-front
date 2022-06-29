@@ -1,78 +1,66 @@
-.home_container {
-  position: relative;
-}
 .wrap_third {
   position: absolute;
   right: 0;
-  top: 25%;
+  top: -70px;
+  padding-right: 5vw;
 }
 .wrap_banner {
   display: flex;
 }
-.second_banner_wraper{
+.second_banner_wraper {
+  position: relative;
   padding-top: 80px;
   padding-bottom: 120px;
+  padding-left: 5vw;
 }
 
-.bannerText {
-  font-size: 40px;
-  font-weight: bolder;
-  margin-bottom: 25px;
+.banner_text {
+  padding-left: 100px;
+  margin-bottom: 10px;
 }
 
-.flex {
-  display: flex;
+.line {
+  position: relative;
   width: 100%;
-  height: 471px;
+  height: 500px;
+  background: url(https://www.lush.co.kr/data/editor/goods/200623/primer01_145051.jpg)
+    fixed;
+  background-size: 100% 100%;
   justify-content: center;
   margin-top: 50px;
 }
-.left {
-  width: 50%;
-  height: 100%;
+.line_text {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.616);
+  font-size: 23px;
+  font-family: sans-serif;
+  width: 40%;
+  right: 3%;
+  top: 38%;
+  animation: appear 2s;
+  //animation: disappear 2s;
 }
-.right {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  height: 100%;
+@keyframes appear {
+  from {
+    right: -100%;
+    opacity: 0;
+  }
+  to {
+    right: 3%;
+    opacity: 1;
+  }
 }
-.right1 {
-  width: 100%;
-  height: 50%;
+@keyframes disappear {
+  from {
+    right: 3%;
+  }
+  to {
+    right: -100%;
+  }
 }
-.right2 {
-  display: flex;
-  width: 100%;
-  height: 50%;
-}
-.right2-1 {
-  width: 50%;
-  height: 100%;
-}
-.right2-2 {
-  width: 50%;
-  height: 100%;
-}
-.leftImg {
-  width: 100%;
-  height: 100%;
-}
-.right1Img {
-  width: 100%;
-  height: 100%;
-}
-.right21Img {
-  width: 100%;
-  height: 100%;
-}
-.right22Img {
-  width: 100%;
-  height: 100%;
-}
-
 .lastBanner {
   display: flex;
+  position: relative;
   width: 100%;
   height: 472px;
   margin-top: 60px;
@@ -83,23 +71,66 @@
   height: 100%;
 }
 .lastBannerRight {
+  position: relative;
   width: 30%;
   height: 100%;
 }
 .lastBannerRightImg {
+  position: absolute;
+  right: 20%;
   width: 100%;
   height: 100%;
+  animation: lastImg 3s;
+}
+@keyframes lastImg {
+  from {
+    right: -20%;
+    opacity: 0;
+  }
+  to {
+    right: 20%;
+    opacity: 1;
+  }
 }
 .lastBannerMainText {
+  position: absolute;
+  top: 30;
+  left: 20%;
   font-weight: bolder;
   font-size: 42px;
+  animation: text 3s;
+}
+@keyframes text {
+  from {
+    left: -200%;
+    opacity: 0.3;
+  }
+  to {
+    left: 20%;
+    opacity: 0.8;
+  }
 }
 .lastBannerSubText {
+  position: absolute;
+  top: 60%;
+  left: 20%;
   font-size: 16px;
-  width: 400px;
+  width: 45%;
   margin: 0;
+  animation: subtext 3.5s;
+}
+@keyframes subtext {
+  from {
+    left: -200%;
+    opacity: 0.2;
+  }
+  to {
+    left: 20%;
+    opacity: 0.8;
+  }
 }
 .lastBannerText {
+  position: relative;
   padding-left: 200px;
   padding-top: 150px;
   padding-right: 50px;

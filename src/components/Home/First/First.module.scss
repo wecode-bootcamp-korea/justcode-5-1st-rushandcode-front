@@ -18,7 +18,7 @@
 .wrapbutton {
   position: absolute;
   right: 0;
-  top: 200px;
+  top: 45%;
 }
 .button {
   border-radius: 100%;
@@ -31,7 +31,7 @@
   display: block;
   border-style: none;
   background-color: transparent;
-  border: 2px solid grey;
+  border: 2px solid rgba(255, 255, 255, 0.572);
 }
 
 .button:focus {
