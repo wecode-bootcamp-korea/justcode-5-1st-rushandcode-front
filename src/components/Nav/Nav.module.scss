@@ -1,5 +1,5 @@
 .container {
-  width: 100%;
+  width: 100vw;
   height: 100px;
   background-color: black;
   color: white;
@@ -40,6 +40,9 @@
       }
       .nav_prd {
         position: relative;
+        span {
+          cursor: pointer;
+        }
         .selected {
           position: absolute;
           border-top: 10px solid transparent;
