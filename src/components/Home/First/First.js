@@ -12,14 +12,18 @@ function First() {
     const timer = setTimeout(() => {
       if (currentIndex <= ToTalIndex) {
         setCurrentIndex(currentIndex + 1);
-        slider.current.style.transform = `translate(-${currentIndex * 20}%)`;
-        slider.current.style.transition = 'all 2s ease-in-out';
+        slider.current.style.transform = `translate(-${currentIndex * 16.6}%)`;
+        slider.current.style.transition = 'all 1s ease-in-out';
       } else if (currentIndex > ToTalIndex) {
-        slider.current.style.transform = `translate(0vw)`;
-        slider.current.style.transition = 'all 0s ease-out';
+        setTimeout(() => {
+          slider.current.style.transform = `translate(0%)`;
+          slider.current.style.transition = 'all 0s ease-out';
+        }, 500);
+        slider.current.style.transform = `translate(-83.2%)`;
+        slider.current.style.transition = 'all 0.5s ease-out';
         setCurrentIndex(0);
       }
-    }, 3000);
+    }, 1000);
     return () => {
       clearTimeout(timer);
     };
@@ -87,6 +91,13 @@ function First() {
             <img
               className={css.img}
               src="https://cdn.pixabay.com/photo/2021/08/08/15/52/ferns-6531279__480.jpg"
+              alt="이미지"
+            />
+          </div>
+          <div className={css.inner}>
+            <img
+              className={css.img}
+              src="https://lush.co.kr/data/editor/goods/200624/perfume01_134035.jpg"
               alt="이미지"
             />
           </div>
