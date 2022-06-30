@@ -34,7 +34,7 @@ function Products() {
       productsURL(`${baseURL}${mainURL}`);
       if (sort === 'desc') {
         //높은가격순
-        productsURL(`${baseURL}${mainURL}}&sort=desc`);
+        productsURL(`${baseURL}${mainURL}&sort=desc`);
       }
       if (sort === 'asc') {
         //낮은가격순
