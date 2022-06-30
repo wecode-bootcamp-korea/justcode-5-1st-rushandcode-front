@@ -3,9 +3,12 @@ import css from './Review.module.scss';
 import ReviewModal from '../ReviewModal/ReviewModal';
 
 function Review(props) {
-  const { id, userName, review, stars, createdAt } = props;
+  const { id, userId, userName, review, stars, createdAt, setIsUpdated } =
+    props;
   const time = createdAt.split(' ')[0];
-  const isMyReview = userName === 'codeKim';
+  const myId = localStorage.getItem('user_id');
+  const isMyReview = userId === Number(myId);
+
   let rate;
   if (stars === 1) {
     rate = '★☆☆☆☆';
@@ -21,11 +24,11 @@ function Review(props) {
 
   const delReview = () => {
     if (window.confirm('정말로 삭제하시겠습니까?')) {
-      // 백엔드 리뷰 API 완성 시 수정 예정
-      // fetch(`http://localhost:10010/reivew/${id}`, {
-      //   method: 'DELETE',
-      // });
-      alert('삭제가 완료되었습니다.');
+      fetch(`http://localhost:10010/review/${id}`, {
+        method: 'DELETE',
+      })
+        .then(alert('삭제가 완료되었습니다.'))
+        .then(setIsUpdated(true));
     } else {
       return;
     }
@@ -44,9 +47,11 @@ function Review(props) {
       <ReviewModal
         close={closeModal}
         open={modalOpen}
-        content="test"
-        stars="1"
+        content={review}
+        stars={stars}
         header="상품후기 수정하기"
+        id={id}
+        setIsUpdated={setIsUpdated}
       />
       <div className={css.review_info}>
         <div className={css.rate}>{rate}</div>

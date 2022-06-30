@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import Productslist from '../../components/ProductList/ProductList';
-import ProductCategory from '../../components/ProductsCategory/ProductsCategory';
-import ProductsSelectFilter from '../../components/ProductsSelectFilter/ProductsSelectFilter';
-import ProductsTopBanner from '../../components/ProductsTopBanner/ProductsTopBanner';
-import css from './Products.module.scss';
+import { Link, useLocation } from 'react-router-dom';
+import css from './ProductList.module.scss';
 
-function Products() {
+function Productslist() {
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
@@ -69,33 +65,33 @@ function Products() {
   }, [mainCategory, subCategory, sort]);
 
   return (
-    <div>
-      <div className={css.container}>
-        <ProductsTopBanner
-          mainCategory={mainCategory}
-          subCategory={subCategory}
-        />
-        <div className={css.products}>
-          <div className={css.contents}>
-            <ProductsSelectFilter
-              mainCategory={mainCategory}
-              subCategory={subCategory}
-              sort={sort}
-            />
-            <ProductCategory
-              mainCategory={mainCategory}
-              subCategory={subCategory}
-            />
-            <article className={css.product_container}>
-              <div className={css.product_box}>
-                <Productslist />
+    <ul className={css.product_list}>
+      {products.map(data => (
+        <li key={data.id}>
+          <Link to={`/productDetail/${data.id}`}>
+            <div className={css.prd_img}>
+              <img src={data.productImages[0].url} alt="상품명" />
+            </div>
+            <div className={css.prd_label}>
+              <span className={css.prd_label_new}>NEW</span>
+
+              <span className={css.prd_label_vegan}>VEGAN</span>
+            </div>
+            <div className={css.prd_name}>
+              <div>{data.name}</div>
+              <div className={css.prd_hashtag}>
+                <span>{data.hashtags}</span>
               </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </div>
+            </div>
+            <div className={css.prd_price}>
+              <span>₩</span>
+              <span>{data.price}</span>
+            </div>
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }
 
-export default Products;
+export default Productslist;

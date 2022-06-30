@@ -11,6 +11,7 @@ import css from './Nav.module.scss';
 
 function Nav() {
   const [hideMenu, setHideMenu] = useState(false);
+  const [hideMyPage, setHideMyPage] = useState(false);
   return (
     <div className={css.container}>
       <nav className={css.nav}>
@@ -30,7 +31,7 @@ function Nav() {
                 setHideMenu(false);
               }}
             >
-              <Link to="">제품</Link>
+              <span>제품</span>
               {hideMenu && <span className={css.selected}></span>}
             </li>
             <li className={css.nav_intro}>
@@ -43,7 +44,7 @@ function Nav() {
               <Link to="">스파</Link>
             </li>
             <li className={css.nav_event}>
-              <Link to="">이벤트</Link>
+              <Link to="/event">이벤트</Link>
             </li>
           </ul>
         </div>
@@ -51,12 +52,47 @@ function Nav() {
           <Link to="">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </Link>
-          <Link to="">
+          <Link to="/cart">
             <FontAwesomeIcon icon={faBasketShopping} />
           </Link>
-          <Link to="">
+          <span
+            onMouseEnter={() => {
+              setHideMyPage(true);
+            }}
+            onMouseLeave={() => {
+              setHideMyPage(false);
+            }}
+          >
             <FontAwesomeIcon icon={faCircleUser} />
-          </Link>
+          </span>
+        </div>
+        <div
+          className={css.mypage}
+          style={{ display: hideMyPage ? 'block' : 'none' }}
+          onMouseEnter={() => {
+            setHideMyPage(true);
+          }}
+          onMouseLeave={() => {
+            setHideMyPage(false);
+          }}
+        >
+          <ul>
+            <li
+              onClick={() => {
+                setHideMyPage(false);
+              }}
+            >
+              <Link to="/login">로그인</Link>
+            </li>
+            <li
+              onClick={() => {
+                setHideMyPage(false);
+              }}
+            >
+              <Link to="/signup">회원가입</Link>
+            </li>
+          </ul>
+          {hideMyPage && <span className={css.selected}></span>}
         </div>
       </nav>
       <div
@@ -71,58 +107,118 @@ function Nav() {
       >
         <div className={css.prd_category_all}>
           <ul className={css.prd_category_bath}>
-            <li className={css.main_category}>
+            <li
+              className={css.main_category}
+              onClick={() => {
+                setHideMenu(false);
+              }}
+            >
               <Link to="/products?mainCategory=배쓰">배쓰</Link>
             </li>
-            <li className={css.sub_category}>
+            <li
+              className={css.sub_category}
+              onClick={() => {
+                setHideMenu(false);
+              }}
+            >
               <Link to="/products?mainCategory=배쓰&subCategory=배쓰 밤">
                 배쓰 밤
               </Link>
             </li>
-            <li className={css.sub_category}>
+            <li
+              className={css.sub_category}
+              onClick={() => {
+                setHideMenu(false);
+              }}
+            >
               <Link to="/products?mainCategory=배쓰&subCategory=버블 바">
                 버블 바
               </Link>
             </li>
-            <li className={css.sub_category}>
+            <li
+              className={css.sub_category}
+              onClick={() => {
+                setHideMenu(false);
+              }}
+            >
               <Link to="/products?mainCategory=배쓰&subCategory=배쓰 오일">
                 배쓰 오일
               </Link>
             </li>
           </ul>
           <ul className={css.prd_category_shower}>
-            <li className={css.main_category}>
+            <li
+              className={css.main_category}
+              onClick={() => {
+                setHideMenu(false);
+              }}
+            >
               <Link to="/products?mainCategory=샤워">샤워</Link>
             </li>
-            <li className={css.sub_category}>
+            <li
+              className={css.sub_category}
+              onClick={() => {
+                setHideMenu(false);
+              }}
+            >
               <Link to="/products?mainCategory=샤워&subCategory=솝">솝</Link>
             </li>
-            <li className={css.sub_category}>
+            <li
+              className={css.sub_category}
+              onClick={() => {
+                setHideMenu(false);
+              }}
+            >
               <Link to="/products?mainCategory=샤워&subCategory=샤워 젤">
                 샤워 젤
               </Link>
             </li>
-            <li className={css.sub_category}>
-              <Link to="/products?mainCategory=샤워&subCategory=샤워 컨디셔너">
-                샤워 컨디셔너
+            <li
+              className={css.sub_category}
+              onClick={() => {
+                setHideMenu(false);
+              }}
+            >
+              <Link to="/products?mainCategory=샤워&subCategory=보디 컨디셔너">
+                보디 컨디셔너
               </Link>
             </li>
           </ul>
           <ul className={css.prd_category_body}>
-            <li className={css.main_category}>
+            <li
+              className={css.main_category}
+              onClick={() => {
+                setHideMenu(false);
+              }}
+            >
               <Link to="/products?mainCategory=보디">보디</Link>
             </li>
-            <li className={css.sub_category}>
+            <li
+              className={css.sub_category}
+              onClick={() => {
+                setHideMenu(false);
+              }}
+            >
               <Link to="/products?mainCategory=보디&subCategory=클렌저">
                 클렌저
               </Link>
             </li>
-            <li className={css.sub_category}>
+            <li
+              className={css.sub_category}
+              onClick={() => {
+                setHideMenu(false);
+              }}
+            >
               <Link to="/products?mainCategory=보디&subCategory=로션">
                 로션
               </Link>
             </li>
-            <li className={css.sub_category}>
+            <li
+              className={css.sub_category}
+              onClick={() => {
+                setHideMenu(false);
+              }}
+            >
               <Link to="/products?mainCategory=보디&subCategory=핸드 앤 풋">
                 핸드 앤 풋
               </Link>
