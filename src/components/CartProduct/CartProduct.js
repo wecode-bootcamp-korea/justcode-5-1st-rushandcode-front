@@ -46,7 +46,7 @@ function CartProduct(props) {
     window.location.reload();
   };
 
-  const countDown = () => {
+  const countDown = async () => {
     if (count > 1) {
       setCount(count - 1);
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -68,7 +68,16 @@ function CartProduct(props) {
           })
         )
       );
+      window.location.reload();
     }
+  };
+
+  const deleteProduct = () => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    localStorage.setItem(
+      'cart',
+      JSON.stringify(cart.filter(item => item.id !== id))
+    );
     window.location.reload();
   };
 
@@ -81,6 +90,7 @@ function CartProduct(props) {
   return (
     <tr className={css.container}>
       <td className={css.info}>
+        <button onClick={deleteProduct}>삭제</button>
         {image && <Image className={css.img} size={70} src={image} />}
         <div className={css.product_name}>
           <div>{name}</div>

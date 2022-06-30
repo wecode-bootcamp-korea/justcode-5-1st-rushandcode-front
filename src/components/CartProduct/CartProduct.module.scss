@@ -11,6 +11,15 @@
     text-align: center;
     display: flex;
     align-items: center;
+    button {
+      width: 50px;
+      background-color: transparent;
+      border: 0;
+      color: red;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+    }
     .img {
       position: relative;
       left: 100px;
@@ -29,7 +38,6 @@
   }
   .count {
     position: relative;
-    bottom: 30px;
     width: 185px;
 
     .buy_input {
@@ -54,19 +62,19 @@
   }
   .price {
     position: relative;
-    bottom: 30px;
+    bottom: 5px;
     width: 160px;
     min-width: 160px;
   }
   .total_price {
     position: relative;
-    bottom: 30px;
+    bottom: 5px;
     width: 160px;
     min-width: 160px;
   }
   .ship {
     position: relative;
-    bottom: 30px;
+    bottom: 10px;
     font-size: 14px;
     color: #acacac;
     line-height: 20px;
