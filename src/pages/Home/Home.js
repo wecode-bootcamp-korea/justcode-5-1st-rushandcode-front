@@ -58,7 +58,7 @@ function Home() {
         <div className={css.lastBannerRight}>
           <img
             className={css.lastBannerRightImg}
-            src="https://www.lush.co.kr/data/skin/front/howling/img/banner/d119de9934bf5f5ddcf265864d5cbb15_87429.gif"
+            src="https://media4.giphy.com/media/TZN3HY3SZfWw0/giphy.webp?cid=ecf05e47alsh6ws4gzjf5auj1oixd6bdqdbfts4swtdb0c1s&rid=giphy.webp&ct=g"
             alt="배너"
           />
         </div>
