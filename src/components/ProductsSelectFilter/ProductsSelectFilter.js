@@ -53,60 +53,82 @@ function ProductsSelectFilter(props) {
         >
           {mainCategory && subCategory === null && (
             <>
-              <li
-                className={`${css.drop_list} ${sort === null && css.active}`}
-                onClick={clickDropList}
-              >
-                <Link to={`/products?mainCategory=${mainCategory}`}>
+              <Link to={`/products?mainCategory=${mainCategory}`}>
+                <li
+                  className={`${css.drop_list} ${sort === null && css.active}`}
+                  onClick={clickDropList}
+                >
                   추천순
-                </Link>
-              </li>
-              <li
-                className={`${css.drop_list} ${sort === 'sell' && css.active}`}
-                onClick={clickDropList}
-              >
-                <Link to={`${mainURL}&sort=sell`}>인기순</Link>
-              </li>
-              <li
-                className={`${css.drop_list} ${sort === 'asc' && css.active}`}
-                onClick={clickDropList}
-              >
-                <Link to={`${mainURL}&sort=asc`}>낮은가격순</Link>
-              </li>
-              <li
-                className={`${css.drop_list} ${sort === 'desc' && css.active}`}
-                onClick={clickDropList}
-              >
-                <Link to={`${mainURL}&sort=desc`}>높은가격순</Link>
-              </li>
+                </li>
+              </Link>
+              <Link to={`${mainURL}&sort=sell`}>
+                <li
+                  className={`${css.drop_list} ${
+                    sort === 'sell' && css.active
+                  }`}
+                  onClick={clickDropList}
+                >
+                  인기순
+                </li>
+              </Link>
+              <Link to={`${mainURL}&sort=asc`}>
+                <li
+                  className={`${css.drop_list} ${sort === 'asc' && css.active}`}
+                  onClick={clickDropList}
+                >
+                  낮은가격순
+                </li>
+              </Link>
+              <Link to={`${mainURL}&sort=desc`}>
+                <li
+                  className={`${css.drop_list} ${
+                    sort === 'desc' && css.active
+                  }`}
+                  onClick={clickDropList}
+                >
+                  높은가격순
+                </li>
+              </Link>
             </>
           )}
           {mainCategory && subCategory && (
             <>
-              <li
-                className={`${css.drop_list} ${sort === null && css.active}`}
-                onClick={clickDropList}
-              >
-                <Link to={`${mainSubURL}`}>추천순</Link>
-              </li>
-              <li
-                className={`${css.drop_list} ${sort === 'sell' && css.active}`}
-                onClick={clickDropList}
-              >
-                <Link to={`${mainSubURL}&sort=sell`}>인기순</Link>
-              </li>
-              <li
-                className={`${css.drop_list} ${sort === 'asc' && css.active}`}
-                onClick={clickDropList}
-              >
-                <Link to={`${mainSubURL}&sort=asc`}>낮은가격순</Link>
-              </li>
-              <li
-                className={`${css.drop_list} ${sort === 'desc' && css.active}`}
-                onClick={clickDropList}
-              >
-                <Link to={`${mainSubURL}&sort=desc`}>높은가격순</Link>
-              </li>
+              <Link to={`${mainSubURL}`}>
+                <li
+                  className={`${css.drop_list} ${sort === null && css.active}`}
+                  onClick={clickDropList}
+                >
+                  추천순
+                </li>
+              </Link>
+              <Link to={`${mainSubURL}&sort=sell`}>
+                <li
+                  className={`${css.drop_list} ${
+                    sort === 'sell' && css.active
+                  }`}
+                  onClick={clickDropList}
+                >
+                  인기순
+                </li>
+              </Link>
+              <Link to={`${mainSubURL}&sort=asc`}>
+                <li
+                  className={`${css.drop_list} ${sort === 'asc' && css.active}`}
+                  onClick={clickDropList}
+                >
+                  낮은가격순
+                </li>
+              </Link>
+              <Link to={`${mainSubURL}&sort=desc`}>
+                <li
+                  className={`${css.drop_list} ${
+                    sort === 'desc' && css.active
+                  }`}
+                  onClick={clickDropList}
+                >
+                  높은가격순
+                </li>
+              </Link>
             </>
           )}
         </ul>
