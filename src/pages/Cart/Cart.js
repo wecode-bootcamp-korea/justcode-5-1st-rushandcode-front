@@ -22,6 +22,8 @@ function Cart() {
     }
   }, [isUpdated]);
 
+  const isExist = totalCount === 0 || totalCount === undefined;
+
   const delCart = () => {
     localStorage.removeItem('cart');
     setIsUpdated(true);
@@ -56,22 +58,26 @@ function Cart() {
                 return (
                   <CartProduct key={idx} firstProduct={true} cart={cart} />
                 );
-              else return <CartProduct key={idx} cart={cart} />;
+              else
+                return (
+                  <CartProduct
+                    key={idx}
+                    cart={cart}
+                    setIsUpdated={setIsUpdated}
+                    isUpdated={isUpdated}
+                  />
+                );
             })}
         </tbody>
       </table>
       <div className={css.order_price}>
         <span>총 {totalCount}개의 금액</span>{' '}
-        <span className={css.price}>
-          ₩ {totalCount !== undefined ? totalPrice : 0}
-        </span>{' '}
-        + <span>배송비</span>{' '}
-        <span className={css.price}>
-          ₩ {totalCount !== undefined ? 2500 : 0}
-        </span>{' '}
-        = <span className={css.price}>총 주문금액</span>{' '}
+        <span className={css.price}>₩ {isExist ? 0 : totalPrice}</span> +{' '}
+        <span>배송비</span>{' '}
+        <span className={css.price}>₩ {isExist ? 0 : 2500}</span> ={' '}
+        <span className={css.price}>총 주문금액</span>{' '}
         <span className={css.total_price}>
-          ₩ {totalCount !== undefined ? totalPrice + 2500 : 0}
+          ₩ {isExist ? 0 : totalPrice + 2500}
         </span>
       </div>
       <button onClick={delCart} className={css.delete_btn}>
