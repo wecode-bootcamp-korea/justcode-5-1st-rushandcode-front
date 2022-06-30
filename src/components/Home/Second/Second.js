@@ -35,6 +35,7 @@ function Second() {
         {productData.map(productData => (
           <Secondmap
             key={productData.id}
+            id={productData.id}
             name={productData.name}
             price={productData.price}
             hashtags={productData.hashtags}
