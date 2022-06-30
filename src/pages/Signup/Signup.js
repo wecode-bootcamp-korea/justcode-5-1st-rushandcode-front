@@ -28,7 +28,6 @@ function Signup() {
     })
       .then(res => res.json())
       .then(res => {
-        alert(res.message);
         if (res.message === '회원가입을 축하드립니다.') {
           alert('회원가입을 축하드립니다.');
           gotologin();
