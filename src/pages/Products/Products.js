@@ -21,49 +21,43 @@ function Products() {
 
   useEffect(() => {
     const baseURL = 'http://localhost:10010/products';
+    const mainURL = `?mainCategory=${mainCategory}`;
+    const mainSubURL = `?mainCategory=${mainCategory}&subCategory=${subCategory}`;
     function productsURL(url) {
-      fetch(url)
+      fetch(url, { method: 'GET' })
         .then(res => res.json())
         .then(res => {
           setProducts(res.products);
         });
     }
     if (mainCategory && subCategory === null) {
-      productsURL(`${baseURL}?mainCategory=${mainCategory}`);
+      productsURL(`${baseURL}${mainURL}`);
       if (sort === 'desc') {
         //높은가격순
-        productsURL(`${baseURL}?mainCategory=${mainCategory}&sort=desc`);
+        productsURL(`${baseURL}${mainURL}}&sort=desc`);
       }
       if (sort === 'asc') {
         //낮은가격순
-        productsURL(`${baseURL}?mainCategory=${mainCategory}&sort=asc`);
+        productsURL(`${baseURL}${mainURL}&sort=asc`);
       }
       if (sort === 'sell') {
         //판매인기순
-        productsURL(`${baseURL}?mainCategory=${mainCategory}&sort=sell`);
+        productsURL(`${baseURL}${mainURL}&sort=sell`);
       }
     }
     if (mainCategory && subCategory) {
-      productsURL(
-        `${baseURL}?mainCategory=${mainCategory}&subCategory=${subCategory}`
-      );
+      productsURL(`${baseURL}${mainSubURL}`);
       if (sort === 'desc') {
         //높은가격순
-        productsURL(
-          `${baseURL}?mainCategory=${mainCategory}&subCategory=${subCategory}&sort=desc`
-        );
+        productsURL(`${baseURL}${mainSubURL}&sort=desc`);
       }
       if (sort === 'asc') {
         //낮은가격순
-        productsURL(
-          `${baseURL}?mainCategory=${mainCategory}&subCategory=${subCategory}&sort=asc`
-        );
+        productsURL(`${baseURL}${mainSubURL}&sort=asc`);
       }
       if (sort === 'sell') {
         //판매인기순
-        productsURL(
-          `${baseURL}?mainCategory=${mainCategory}&subCategory=${subCategory}&sort=sell`
-        );
+        productsURL(`${baseURL}${mainSubURL}&sort=sell`);
       }
     }
   }, [mainCategory, subCategory, sort]);
@@ -88,7 +82,7 @@ function Products() {
             />
             <article className={css.product_container}>
               <div className={css.product_box}>
-                <Productslist />
+                <Productslist data={products} />
               </div>
             </article>
           </div>
