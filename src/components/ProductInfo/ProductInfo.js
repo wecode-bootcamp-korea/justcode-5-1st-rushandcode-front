@@ -88,10 +88,14 @@ function ProductInfo(props) {
     }
     setCount(1);
     if (
-      window.confirm(`상품이 장바구니에 담겼습니다. \n바로 확인하시겠습니까?`)
+      window.confirm('상품이 장바구니에 담겼습니다. \n바로 확인하시겠습니까?')
     ) {
       navigate('/cart');
     }
+  };
+
+  const moveToReview = () => {
+    window.scrollTo(0, 3600);
   };
 
   return (
@@ -145,8 +149,10 @@ function ProductInfo(props) {
 
       <div className={css.procuct_name}>{name}</div>
       <div className={css.hashtags}>{hashtags}</div>
-      <div className={css.text}>{reviewLength}개의 후기 보기</div>
-      <div className={css.text}>Good to Know</div>
+      <button className={css.review_btn} onClick={() => moveToReview()}>
+        {reviewLength}개의 후기 보기
+      </button>
+      <div className={css.good_to_know}>Good to Know</div>
       <div className={css.price}>
         <div>판매가</div>
         <div className={css.price_num}>₩ {price}</div>
