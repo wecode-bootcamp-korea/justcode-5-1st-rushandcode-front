@@ -94,6 +94,10 @@ function ProductInfo(props) {
     }
   };
 
+  const moveToReview = () => {
+    window.scrollTo(0, 3600);
+  };
+
   return (
     <div className={css.container}>
       <div className={css.select_container}>
@@ -145,8 +149,10 @@ function ProductInfo(props) {
 
       <div className={css.procuct_name}>{name}</div>
       <div className={css.hashtags}>{hashtags}</div>
-      <div className={css.text}>{reviewLength}개의 후기 보기</div>
-      <div className={css.text}>Good to Know</div>
+      <button className={css.review_btn} onClick={() => moveToReview()}>
+        {reviewLength}개의 후기 보기
+      </button>
+      <div className={css.good_to_know}>Good to Know</div>
       <div className={css.price}>
         <div>판매가</div>
         <div className={css.price_num}>₩ {price}</div>
