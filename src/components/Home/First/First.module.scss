@@ -1,3 +1,6 @@
+.wrap {
+  position: relative;
+}
 .wrapercontainer {
   position: relative;
   width: 100%;
@@ -18,7 +21,7 @@
 .wrapbutton {
   position: absolute;
   right: 0;
-  top: 45%;
+  top: 35%;
 }
 .button {
   border-radius: 100%;
