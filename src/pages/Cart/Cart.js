@@ -58,15 +58,7 @@ function Cart() {
                 return (
                   <CartProduct key={idx} firstProduct={true} cart={cart} />
                 );
-              else
-                return (
-                  <CartProduct
-                    key={idx}
-                    cart={cart}
-                    setIsUpdated={setIsUpdated}
-                    isUpdated={isUpdated}
-                  />
-                );
+              else return <CartProduct key={idx} cart={cart} />;
             })}
         </tbody>
       </table>
