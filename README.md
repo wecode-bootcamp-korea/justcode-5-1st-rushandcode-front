@@ -1,4 +1,4 @@
-# 🫧Rush & code
+# Rush & code
 ## 프로젝트 사이트 기능 구현 영상
 [Rush & code]()
 ## Members  
