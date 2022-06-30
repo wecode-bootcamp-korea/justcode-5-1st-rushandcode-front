@@ -12,7 +12,7 @@ function Home() {
   const scrollY = () => {
     setScroll(window.scrollY);
     if (scroll > 1500) {
-      text.current.style.transform = 'translate(500px)';
+      text.current.style.transform = 'translate(650px)';
     } else if (scroll <= 1500) {
       text.current.style.transform = 'translate(0)';
       text.current.style.transition = 'transform 2s';
