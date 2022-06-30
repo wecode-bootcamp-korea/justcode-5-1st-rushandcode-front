@@ -31,6 +31,26 @@
     position: relative;
     bottom: 30px;
     width: 185px;
+
+    .buy_input {
+      display: flex;
+      border: 1px solid gray;
+      padding: 4px;
+      position: relative;
+      bottom: 6px;
+      input {
+        width: 53px;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        text-align: center;
+      }
+    }
+    button {
+      border: 0;
+      cursor: pointer;
+      background-color: transparent;
+    }
   }
   .price {
     position: relative;
