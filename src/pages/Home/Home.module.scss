@@ -17,6 +17,7 @@
 .banner_text {
   padding-left: 100px;
   margin-bottom: 10px;
+  font-family: sans-serif;
 }
 
 .line {
@@ -49,14 +50,7 @@
     opacity: 1;
   }
 }
-// @keyframes disappear {
-//   from {
-//     right: 3%;
-//   }
-//   to {
-//     right: -100%;
-//   }
-// }
+
 .lastBanner {
   display: flex;
   position: relative;
