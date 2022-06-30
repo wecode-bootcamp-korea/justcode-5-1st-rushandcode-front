@@ -137,7 +137,7 @@ function Signup() {
                 const el = document.getElementById('pw_comment');
                 const el2 = document.getElementById('pw_input');
                 // 안전한 비밀번호인지 확인
-                // isSafe 값이 1 : 안전함(영문,숫자,특수문자 중 2개 이상 들어감. 0 : 안전하지 않음..
+                // isSafe 값이 1 : 안전함(영문,숫자,특수문자 중 2개 이상 들어감. 0 : 안전하지 않음...
                 const isSafe =
                   (num >= 0 && eng >= 0) ||
                   (num >= 0 && spe >= 0) ||
