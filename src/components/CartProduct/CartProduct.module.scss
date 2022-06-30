@@ -11,6 +11,15 @@
     text-align: center;
     display: flex;
     align-items: center;
+    button {
+      width: 50px;
+      background-color: transparent;
+      border: 0;
+      color: red;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+    }
     .img {
       position: relative;
       left: 100px;
@@ -29,24 +38,45 @@
   }
   .count {
     position: relative;
-    bottom: 30px;
     width: 185px;
+
+    .buy_input {
+      display: flex;
+      border: 1px solid gray;
+      padding: 4px;
+      position: relative;
+      bottom: 6px;
+      input {
+        position: relative;
+        left: 6px;
+        width: 53px;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        text-align: center;
+      }
+    }
+    button {
+      border: 0;
+      cursor: pointer;
+      background-color: transparent;
+    }
   }
   .price {
     position: relative;
-    bottom: 30px;
+    bottom: 5px;
     width: 160px;
     min-width: 160px;
   }
   .total_price {
     position: relative;
-    bottom: 30px;
+    bottom: 5px;
     width: 160px;
     min-width: 160px;
   }
   .ship {
     position: relative;
-    bottom: 30px;
+    bottom: 10px;
     font-size: 14px;
     color: #acacac;
     line-height: 20px;
