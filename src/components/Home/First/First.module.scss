@@ -1,14 +1,14 @@
 .wrapercontainer {
   position: relative;
-  width: 100vw;
+  width: 100%;
   overflow: hidden;
 }
 .container {
-  width: 500vw;
+  width: 600%;
   display: flex;
 }
 .inner {
-  width: 100vw;
+  width: 100%;
 }
 .img {
   width: 100%;
@@ -18,7 +18,7 @@
 .wrapbutton {
   position: absolute;
   right: 0;
-  top: 200px;
+  top: 45%;
 }
 .button {
   border-radius: 100%;
@@ -31,7 +31,7 @@
   display: block;
   border-style: none;
   background-color: transparent;
-  border: 2px solid grey;
+  border: 2px solid rgba(255, 255, 255, 0.572);
 }
 
 .button:focus {
