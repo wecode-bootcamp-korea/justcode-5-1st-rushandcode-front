@@ -23,7 +23,7 @@
 * Front-end
   * HTML | STYLED-COMPONENT | JAVASCRIPT | REACT
 * Back-end
-  * PRISMA | MYSQL | NODE.JS | POSTMAN | EXPRESS
+  * PRISMA | MYSQL | NODE.JS | POSTMAN | EXPRESS | BCRYPT | JWT 
 ## 👀 담당자 별 구현 기능 
 ### 🔸 Front-end 🔸
 
