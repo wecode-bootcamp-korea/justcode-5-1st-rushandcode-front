@@ -77,20 +77,24 @@ function Nav() {
           }}
         >
           <ul>
-            <li
-              onClick={() => {
-                setHideMyPage(false);
-              }}
-            >
-              <Link to="/login">로그인</Link>
-            </li>
-            <li
-              onClick={() => {
-                setHideMyPage(false);
-              }}
-            >
-              <Link to="/signup">회원가입</Link>
-            </li>
+            <Link to="/login">
+              <li
+                onClick={() => {
+                  setHideMyPage(false);
+                }}
+              >
+                로그인
+              </li>
+            </Link>
+            <Link to="/signup">
+              <li
+                onClick={() => {
+                  setHideMyPage(false);
+                }}
+              >
+                회원가입
+              </li>
+            </Link>
           </ul>
           {hideMyPage && <span className={css.selected}></span>}
         </div>
