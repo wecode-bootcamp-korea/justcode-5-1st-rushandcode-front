@@ -1,0 +1,86 @@
+.container {
+  height: 115px;
+  border-top: 1px solid lightgray;
+  margin: 0 auto;
+  td {
+    padding: 40px;
+  }
+  .info {
+    width: 440px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    button {
+      width: 50px;
+      background-color: transparent;
+      border: 0;
+      color: red;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+    }
+    .img {
+      position: relative;
+      left: 100px;
+    }
+    .product_name {
+      width: 300px;
+      font-size: 18px;
+      text-align: left;
+      position: relative;
+      .sub_category {
+        font-size: 16px;
+        margin: 4px 0;
+        color: #8f8f8f;
+      }
+    }
+  }
+  .count {
+    position: relative;
+    width: 185px;
+
+    .buy_input {
+      display: flex;
+      border: 1px solid gray;
+      padding: 4px;
+      position: relative;
+      bottom: 6px;
+      input {
+        position: relative;
+        left: 6px;
+        width: 53px;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        text-align: center;
+      }
+    }
+    button {
+      border: 0;
+      cursor: pointer;
+      background-color: transparent;
+    }
+  }
+  .price {
+    position: relative;
+    bottom: 5px;
+    width: 160px;
+    min-width: 160px;
+  }
+  .total_price {
+    position: relative;
+    bottom: 5px;
+    width: 160px;
+    min-width: 160px;
+  }
+  .ship {
+    position: relative;
+    bottom: 10px;
+    font-size: 14px;
+    color: #acacac;
+    line-height: 20px;
+    width: 300px;
+    min-width: 160px;
+  }
+}

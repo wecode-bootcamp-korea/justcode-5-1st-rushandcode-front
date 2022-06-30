@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import css from './ProductsSelectFilter.module.scss';
 
 function ProductsSelectFilter(props) {
-  const { data, mainCategory, subCategory, sort } = props;
+  const { mainCategory, subCategory, sort } = props;
   const [appear, setAppear] = useState(false);
 
   const clickDropList = e => {
@@ -24,6 +24,9 @@ function ProductsSelectFilter(props) {
       document.removeEventListener('click', handleClickOutside);
     };
   }, [outsideRef]);
+
+  const mainURL = `/products?mainCategory=${mainCategory}`;
+  const mainSubURL = `/products?mainCategory=${mainCategory}&subCategory=${subCategory}`;
 
   return (
     <div className={css.list_header}>
@@ -50,100 +53,82 @@ function ProductsSelectFilter(props) {
         >
           {mainCategory && subCategory === null && (
             <>
-              <li className={css.drop_list} onClick={clickDropList}>
-                <Link to={`/products?mainCategory=${mainCategory}`}>
+              <Link to={`/products?mainCategory=${mainCategory}`}>
+                <li
+                  className={`${css.drop_list} ${sort === null && css.active}`}
+                  onClick={clickDropList}
+                >
                   추천순
-                </Link>
-              </li>
-              <li
-                className={
-                  sort === 'sell'
-                    ? `${css.drop_list} ${css.active}`
-                    : css.drop_list
-                }
-                onClick={clickDropList}
-              >
-                <Link to={`/products?mainCategory=${mainCategory}&sort=sell`}>
+                </li>
+              </Link>
+              <Link to={`${mainURL}&sort=sell`}>
+                <li
+                  className={`${css.drop_list} ${
+                    sort === 'sell' && css.active
+                  }`}
+                  onClick={clickDropList}
+                >
                   인기순
-                </Link>
-              </li>
-              <li
-                className={
-                  sort === 'asc'
-                    ? `${css.drop_list} ${css.active}`
-                    : css.drop_list
-                }
-                onClick={clickDropList}
-              >
-                <Link to={`/products?mainCategory=${mainCategory}&sort=asc`}>
+                </li>
+              </Link>
+              <Link to={`${mainURL}&sort=asc`}>
+                <li
+                  className={`${css.drop_list} ${sort === 'asc' && css.active}`}
+                  onClick={clickDropList}
+                >
                   낮은가격순
-                </Link>
-              </li>
-              <li
-                className={
-                  sort === 'desc'
-                    ? `${css.drop_list} ${css.active}`
-                    : css.drop_list
-                }
-                onClick={clickDropList}
-              >
-                <Link to={`/products?mainCategory=${mainCategory}&sort=desc`}>
+                </li>
+              </Link>
+              <Link to={`${mainURL}&sort=desc`}>
+                <li
+                  className={`${css.drop_list} ${
+                    sort === 'desc' && css.active
+                  }`}
+                  onClick={clickDropList}
+                >
                   높은가격순
-                </Link>
-              </li>
+                </li>
+              </Link>
             </>
           )}
           {mainCategory && subCategory && (
             <>
-              <li className={css.drop_list} onClick={clickDropList}>
-                <Link
-                  to={`/products?mainCategory=${mainCategory}&subCategory=${subCategory}`}
+              <Link to={`${mainSubURL}`}>
+                <li
+                  className={`${css.drop_list} ${sort === null && css.active}`}
+                  onClick={clickDropList}
                 >
                   추천순
-                </Link>
-              </li>
-              <li
-                className={
-                  sort === 'sell'
-                    ? `${css.drop_list} ${css.active}`
-                    : css.drop_list
-                }
-                onClick={clickDropList}
-              >
-                <Link
-                  to={`/products?mainCategory=${mainCategory}&subCategory=${subCategory}&sort=sell`}
+                </li>
+              </Link>
+              <Link to={`${mainSubURL}&sort=sell`}>
+                <li
+                  className={`${css.drop_list} ${
+                    sort === 'sell' && css.active
+                  }`}
+                  onClick={clickDropList}
                 >
                   인기순
-                </Link>
-              </li>
-              <li
-                className={
-                  sort === 'asc'
-                    ? `${css.drop_list} ${css.active}`
-                    : css.drop_list
-                }
-                onClick={clickDropList}
-              >
-                <Link
-                  to={`/products?mainCategory=${mainCategory}&subCategory=${subCategory}&sort=asc`}
+                </li>
+              </Link>
+              <Link to={`${mainSubURL}&sort=asc`}>
+                <li
+                  className={`${css.drop_list} ${sort === 'asc' && css.active}`}
+                  onClick={clickDropList}
                 >
                   낮은가격순
-                </Link>
-              </li>
-              <li
-                className={
-                  sort === 'desc'
-                    ? `${css.drop_list} ${css.active}`
-                    : css.drop_list
-                }
-                onClick={clickDropList}
-              >
-                <Link
-                  to={`/products?mainCategory=${mainCategory}&subCategory=${subCategory}&sort=desc`}
+                </li>
+              </Link>
+              <Link to={`${mainSubURL}&sort=desc`}>
+                <li
+                  className={`${css.drop_list} ${
+                    sort === 'desc' && css.active
+                  }`}
+                  onClick={clickDropList}
                 >
                   높은가격순
-                </Link>
-              </li>
+                </li>
+              </Link>
             </>
           )}
         </ul>

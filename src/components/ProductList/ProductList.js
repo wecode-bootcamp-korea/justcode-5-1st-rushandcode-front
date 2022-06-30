@@ -2,16 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import css from './ProductList.module.scss';
 
-function Productslist(props) {
-  const { data, mainCategory, subCategory } = props;
-  console.log(data);
+function Productslist({ data }) {
   return (
     <ul className={css.product_list}>
       {data.map(data => (
         <li key={data.id}>
           <Link to={`/productDetail/${data.id}`}>
             <div className={css.prd_img}>
-              <img src={data.productImages[0].url} alt="상품명" />
+              <img src={data.productImages[0].url} alt={data.name} />
             </div>
             <div className={css.prd_label}>
               <span className={css.prd_label_new}>NEW</span>

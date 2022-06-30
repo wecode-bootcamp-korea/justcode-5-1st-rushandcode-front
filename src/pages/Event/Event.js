@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import EventInfo from '../../components/EventInfo/EventInfo';
 import css from './Event.module.scss';
 
@@ -18,7 +19,9 @@ function Event() {
           </div>
         </div>
         <div className={css.event_tab}>
-          <span>진행중 이벤트</span>
+          <span>
+            <Link to="/event">진행중 이벤트</Link>
+          </span>
           <span>|</span>
           <span>신청자 발표</span>
           <span>|</span>

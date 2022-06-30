@@ -7,21 +7,29 @@ function First() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const ToTalIndex = 4;
-  const them = 4;
 
   useEffect(() => {
-    setTimeout(() => {
-      if (currentIndex < ToTalIndex) {
-        setCurrentIndex(prev => prev + 1);
-        slider.current.style.transform = `translate(-${currentIndex * 100}vw)`;
-        slider.current.style.transition = `transform 2s`;
-      } else if (currentIndex === ToTalIndex) {
+    const timer = setTimeout(() => {
+      if (currentIndex <= ToTalIndex) {
+        setCurrentIndex(currentIndex + 1);
+        slider.current.style.transform = `translate(-${
+          currentIndex * 16.6666
+        }%)`;
+        slider.current.style.transition = 'all 1s ease-in-out';
+      } else if (currentIndex > ToTalIndex) {
+        setTimeout(() => {
+          slider.current.style.transform = `translate(0%)`;
+          slider.current.style.transition = 'all 0s ease-out';
+        }, 500);
+        slider.current.style.transform = `translate(-83.2%)`;
+        slider.current.style.transition = 'all 0.5s ease-out';
         setCurrentIndex(0);
-        slider.current.style.transform = `translate(${currentIndex}vw)`;
-        slider.current.style.transition = `transform 3s`;
       }
     }, 3000);
-  }, [currentIndex]);
+    return () => {
+      clearTimeout(timer);
+    };
+  });
 
   const first_button = () => {
     slider.current.style.transform = `translate(0vw)`;
@@ -29,62 +37,69 @@ function First() {
     setCurrentIndex(0);
   };
   const second_button = () => {
-    slider.current.style.transform = `translate(-100vw)`;
+    slider.current.style.transform = `translate(-16.6%)`;
     slider.current.style.transition = `transform 1s`;
     setCurrentIndex(1);
   };
   const third_button = () => {
-    slider.current.style.transform = `translate(-200vw)`;
+    slider.current.style.transform = `translate(-33.3%)`;
     slider.current.style.transition = `transform 1s`;
     setCurrentIndex(2);
   };
   const fourth_button = () => {
-    slider.current.style.transform = `translate(-300vw)`;
+    slider.current.style.transform = `translate(-50%)`;
     slider.current.style.transition = `transform 1s`;
     setCurrentIndex(3);
   };
   const fifth_button = () => {
-    slider.current.style.transform = `translate(-400vw)`;
+    slider.current.style.transform = `translate(-66.7%)`;
     slider.current.style.transition = `transform 1s`;
     setCurrentIndex(4);
   };
 
   return (
-    <>
+    <div className={css.wrap}>
       <div className={css.wrapercontainer}>
         <div ref={slider} className={css.container}>
           <div className={css.inner}>
             <img
               className={css.img}
-              src="https://lush.co.kr/data/editor/goods/200624/perfume01_134035.jpg"
+              src="https://www.lush.co.kr/data/editor/goods/200623/scrub01_131910.jpg"
               alt="이미지"
             />
           </div>
           <div className={css.inner}>
             <img
               className={css.img}
-              src="https://cdn.pixabay.com/photo/2018/05/23/22/37/chinchillas-3425370__340.jpg"
+              src="https://www.lush.co.kr/data/editor/goods/200623/dustingpowder02_140617.jpg"
               alt="이미지"
             />
           </div>
           <div className={css.inner}>
             <img
               className={css.img}
-              src="https://cdn.pixabay.com/photo/2016/11/29/04/42/conifers-1867371__340.jpg"
+              src="https://www.lush.co.kr/data/editor/goods/200623/shaving02_141759.jpg"
               alt="이미지"
             />
           </div>
           <div className={css.inner}>
             <img
               className={css.img}
-              src="https://cdn.pixabay.com/photo/2021/02/06/14/24/lavanttal-5988332__340.jpg"
+              src="https://www.lush.co.kr/data/editor/goods/200623/massagebars01_134658.jpg"
               alt="이미지"
             />
           </div>
           <div className={css.inner}>
             <img
               className={css.img}
-              src="https://cdn.pixabay.com/photo/2021/08/08/15/52/ferns-6531279__480.jpg"
+              src="https://www.lush.co.kr/data/editor/goods/200624/showergeljellies01_100359.jpg"
+              alt="이미지"
+            />
+          </div>
+          <div className={css.inner}>
+            <img
+              className={css.img}
+              src="https://www.lush.co.kr/data/editor/goods/200623/scrub01_131910.jpg"
               alt="이미지"
             />
           </div>
@@ -97,7 +112,7 @@ function First() {
         <button className={css.button} onClick={fourth_button} />
         <button className={css.button} onClick={fifth_button} />
       </div>
-    </>
+    </div>
   );
 }
 
