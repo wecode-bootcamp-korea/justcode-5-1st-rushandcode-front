@@ -58,7 +58,7 @@ function First() {
   };
 
   return (
-    <>
+    <div className={css.wrap}>
       <div className={css.wrapercontainer}>
         <div ref={slider} className={css.container}>
           <div className={css.inner}>
@@ -112,7 +112,7 @@ function First() {
         <button className={css.button} onClick={fourth_button} />
         <button className={css.button} onClick={fifth_button} />
       </div>
-    </>
+    </div>
   );
 }
 
