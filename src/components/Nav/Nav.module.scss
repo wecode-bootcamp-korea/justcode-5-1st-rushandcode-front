@@ -117,21 +117,22 @@
   ul {
     width: 200px;
     color: #333;
-    li {
-      line-height: 50px;
-      text-align: center;
-      border-bottom: 1px solid #eaeaea;
-      cursor: pointer;
-      a {
-        color: #333;
-        font-size: 14px;
+    a {
+      color: #333;
+      font-size: 14px;
+      li {
+        line-height: 50px;
+        text-align: center;
+        border-bottom: 1px solid #eaeaea;
+        cursor: pointer;
       }
     }
-    li:hover {
-      background: #333;
-      transition: 0.5s;
-      a {
-        color: white;
+
+    a:hover {
+      color: white;
+      li {
+        background: #333;
+        transition: 0.5s;
       }
     }
   }
