@@ -19,8 +19,67 @@ function CartProduct(props) {
 
   const name = productInfo?.name;
   const subCategory = productInfo?.sub_category;
-  const count = cart.count;
   const price = productInfo.price;
+
+  const [count, setCount] = useState(cart.count);
+  const countUp = () => {
+    setCount(count + 1);
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    localStorage.setItem(
+      'cart',
+      JSON.stringify(
+        cart.map(obj => {
+          if (obj.id === id) {
+            return {
+              ...obj,
+              count: obj.count + 1,
+              totalPrice: obj.totalPrice + price,
+            };
+          } else {
+            return {
+              ...obj,
+            };
+          }
+        })
+      )
+    );
+    window.location.reload();
+  };
+
+  const countDown = async () => {
+    if (count > 1) {
+      setCount(count - 1);
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      localStorage.setItem(
+        'cart',
+        JSON.stringify(
+          cart.map(obj => {
+            if (obj.id === id) {
+              return {
+                ...obj,
+                count: obj.count - 1,
+                totalPrice: obj.totalPrice - price,
+              };
+            } else {
+              return {
+                ...obj,
+              };
+            }
+          })
+        )
+      );
+      window.location.reload();
+    }
+  };
+
+  const deleteProduct = () => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    localStorage.setItem(
+      'cart',
+      JSON.stringify(cart.filter(item => item.id !== id))
+    );
+    window.location.reload();
+  };
 
   const imageList = productInfo?.productImages;
   const [image, setImage] = useState(null);
@@ -31,13 +90,20 @@ function CartProduct(props) {
   return (
     <tr className={css.container}>
       <td className={css.info}>
+        <button onClick={deleteProduct}>삭제</button>
         {image && <Image className={css.img} size={70} src={image} />}
         <div className={css.product_name}>
           <div>{name}</div>
           <div className={css.sub_category}>{subCategory}</div>
         </div>
       </td>
-      <td className={css.count}>{count}</td>
+      <td className={css.count}>
+        <div className={css.buy_input}>
+          <button onClick={countDown}>-</button>
+          <input disabled type="number" value={count} />
+          <button onClick={countUp}>+</button>
+        </div>
+      </td>
       <td className={css.price}>₩ {price}</td>
       <td className={css.total_price}>₩ {count * price}</td>
       {firstProduct && (
