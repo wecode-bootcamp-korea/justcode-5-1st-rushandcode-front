@@ -1,8 +1,10 @@
 # 🧼 Rush & code
 
+![rush_and_code](https://user-images.githubusercontent.com/105163878/176671996-42783279-4c1a-4ff8-a3ad-bf3a133bb609.JPG)
+
 ## 🎥 프로젝트 사이트 기능 구현 영상
 
-[Rush & code]()
+[Rush & code](https://www.youtube.com/watch?v=woZ2RcwbpXE)
 
 ## 👨‍👨‍👧‍👧 Members
 
@@ -35,11 +37,11 @@
 ## 💻 Technlogies
 
 - Front-end
-  - HTML | STYLED-COMPONENT | JAVASCRIPT | REACT
+  - HTML | SCSS | JAVASCRIPT | REACT | STYLED-COMPONENTS
 - Back-end
   - PRISMA | MYSQL | NODE.JS | POSTMAN | EXPRESS
 
-## 👀 담당자 별 구현 기능
+## 👀 구현 기능
 
 ### 🔸 Front-end 🔸
 
@@ -58,13 +60,13 @@
 #### 임상빈
 
 - **`메인 페이지`**
-  - 메인페이지 첫번째 배너 무한 자동재생기능 및 인덱스버튼 클릭시 해당 슬라이더로 이동기능 구현
-  - 가장 많이 판매된 제품순으로 12개를 백앤드에서 데이터를 받아 배너구현 해당 배너 이미지 클릭시 제품상세페이지로 이동
-  - 세번째 캐러셀 배너 prev next 버튼 구현
-  - 네번째 배너 이미지 Fixed 로 구현 및 배너 텍스트 스크롤 이벤트 추가하여 특정 구간에서 텍스트 애니메이션 효과 구현
-  - 마지막 배너 keyframe 애니메이션으로 구현
+  - 메인 배너 : 무한 자동 재생 기능과 인덱스 버튼 클릭 시 해당 슬라이더로 이동 기능 구현
+  - 상품 리스트 배너 : DB에서 판매순으로 제품을 받아 배너 구현, 해당 배너 클릭 시 제품 상세페이지 연동
+  - 캐러셀(슬라이더) 배너 : prev/next 버튼 구현
+  - 이미지 Fixed 기능과 text scroll 이벤트를 추가하여 특정 구간에서 text 애니메이션 효과 구현
+  - keyframe 애니메이션으로 배너 구현
 - **`Footer`**
-  - 푸터에 비디오 태그를 이용하여 비디오 재생
+  - footer에 video 태그를 이용하여 비디오 재생
 
 #### 서수민
 
@@ -104,10 +106,10 @@
 
 #### 임상빈
 
-- **`회원가입&로그인 API 및 에러핸들러 미들웨어`**
-  - FE 에서 회원가입에 필요한 User 정보를 req.body 값으로 보내주면 해당 값에 대하여 필수조건을 Validation 한 후 password 정보는 bcrypt를 통하여 암호화 하여 user 정보를데이터 베이스에 저장 한 후 성공 및 실패에 대한 메시지를 전송하는 기능을 구현하였습니다.
-  - FE에서 로그인 정보를 전달해주면 BE에서 해당유저 정보를 bcrypt를 사용하여 데이터베이스에 있는 정보와 비교하여 일치하는 경우 JWT Token을 이용하여 토큰 생성 후 Response 해주는 기능을 구현하였습니다.
-  - BE 에러 핸들러 미들웨어 기능을 구현하여 어떤 레이어에 있던 에러작업을 미들웨어를 통하여 핸들할 수 있도록 구현하였습니다.
+- **`회원가입&로그인 API 및 에러 핸들러 미들웨어`**
+  - FE에서 회원가입에 필요한 User 정보를 req.body 값으로 보내주면 해당 값에 대하여 필수조건을 Validation 한 후 password 정보는 bcrypt를 통하여 암호화하여 user 정보를 DB에 저장한 후 성공 및 실패에 대한 메시지를 전송하는 기능을 구현
+  - FE에서 로그인 정보를 전달해주면 BE에서 해당 유저 정보를 crypt를 사용하여 데이터베이스에 있는 정보와 비교하여 일치하는 경우 JWT Token을 이용하여 토큰 생성 후 Response 해주는 기능을 구현
+  - BE 에러 핸들러 미들웨어 기능을 구현하여 어떤 레이어에 있든 에러 작업은 미들웨어를 통하여 핸들 할 수 있도록 구현
 
 #### 서수민
 
@@ -116,7 +118,8 @@
 
 #### 손소희
 
-- 제품 상세 API
+- **`제품 상세 API`**
+  - 제품 상세 정보 전달 API 구현
 
 ## Contact US
 
