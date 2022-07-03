@@ -8,11 +8,12 @@ function Cart() {
 
   const cartList = JSON.parse(localStorage.getItem('cart'));
   const totalCount = cartList?.length;
-  let [totalPrice, setTotalPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
   const [isUpdated, setIsUpdated] = useState(false);
 
   useEffect(() => {
     setIsUpdated(false);
+    setTotalPrice(0);
     for (let i = 0; i < cartList?.length; i++) {
       let price = cartList[i]?.totalPrice;
       setTotalPrice(prev => prev + price);
@@ -56,14 +57,26 @@ function Cart() {
             cartList.map((cart, idx) => {
               if (idx === 0)
                 return (
-                  <CartProduct key={idx} firstProduct={true} cart={cart} />
+                  <CartProduct
+                    key={idx}
+                    firstProduct={true}
+                    cart={cart}
+                    setIsUpdated={setIsUpdated}
+                  />
                 );
-              else return <CartProduct key={idx} cart={cart} />;
+              else
+                return (
+                  <CartProduct
+                    key={idx}
+                    cart={cart}
+                    setIsUpdated={setIsUpdated}
+                  />
+                );
             })}
         </tbody>
       </table>
       <div className={css.order_price}>
-        <span>총 {totalCount}개의 금액</span>{' '}
+        <span>총 {totalCount || 0}개의 금액</span>{' '}
         <span className={css.price}>₩ {isExist ? 0 : totalPrice}</span> +{' '}
         <span>배송비</span>{' '}
         <span className={css.price}>₩ {isExist ? 0 : 2500}</span> ={' '}
