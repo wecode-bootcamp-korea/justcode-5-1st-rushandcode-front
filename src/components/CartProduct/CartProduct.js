@@ -105,7 +105,7 @@ function CartProduct(props) {
         </div>
       </td>
       <td className={css.price}>₩ {price}</td>
-      <td className={css.total_price}>₩ {count * price}</td>
+      <td className={css.price}>₩ {count * price}</td>
       {firstProduct && (
         <td className={css.ship}>
           <div>₩ 2,500</div>
