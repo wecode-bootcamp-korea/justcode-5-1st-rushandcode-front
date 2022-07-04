@@ -3,9 +3,9 @@ import css from './Review.module.scss';
 import ReviewModal from '../ReviewModal/ReviewModal';
 
 function Review(props) {
-  const { id, userId, userName, review, stars, createdAt, setIsUpdated } =
+  const { id, userId, userName, review, stars, updatedAt, setIsUpdated } =
     props;
-  const time = createdAt.split(' ')[0];
+  const time = updatedAt.split(' ')[0];
   const myId = localStorage.getItem('user_id');
   const isMyReview = userId === Number(myId);
 
