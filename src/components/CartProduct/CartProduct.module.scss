@@ -4,18 +4,15 @@
   bottom: $b;
   width: $w;
 }
-
 @mixin count($border, $bg, $cursor: auto) {
   border: $border;
   background-color: $bg;
   cursor: $cursor;
 }
-
 @mixin left($left) {
   position: relative;
   left: $left;
 }
-
 @mixin size($w: auto, $h: auto, $m: auto, $p: auto) {
   width: $w;
   height: $h;

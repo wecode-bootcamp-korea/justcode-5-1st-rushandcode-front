@@ -3,13 +3,11 @@
   border: $border;
   color: $color;
 }
-
 @mixin size($w, $h, $m: auto) {
   width: $w;
   height: $h;
   margin: $m;
 }
-
 @mixin font($size, $weight: 900, $align: center) {
   font-size: $size;
   font-weight: $weight;
@@ -18,71 +16,57 @@
 
 .container {
   @include size(1100px, auto, 0 auto);
-
   h2 {
     @include font(42px);
     @include size(auto, 60px, 100px 0);
   }
-
   table {
     @include size(1100px, auto);
     text-align: center;
-
     caption {
       @include font(22px, 900, left);
       height: 30px;
     }
-
     tr {
       height: 50px;
     }
-
     th {
       color: #8f8f8f;
       border-top: 1px solid black;
       padding: 15px 0;
     }
   }
-
   .order_price {
     @include size(1100px, 94px);
     @include font(18px, 400);
     background-color: rgb(224, 224, 224);
     color: #333333;
     padding: 30px;
-
     span {
       padding: 10px;
     }
-
     .price {
       font-weight: 700;
     }
-
     .total_price {
       @include font(26px, 700);
     }
   }
-
   .delete_btn {
     @include btn(transparent, 0);
     cursor: pointer;
     border-bottom: 1px solid;
     margin: 20px 0;
   }
-
   .buttons {
     display: flex;
     justify-content: center;
-
     :nth-child(1) {
       @include btn(white, 1px solid black);
     }
-
     :nth-child(2) {
       @include btn(black, 1px solid black, white);
     }
-
     button {
       @include size(280px, 63px, 30px);
       cursor: pointer;
