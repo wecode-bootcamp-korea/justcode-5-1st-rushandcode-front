@@ -44,10 +44,7 @@ function Login() {
   };
 
   const validation = (idText, pwText) => {
-    if (idText.length < 1) {
-      return false;
-    }
-    if (pwText.length < 7) {
+    if (idText.length < 1 || pwText.length < 7) {
       return false;
     }
     return true;

@@ -23,8 +23,8 @@ function ProductInfo(props) {
   const reviewLength = productInfo?.productReviews?.length || 0;
   const weight = productInfo?.weight;
 
-  let { price } = productInfo;
-  let totalPrice = price * count;
+  const { price } = productInfo;
+  const totalPrice = price * count;
 
   const [mainCategory, setMainCategory] = useState('');
   const [mainList, setMainList] = useState([]);
@@ -65,7 +65,6 @@ function ProductInfo(props) {
           JSON.stringify([data, ...JSON.parse(localStorage.getItem('cart'))])
         );
       } else {
-        cart.id = 'test';
         localStorage.setItem(
           'cart',
           JSON.stringify(
