@@ -31,7 +31,6 @@ const Inner = styled.div`
   background-image: url('${props => props.src}');
   background-size: cover;
   background-position: center;
-  background-size: cover;
   object-fit: cover;
   width: ${props => (props.width ? props.width : props.size)}px;
   height: ${props => (props.height ? props.height : props.size)}px;
