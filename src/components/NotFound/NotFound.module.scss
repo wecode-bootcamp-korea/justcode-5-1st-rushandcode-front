@@ -1,7 +1,11 @@
+@mixin size($w: null, $h: null, $m: null) {
+  width: $w;
+  height: $h;
+  margin: $m;
+}
+
 .container {
-  width: 578px;
-  height: 462px;
-  margin: 240px auto 0;
+  @include size(578px, 462px, 240px auto 0);
   :nth-child(1) {
     margin: 20px auto;
   }
@@ -24,10 +28,8 @@
     .buttons {
       margin: 30px auto;
       button {
+        @include size(130px, 44px, 10px);
         cursor: pointer;
-        margin: 10px;
-        width: 130px;
-        height: 44px;
         background-color: transparent;
         color: #666666;
         border: 1px solid #666666;
