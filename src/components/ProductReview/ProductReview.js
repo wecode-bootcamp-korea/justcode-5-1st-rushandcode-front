@@ -103,7 +103,7 @@ function ProductReview(props) {
               userId={review.user_id}
               review={review.content}
               stars={review.stars}
-              createdAt={review.created_at}
+              updatedAt={review.updated_at}
               setIsUpdated={setIsUpdated}
             />
           );
