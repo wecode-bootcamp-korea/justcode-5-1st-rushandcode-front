@@ -3,7 +3,7 @@ import css from './CartProduct.module.scss';
 import Image from '../../elements/Image';
 
 function CartProduct(props) {
-  const { firstProduct, cart } = props;
+  const { firstProduct, cart, setIsUpdated } = props;
   const [productInfo, setProductInfo] = useState([]);
   const id = cart.id;
 
@@ -43,7 +43,7 @@ function CartProduct(props) {
         })
       )
     );
-    window.location.reload();
+    setIsUpdated(true);
   };
 
   const countDown = async () => {
@@ -68,8 +68,8 @@ function CartProduct(props) {
           })
         )
       );
-      window.location.reload();
     }
+    setIsUpdated(true);
   };
 
   const deleteProduct = () => {
@@ -78,7 +78,7 @@ function CartProduct(props) {
       'cart',
       JSON.stringify(cart.filter(item => item.id !== id))
     );
-    window.location.reload();
+    setIsUpdated(true);
   };
 
   const imageList = productInfo?.productImages;
@@ -105,7 +105,7 @@ function CartProduct(props) {
         </div>
       </td>
       <td className={css.price}>₩ {price}</td>
-      <td className={css.total_price}>₩ {count * price}</td>
+      <td className={css.price}>₩ {count * price}</td>
       {firstProduct && (
         <td className={css.ship}>
           <div>₩ 2,500</div>
