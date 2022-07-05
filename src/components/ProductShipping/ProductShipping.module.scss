@@ -10,12 +10,8 @@
     margin: 50px 200px;
   }
 
-  .ship_desc,
-  .exchange_desc {
-    display: flex;
-    justify-content: left;
-    position: relative;
-    left: 100px;
+  .desc {
+    margin: 0 auto;
     font-size: 14px;
     line-height: 30px;
     color: #333333;

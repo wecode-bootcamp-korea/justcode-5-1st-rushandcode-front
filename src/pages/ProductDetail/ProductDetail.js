@@ -10,7 +10,7 @@ import NotFound from '../../components/NotFound/NotFound';
 
 function ProductDetail() {
   const id = useLocation().pathname.split('/')[2];
-  const isExist = id > 0 && id < 108;
+  const isExist = id > 0 && id < 109;
 
   const [productInfo, setProductInfo] = useState([]);
   const [isUpdated, setIsUpdated] = useState(false);

@@ -1,12 +1,22 @@
+@mixin size($w: null, $h: null, $m: null, $p: null) {
+  width: $w;
+  height: $h;
+  margin: $m;
+  padding: $p;
+}
+@mixin position($position, $t: null, $r: null, $b: null, $l: null) {
+  position: $position;
+  top: $t;
+  right: $r;
+  bottom: $b;
+  left: $l;
+}
+
 .container {
+  @include size(1170px, $m: 0 auto, $p: 20px);
+  @include position(relative, $b: 150px, $r: 10px);
   display: flex;
   align-items: center;
-  position: relative;
-  bottom: 150px;
-  right: 10px;
-  margin: 0 auto;
-  padding: 20px;
-  width: 1170px;
   border-bottom: 1px solid lightgray;
   .review_info {
     width: 200px;
@@ -32,11 +42,8 @@
     display: flex;
     width: 100px;
     button {
-      width: 50px;
-      height: 26px;
-      position: relative;
-      top: 40px;
-      margin: 4px;
+      @include size(50px, 26px, 4px);
+      @include position(relative, $t: 40px);
       background: #c7c7c7;
       color: white;
       border: 0;

@@ -1,34 +1,39 @@
+@mixin size($w: null, $h: null, $m: null, $p: null) {
+  width: $w;
+  height: $h;
+  margin: $m;
+  padding: $p;
+}
+@mixin position($position, $t: null, $r: null, $b: null, $l: null) {
+  position: $position;
+  top: $t;
+  right: $r;
+  bottom: $b;
+  left: $l;
+}
+$border: 1px solid #e8e8e8;
+
 .modal {
+  @include position(fixed, 0, 0, 0, 0);
   display: none;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   z-index: 99;
   background-color: rgba(0, 0, 0, 0.6);
   button {
-    outline: none;
     cursor: pointer;
     border: 0;
   }
   section {
-    width: 860px;
-    height: 462px;
-    margin: 0 auto;
+    @include size(860px, 462px, 0 auto);
     border-radius: 0.3rem;
     background-color: #fff;
     overflow: hidden;
     header {
+      @include size($m: 0 30px, $p: 16px 0 16px 0px);
       position: relative;
-      padding: 16px 0 16px 0px;
-      margin: 0 30px;
       border-bottom: 2px solid gray;
       font-weight: 700;
       button {
-        position: absolute;
-        bottom: -12px;
-        right: 8px;
+        @include position(absolute, $r: 8px, $b: -12px);
         width: 30px;
         font-size: 55px;
         text-align: center;
@@ -37,54 +42,38 @@
       }
     }
     main {
-      padding: 16px;
-      margin: 20px 0;
-      width: 300px;
-      height: 300px;
+      @include size(300px, 300px, 20px 0, 16px);
       select {
-        width: 796.5px;
-        border: 1px solid #e8e8e8;
+        cursor: pointer;
+        @include size(796.5px, 30px, 0 0 0 15px);
+        border: $border;
         color: #ffcc00;
         font-size: 15px;
         outline: none;
-        height: 30px;
-        margin: 0 0 0 15px;
       }
       .textarea_header {
-        position: relative;
-        top: 16px;
-        left: 1px;
-        width: 795px;
-        height: 30px;
-        border: 1px solid #e8e8e8;
+        @include size(795px, 30px, 0 0 0 15px);
+        @include position($position: relative, $t: 16px, $l: 1px);
+        border: $border;
         border-bottom: 0;
         background-color: #f8f8f8;
-        margin: 0 0 0 15px;
       }
       textarea {
-        margin: 16px;
-        width: 795px;
-        height: 200px;
-        border: 1px solid #e8e8e8;
+        @include size(795px, 200px, 16px);
+        border: $border;
         outline: none;
         resize: none;
       }
     }
     footer {
+      @include size(795px, 60px);
+      @include position($position: relative, $b: 30px, $l: 32px);
       text-align: right;
-      width: 795px;
-      height: 60px;
-      border: 1px solid #e8e8e8;
+      border: $border;
       border-top: 0;
-      position: relative;
-      bottom: 30px;
-      left: 32px;
       button {
-        height: 97%;
-        width: 100px;
-        position: relative;
-        top: 2px;
-        padding: 6px 12px;
+        @include size(100px, 97%, $p: 6px 12px);
+        @include position($position: relative, $t: 2px);
         color: #fff;
         background-color: #666666;
         font-size: 13px;
