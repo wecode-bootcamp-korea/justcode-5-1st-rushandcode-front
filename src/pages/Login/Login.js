@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import BASE_URL from '../../config';
 
 import css from './Login.module.scss';
 
@@ -13,7 +14,7 @@ function Login() {
   };
 
   const dataFetch = () => {
-    fetch('http://localhost:10010/login', {
+    fetch(`${BASE_URL}/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

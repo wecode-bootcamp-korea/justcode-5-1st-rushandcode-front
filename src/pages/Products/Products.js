@@ -5,6 +5,7 @@ import ProductCategory from '../../components/ProductsCategory/ProductsCategory'
 import ProductsSelectFilter from '../../components/ProductsSelectFilter/ProductsSelectFilter';
 import ProductsTopBanner from '../../components/ProductsTopBanner/ProductsTopBanner';
 import css from './Products.module.scss';
+import BASE_URL from '../../config';
 
 function Products() {
   function useQuery() {
@@ -20,8 +21,7 @@ function Products() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    //const baseURL = 'http://localhost:10010/products';
-    const baseURL = 'http://3.34.95.174:10010/products';
+    const baseURL = `${BASE_URL}/products`;
     const mainURL = `?mainCategory=${mainCategory}`;
     const mainSubURL = `?mainCategory=${mainCategory}&subCategory=${subCategory}`;
     function productsURL(url) {
