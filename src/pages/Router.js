@@ -12,6 +12,7 @@ import NotFound from '../components/NotFound/NotFound';
 import Event from '../pages/Event/Event';
 import EventDetail from '../pages/EventDetail/EventDetail';
 import Cart from '../pages/Cart/Cart';
+import Search from './Search/Search';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/event" element={<Event />} />
         <Route path="/eventDetail/:id" element={<EventDetail />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
       <Footer />
     </BrowserRouter>

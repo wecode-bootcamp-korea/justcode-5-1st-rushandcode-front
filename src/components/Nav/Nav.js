@@ -32,7 +32,7 @@ function Nav() {
               }}
             >
               <span>제품</span>
-              {hideMenu && <span className={css.selected}></span>}
+              {hideMenu && <span className={css.selected} />}
             </li>
             <li className={css.nav_intro}>
               <Link to="">러쉬 소개</Link>
@@ -49,7 +49,7 @@ function Nav() {
           </ul>
         </div>
         <div className={css.nav_icon}>
-          <Link to="">
+          <Link to="/search">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </Link>
           <Link to="/cart">
@@ -96,7 +96,7 @@ function Nav() {
               </li>
             </Link>
           </ul>
-          {hideMyPage && <span className={css.selected}></span>}
+          {hideMyPage && <span className={css.selected} />}
         </div>
       </nav>
       <div
