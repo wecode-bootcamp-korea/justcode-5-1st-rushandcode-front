@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import css from './Search.module.scss';
 import { useNavigate } from 'react-router-dom';
 import Searchdetail from './Searchdetail';
+import BASE_URL from '../../config';
 
 const Search = () => {
   const [value, setValue] = useState('');
   const [data, setData] = useState([]);
   const navigate = useNavigate();
-  const [onoff, setOnoff] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:10010/products`)
+    fetch(`${BASE_URL}/products`)
       .then(res => res.json())
       .then(res => setData(res.products));
   }, []);

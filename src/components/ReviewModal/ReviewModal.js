@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import css from './ReviewModal.module.scss';
+import BASE_URL from '../../config';
 
 const ReviewModal = props => {
   const { open, close, header, content, stars, id, setIsUpdated } = props;
@@ -24,7 +25,7 @@ const ReviewModal = props => {
     if (text === '') {
       alert('리뷰 내용을 입력해주세요!');
     } else {
-      fetch(`http://localhost:10010/review/${id}`, {
+      fetch(`${BASE_URL}/review/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

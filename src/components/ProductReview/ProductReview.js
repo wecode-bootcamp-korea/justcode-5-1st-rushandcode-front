@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import css from './ProductReview.module.scss';
 import ProductTab from '../ProductTab/ProductTab';
 import Review from './Review';
+import BASE_URL from '../../config';
 
 function ProductReview(props) {
   const { reviewList, setIsUpdated } = props;
@@ -28,7 +29,7 @@ function ProductReview(props) {
     } else if (content === '') {
       alert('리뷰 내용을 입력해주세요!');
     } else {
-      fetch('http://localhost:10010/review', {
+      fetch(`${BASE_URL}/review`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
