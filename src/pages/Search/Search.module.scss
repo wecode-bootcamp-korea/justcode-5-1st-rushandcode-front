@@ -1,0 +1,16 @@
+.wrapBar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 200px;
+}
+.searchBar {
+  margin-top: 100px;
+  border: none;
+  width: 50%;
+  height: 50px;
+  font-size: 30px;
+  outline: none;
+  text-align: center;
+  border-bottom: 3px solid;
+}
