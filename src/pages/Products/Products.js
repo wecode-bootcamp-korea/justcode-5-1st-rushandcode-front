@@ -20,7 +20,8 @@ function Products() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const baseURL = 'http://localhost:10010/products';
+    //const baseURL = 'http://localhost:10010/products';
+    const baseURL = 'http://3.34.95.174:10010/products';
     const mainURL = `?mainCategory=${mainCategory}`;
     const mainSubURL = `?mainCategory=${mainCategory}&subCategory=${subCategory}`;
     function productsURL(url) {
