@@ -59,7 +59,7 @@ function Nav() {
           </ul>
         </div>
         <div className={css.nav_icon}>
-          <Link to>
+          <Link to="/search">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </Link>
           <Link to="/cart">
