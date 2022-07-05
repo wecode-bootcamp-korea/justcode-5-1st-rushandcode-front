@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import css from './CartProduct.module.scss';
 import Image from '../../elements/Image';
+import BASE_URL from '../../config';
 
 function CartProduct(props) {
   const { firstProduct, cart, setIsUpdated } = props;
@@ -8,7 +9,7 @@ function CartProduct(props) {
   const id = cart.id;
 
   useEffect(() => {
-    fetch(`http://localhost:10010/products/${id}`, {
+    fetch(`${BASE_URL}/products/${id}`, {
       method: 'GET',
     })
       .then(res => res.json())

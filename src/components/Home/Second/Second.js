@@ -1,13 +1,14 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Secondmap from './Secondmap';
 import css from './Second.module.scss';
+import BASE_URL from '../../../config';
 
 function Second() {
   const slider = useRef();
   const [productData, setProductData] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:10010/products?sort=banner')
+    fetch(`${BASE_URL}/products?sort=banner`)
       .then(res => res.json())
       .then(res => setProductData(res.products));
   }, []);

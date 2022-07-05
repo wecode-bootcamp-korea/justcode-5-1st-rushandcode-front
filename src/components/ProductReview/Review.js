@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import css from './Review.module.scss';
 import ReviewModal from '../ReviewModal/ReviewModal';
+import BASE_URL from '../../config';
 
 function Review(props) {
   const { id, userId, userName, review, stars, updatedAt, setIsUpdated } =
@@ -24,7 +25,7 @@ function Review(props) {
 
   const delReview = () => {
     if (window.confirm('정말로 삭제하시겠습니까?')) {
-      fetch(`http://localhost:10010/review/${id}`, {
+      fetch(`${BASE_URL}/review/${id}`, {
         method: 'DELETE',
       })
         .then(alert('삭제가 완료되었습니다.'))
