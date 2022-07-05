@@ -1,5 +1,11 @@
-$theme-color: black;
-$border-color: $theme-color;
+$theme-color: #8f8f8f;
+$border-style: 1px $theme-color solid;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .container {
   align-self: center;
@@ -8,10 +14,8 @@ $border-color: $theme-color;
 }
 
 .event_upper_portion {
-  display: flex;
+  @include flex-center;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   margin-top: 100px;
 
   .event_title {
@@ -26,10 +30,10 @@ $border-color: $theme-color;
   .event_text {
     width: 65vw;
     padding-bottom: 30px;
-    border-bottom: 1px solid #8f8f8f;
+    border-bottom: $border-style;
 
     .text_3 {
-      color: #8f8f8f;
+      color: $theme-color;
       margin-bottom: 16px;
       font-weight: lighter;
     }
@@ -56,6 +60,6 @@ $border-color: $theme-color;
     text-align: center;
     padding-bottom: 60px;
     padding-top: 50px;
-    border-top: 1px solid #8f8f8f;
+    border-top: $border-style;
   }
 }

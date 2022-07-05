@@ -12,6 +12,16 @@ import css from './Nav.module.scss';
 function Nav() {
   const [hideMenu, setHideMenu] = useState(false);
   const [hideMyPage, setHideMyPage] = useState(false);
+
+  const logout = () => {
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('user_name');
+    localStorage.removeItem('token');
+    setHideMyPage(false);
+  };
+
+  const isLogin = localStorage.getItem('token') !== null;
+
   return (
     <div className={css.container}>
       <nav className={css.nav}>
@@ -35,13 +45,13 @@ function Nav() {
               {hideMenu && <span className={css.selected} />}
             </li>
             <li className={css.nav_intro}>
-              <Link to="">러쉬 소개</Link>
+              <Link to>러쉬 소개</Link>
             </li>
             <li className={css.nav_store}>
-              <Link to="">매장 안내</Link>
+              <Link to>매장 안내</Link>
             </li>
             <li className={css.nav_spa}>
-              <Link to="">스파</Link>
+              <Link to>스파</Link>
             </li>
             <li className={css.nav_event}>
               <Link to="/event">이벤트</Link>
@@ -77,15 +87,21 @@ function Nav() {
           }}
         >
           <ul>
-            <Link to="/login">
-              <li
-                onClick={() => {
-                  setHideMyPage(false);
-                }}
-              >
-                로그인
-              </li>
-            </Link>
+            {!isLogin ? (
+              <Link to="/login">
+                <li
+                  onClick={() => {
+                    setHideMyPage(false);
+                  }}
+                >
+                  로그인
+                </li>
+              </Link>
+            ) : (
+              <Link to>
+                <li onClick={() => logout()}>로그아웃</li>
+              </Link>
+            )}
             <Link to="/signup">
               <li
                 onClick={() => {

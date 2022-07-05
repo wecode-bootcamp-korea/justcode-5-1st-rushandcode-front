@@ -53,6 +53,8 @@ function ProductReview(props) {
     }
   };
 
+  const starList = ['★★★★★', '★★★★☆', '★★★☆☆', ' ★★☆☆☆', '★☆☆☆☆'];
+
   return (
     <div>
       <ProductTab />
@@ -68,51 +70,17 @@ function ProductReview(props) {
         <div className={css.review_input}>
           <div className={css.rate}>
             <div className={css.rate_text}>평가</div>
-            <li>
-              <input
-                type="radio"
-                value={5}
-                name="rate"
-                onChange={handleRadioInput}
-              />
-              ★★★★★
-            </li>
-            <li>
-              <input
-                type="radio"
-                value={4}
-                name="rate"
-                onChange={handleRadioInput}
-              />
-              ★★★★☆
-            </li>
-            <li>
-              <input
-                type="radio"
-                value={3}
-                name="rate"
-                onChange={handleRadioInput}
-              />
-              ★★★☆☆
-            </li>
-            <li>
-              <input
-                type="radio"
-                value={2}
-                name="rate"
-                onChange={handleRadioInput}
-              />
-              ★★☆☆☆
-            </li>
-            <li>
-              <input
-                type="radio"
-                value={1}
-                name="rate"
-                onChange={handleRadioInput}
-              />
-              ★☆☆☆☆
-            </li>
+            {starList.map((star, idx) => (
+              <li key={idx}>
+                <input
+                  type="radio"
+                  value={5 - idx}
+                  name="rate"
+                  onChange={handleRadioInput}
+                />
+                {star}
+              </li>
+            ))}
           </div>
           <div className={css.textarea}>
             <textarea
@@ -135,7 +103,7 @@ function ProductReview(props) {
               userId={review.user_id}
               review={review.content}
               stars={review.stars}
-              createdAt={review.created_at}
+              updatedAt={review.updated_at}
               setIsUpdated={setIsUpdated}
             />
           );
