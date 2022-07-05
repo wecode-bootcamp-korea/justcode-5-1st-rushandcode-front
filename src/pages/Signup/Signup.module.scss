@@ -1,430 +1,269 @@
-$theme-color: black;
-$border-color: $theme-color;
+$theme-color-1: black;
+$theme-color-2: #8f8f8f;
+$border-style-1: 1px $theme-color-1 solid;
+$border-style-2: 1px $theme-color-2 solid;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin input-box {
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+}
+
+@mixin input-border {
+  margin-bottom: 10px;
+  width: 400px;
+  height: 40px;
+  padding-inline-start: 15px;
+  outline: 0;
+}
+
+@mixin info-text {
+  padding-left: 25px;
+  width: 170px;
+  height: 40px;
+}
+
+@mixin error-text {
+  padding-bottom: 10px;
+  margin-left: 170px;
+  font-size: 14px;
+}
 
 .container {
-  align-self: center;
-  width: 100%;
-  height: 100%;
-  margin: -50px 0px 0px -10px;
-  top: 10%;
-  // position: absolute;
-}
+  position: relative;
 
-.signup_upper_portion {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
+  .signup_box {
+    margin: 50px auto;
+    width: 100vw;
+    height: 1100px;
 
-  .join_us {
-    width: 300px;
-    font-weight: bold;
-    font-size: 42px;
-    text-align: center;
-    padding-bottom: 50px;
-    padding-top: 50px;
-  }
+    .signup_upper_portion {
+      @include flex-center;
+      flex-direction: column;
+      margin-top: 30px;
 
-  .join_us_step {
-    width: 300px;
-    display: flex;
-    text-align: center;
-    justify-content: space-evenly;
-    color: #b3b3b3;
-    .input_info {
-      color: black;
-      font-weight: 550;
-    }
-  }
-}
+      .join_us {
+        width: 300px;
+        font-weight: bold;
+        font-size: 42px;
+        text-align: center;
+        padding-bottom: 50px;
+        padding-top: 50px;
+      }
 
-.signup_form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
-  margin-left: 200px;
-  margin-right: 200px;
-}
-
-.basic_info_box {
-  display: flex;
-  width: 100%;
-  text-align: center;
-  justify-content: space-between;
-  line-height: 27px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid black;
-  .basic_info {
-    font-weight: bold;
-    font-size: 27px;
-  }
-  span {
-    font-size: 14px;
-    img {
-      margin-right: 5px;
-      width: 10px;
-    }
-  }
-}
-
-.table {
-  margin-top: 50px;
-  padding-bottom: 30px;
-  width: 100%;
-  border-bottom: 1px solid black;
-
-  .tr_id {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-
-    .th_id {
-      width: 170px;
-      height: 40px;
-      img {
-        margin-right: 15px;
-        width: 10px;
+      .join_us_step {
+        width: 300px;
+        display: flex;
+        text-align: center;
+        justify-content: space-evenly;
+        color: #b3b3b3;
+        .input_info {
+          color: $theme-color-1;
+          font-weight: 550;
+        }
       }
     }
 
-    .id_input {
-      margin-bottom: 10px;
-      position: relative;
-      border: 1px solid #8f8f8f;
-      width: 400px;
-      height: 40px;
-      padding-inline-start: 15px;
-      outline: 0;
-    }
-  }
+    .signup_form {
+      @include flex-center;
+      flex-direction: column;
+      margin-top: 30px;
+      margin-left: 200px;
+      margin-right: 200px;
 
-  .red_input {
-    margin-bottom: 10px;
-    position: relative;
-    border: 2px solid #cb201f;
-    width: 400px;
-    height: 40px;
-    padding-inline-start: 15px;
-    outline: 0;
-  }
-
-  .id_invalid {
-    padding-bottom: 10px;
-    margin-left: 170px;
-    font-size: 14px;
-    color: black;
-  }
-  .display_none {
-    display: none;
-  }
-  .red_invalid {
-    padding-bottom: 10px;
-    margin-left: 170px;
-    font-size: 14px;
-    color: #cb201f;
-  }
-  .red_border {
-    margin-bottom: 10px;
-    position: relative;
-    border: 1px solid #8f8f8f;
-    width: 400px;
-    height: 40px;
-    padding-inline-start: 15px;
-    outline: 0;
-    border: 2px solid #cb201f;
-  }
-  .normal_border {
-    margin-bottom: 10px;
-    position: relative;
-    border: 1px solid #8f8f8f;
-    width: 400px;
-    height: 40px;
-    padding-inline-start: 15px;
-    outline: 0;
-  }
-
-  .id_valid {
-    padding-bottom: 10px;
-    margin-left: 170px;
-    font-size: 14px;
-    color: green;
-  }
-
-  .tr_pw {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding-top: 15px;
-
-    .th_pw {
-      width: 170px;
-      height: 40px;
-      img {
-        margin-right: 15px;
-        width: 10px;
-      }
-    }
-
-    .pw_input {
-      margin-bottom: 10px;
-      position: relative;
-      border: 1px solid #8f8f8f;
-      width: 400px;
-      height: 40px;
-      padding-inline-start: 15px;
-      outline: 0;
-    }
-    .red_input {
-      border: 2px solid #cb201f;
-    }
-  }
-
-  .password_invalid {
-    padding-bottom: 10px;
-    margin-left: 170px;
-    font-size: 14px;
-    color: black;
-  }
-
-  .password_valid {
-    padding-bottom: 10px;
-    margin-left: 170px;
-    font-size: 14px;
-    color: green;
-  }
-
-  .tr_pw_check {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding-top: 15px;
-
-    .th_pw_check {
-      width: 170px;
-      height: 40px;
-      img {
-        margin-right: 15px;
-        width: 10px;
-      }
-    }
-
-    .pw_check_input {
-      margin-bottom: 10px;
-      position: relative;
-      border: 1px solid #8f8f8f;
-      width: 400px;
-      height: 40px;
-      padding-inline-start: 15px;
-      outline: 0;
-    }
-    .red_input {
-      border: 2px solid #cb201f;
-    }
-  }
-
-  .tr_name {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding-top: 15px;
-
-    .th_name {
-      width: 170px;
-      height: 40px;
-      img {
-        margin-right: 15px;
-        width: 10px;
-      }
-    }
-
-    .name_input {
-      margin-bottom: 10px;
-      position: relative;
-      border: 1px solid #8f8f8f;
-      width: 400px;
-      height: 40px;
-      padding-inline-start: 15px;
-      outline: 0;
-    }
-  }
-
-  .tr_nick_name {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding-top: 15px;
-
-    .th_nick_name {
-      padding-left: 25px;
-      width: 170px;
-      height: 40px;
-    }
-
-    .nick_name_input {
-      margin-bottom: 10px;
-      position: relative;
-      border: 1px solid #8f8f8f;
-      width: 400px;
-      height: 40px;
-      padding-inline-start: 15px;
-      outline: 0;
-    }
-  }
-
-  .tr_email {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding-top: 15px;
-
-    .th_email {
-      padding-left: 25px;
-      width: 170px;
-      height: 40px;
-    }
-
-    .email_input {
-      margin-bottom: 10px;
-      position: relative;
-      border: 1px solid #8f8f8f;
-      width: 280px;
-      height: 40px;
-      padding-inline-start: 15px;
-      outline: 0;
-    }
-
-    select {
-      margin-bottom: 10px;
-      margin-left: 10px;
-      width: 110px;
-      height: 40px;
-      padding-inline-start: 15px;
-    }
-
-    .email_agree_box {
-      padding-left: 20px;
-
-      input {
-        margin-right: 5px;
+      .basic_info_box {
+        display: flex;
+        text-align: center;
+        justify-content: space-between;
+        width: 100%;
+        line-height: 27px;
+        padding-bottom: 20px;
+        border-bottom: $border-style-1;
+        .basic_info {
+          font-weight: bold;
+          font-size: 27px;
+        }
+        span {
+          font-size: 14px;
+          img {
+            margin-right: 5px;
+            width: 10px;
+          }
+        }
       }
 
-      .email_agree {
-        font-size: 14px;
+      .input_whole_box {
+        margin-top: 40px;
+        padding-bottom: 30px;
+        width: 100%;
+        border-bottom: $border-style-1;
+
+        .input_box {
+          @include input-box;
+
+          .info_text {
+            width: 170px;
+            height: 40px;
+            img {
+              margin-right: 15px;
+              width: 10px;
+            }
+          }
+        }
+
+        .display_none {
+          display: none;
+        }
+
+        .basic_input {
+          @include input-border;
+          border: $border-style-2;
+        }
+
+        .red_input {
+          @include input-border;
+          border: 2px solid #cb201f;
+        }
+
+        .black_text {
+          @include error-text;
+          color: $theme-color-1;
+        }
+
+        .green_text {
+          @include error-text;
+          color: green;
+        }
+
+        .red_text {
+          @include error-text;
+          color: #cb201f;
+        }
+
+        .nick_name_input_box {
+          @include input-box;
+
+          .nick_name_text {
+            @include info-text;
+          }
+        }
+
+        .email_input_box {
+          @include input-box;
+
+          .email_text {
+            @include info-text;
+          }
+
+          .email_input {
+            margin-bottom: 10px;
+            position: relative;
+            border: $border-style-2;
+            width: 280px;
+            height: 40px;
+            padding-inline-start: 15px;
+            outline: 0;
+          }
+
+          select {
+            margin-bottom: 10px;
+            margin-left: 10px;
+            width: 110px;
+            height: 40px;
+            padding-inline-start: 15px;
+          }
+
+          .email_agree_box {
+            padding-left: 20px;
+            input {
+              margin-right: 5px;
+            }
+            span {
+              font-size: 14px;
+            }
+          }
+        }
+
+        .phone_input_box {
+          @include input-box;
+
+          .phone_text {
+            @include info-text;
+          }
+
+          .sms_agree_box {
+            padding-left: 20px;
+            input {
+              margin-right: 5px;
+            }
+            span {
+              font-size: 14px;
+            }
+          }
+        }
+
+        .address_input_box_1 {
+          @include input-box;
+
+          .address_text {
+            @include info-text;
+          }
+
+          .address_input {
+            margin-bottom: 10px;
+            border: $border-style-2;
+            width: 280px;
+            height: 40px;
+            padding-inline-start: 15px;
+            outline: 0;
+          }
+
+          button {
+            margin-bottom: 10px;
+            margin-left: 10px;
+            width: 110px;
+            height: 40px;
+            border-width: 1.5px;
+            background-color: white;
+            font-size: 13px;
+          }
+        }
+
+        .address_input_box_2 {
+          margin-left: 170px;
+
+          .address_input_2 {
+            margin-bottom: 10px;
+            margin-left: 5px;
+            border: $border-style-2;
+            width: 380px;
+            height: 40px;
+            padding-inline-start: 15px;
+            outline: 0;
+          }
+        }
+      }
+
+      .divider {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        .signup_button {
+          width: 280px;
+          height: 60px;
+          border-radius: 0px;
+          border: 0;
+          color: white;
+          background-color: $theme-color-1;
+          font-size: 16px;
+          cursor: pointer;
+        }
       }
     }
-  }
-
-  .tr_phone {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding-top: 15px;
-
-    .th_phone {
-      padding-left: 25px;
-      width: 170px;
-      height: 40px;
-    }
-
-    .phone_input {
-      margin-bottom: 10px;
-      position: relative;
-      border: 1px solid #8f8f8f;
-      width: 400px;
-      height: 40px;
-      padding-inline-start: 15px;
-      outline: 0;
-    }
-
-    .sms_agree_box {
-      padding-left: 20px;
-
-      input {
-        margin-right: 5px;
-      }
-
-      .sms_agree {
-        font-size: 14px;
-      }
-    }
-  }
-
-  .tr_address_1 {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding-top: 15px;
-
-    .th_address {
-      padding-left: 25px;
-      width: 170px;
-      height: 40px;
-    }
-
-    .address_input {
-      margin-bottom: 10px;
-      position: relative;
-      border: 1px solid #8f8f8f;
-      width: 280px;
-      height: 40px;
-      padding-inline-start: 15px;
-      outline: 0;
-    }
-
-    .search_button {
-      margin-bottom: 10px;
-      margin-left: 10px;
-      width: 110px;
-      height: 40px;
-      border-width: 1.5px;
-      background-color: white;
-      font-size: 13px;
-    }
-  }
-
-  .tr_address_2 {
-    .address_input_1 {
-      margin-left: 170px;
-      margin-bottom: 10px;
-      position: relative;
-      border: 1px solid #8f8f8f;
-      width: 400px;
-      height: 40px;
-      padding-inline-start: 15px;
-      outline: 0;
-    }
-
-    .address_input_2 {
-      margin-bottom: 10px;
-      margin-left: 5px;
-      position: relative;
-      border: 1px solid #8f8f8f;
-      width: 380px;
-      height: 40px;
-      padding-inline-start: 15px;
-      outline: 0;
-    }
-  }
-}
-
-.divider {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  .signup_button {
-    width: 280px;
-    height: 60px;
-    border-radius: 0px;
-    border: 0;
-    color: white;
-    background-color: black;
-    font-size: 16px;
-    cursor: pointer;
-
-    // &.active {
-    //   cursor: pointer;
-    // }
   }
 }
