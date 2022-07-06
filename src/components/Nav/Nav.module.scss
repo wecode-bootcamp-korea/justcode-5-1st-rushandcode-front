@@ -1,9 +1,16 @@
+$color-black: #333;
+
 @mixin selected {
   position: absolute;
   border-top: 10px solid transparent;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   transform: translateX(-50%);
+}
+
+@mixin flex($jc: null) {
+  display: flex;
+  justify-content: $jc;
 }
 
 .container {
@@ -17,8 +24,7 @@
 }
 /* main nav */
 .nav {
-  display: flex;
-  justify-content: space-between;
+  @include flex(space-between);
   position: relative;
   height: 100%;
   margin: 0 auto;
@@ -54,7 +60,7 @@
           @include selected;
           bottom: 0;
           left: 50%;
-          border-bottom: 10px solid #333;
+          border-bottom: 10px solid $color-black;
         }
       }
       .nav_intro,
@@ -67,8 +73,7 @@
     }
   }
   &_icon {
-    display: flex;
-    justify-content: space-around;
+    @include flex(space-around);
     width: 15%;
     span {
       cursor: pointer;
@@ -80,11 +85,10 @@
 .prd_category {
   position: relative;
   width: 100%;
-  background-color: #333;
+  background-color: $color-black;
   z-index: 1;
   &_all {
-    display: flex;
-    justify-content: center;
+    @include flex(center);
     margin: 0 auto;
     max-width: 1180px;
   }
@@ -123,9 +127,9 @@
   z-index: 1;
   ul {
     width: 200px;
-    color: #333;
+    color: $color-black;
     a {
-      color: #333;
+      color: $color-black;
       font-size: 14px;
       li {
         line-height: 50px;
@@ -138,7 +142,7 @@
     a:hover {
       color: white;
       li {
-        background: #333;
+        background: $color-black;
         transition: 0.5s;
       }
     }
