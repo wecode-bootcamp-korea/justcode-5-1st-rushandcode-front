@@ -7,17 +7,27 @@ import css from './ProductDetail.module.scss';
 import ProductShipping from '../../components/ProductShipping/ProductShipping';
 import ProductReview from '../../components/ProductReview/ProductReview';
 import NotFound from '../../components/NotFound/NotFound';
-import BASE_URL from '../../config';
+import Spinner from '../../components/Spinner/Spinner';
 
 function ProductDetail() {
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    let timer = setTimeout(() => {
+      setLoading(false);
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   const id = useLocation().pathname.split('/')[2];
   const isExist = id > 0 && id < 109;
-
   const [productInfo, setProductInfo] = useState([]);
   const [isUpdated, setIsUpdated] = useState(false);
   useEffect(() => {
     setIsUpdated(false);
-    fetch(`${BASE_URL}/products/${id}`, {
+    fetch(`http://localhost:10010/products/${id}`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -38,6 +48,7 @@ function ProductDetail() {
 
   return (
     <div>
+      {loading && <Spinner visible={loading} />}
       {isExist ? (
         <div className={css.product_detail_container}>
           <div className={css.container}>

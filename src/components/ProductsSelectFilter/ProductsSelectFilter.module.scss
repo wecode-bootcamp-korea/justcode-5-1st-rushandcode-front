@@ -1,4 +1,26 @@
 /* 상품 페이지 - 카테고리 */
+$color-black: #333;
+$color-gray: #eee;
+$border-style-gray: 1px solid rgb(192, 192, 192);
+
+@mixin position(
+  $position,
+  $t: null,
+  $r: null,
+  $b: null,
+  $l: null,
+  $w: null,
+  $h: null
+) {
+  position: $position;
+  top: $t;
+  right: $r;
+  bottom: $b;
+  left: $l;
+  width: $w;
+  height: $h;
+}
+
 .list_header {
   display: flex;
   justify-content: space-between;
@@ -6,30 +28,25 @@
   padding-bottom: 15px;
   border-bottom: 2px solid black;
   h2 {
-    color: #333;
+    color: $color-black;
     font-weight: 700;
     font-size: 28px;
   }
 }
 .select_filter {
-  position: relative;
-  width: 112px;
-  height: 34px;
-  border: 1px solid rgb(192, 192, 192);
+  @include position(relative, $w: 112px, $h: 34px);
+  border: $border-style-gray;
   background-color: white;
   font-family: 'Noto Sans KR', sans-serif;
   cursor: pointer;
   .select_filter_drop {
     display: none;
-    position: absolute;
-    top: 32px;
-    left: -1px;
-    width: 112px;
-    border: 1px solid rgb(192, 192, 192);
+    @include position(absolute, $t: 32px, $l: -1px, $w: 112px);
+    border: $border-style-gray;
     background-color: white;
   }
   .drop_list_title {
-    color: #333;
+    color: $color-black;
   }
   .drop_list,
   li.drop_list {
@@ -38,11 +55,7 @@
     padding: 8px;
     font-size: 14px;
     span {
-      position: absolute;
-      top: 0;
-      right: 5px;
-      width: 18px;
-      height: 30px;
+      @include position(absolute, $t: 0, $r: 5px, $w: 18px, $h: 30px);
       background-color: hsl(0, 0%, 90%);
     }
     .drop_list_arrow_down {
@@ -54,10 +67,8 @@
         no-repeat 50% 50%;
     }
   }
-  li:hover {
-    background-color: #eee;
-  }
+  li:hover,
   .active {
-    background-color: #eee;
+    background-color: $color-gray;
   }
 }

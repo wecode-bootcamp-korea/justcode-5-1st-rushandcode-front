@@ -21,10 +21,9 @@ function CartProduct(props) {
   const name = productInfo?.name;
   const subCategory = productInfo?.sub_category;
   const price = productInfo.price;
+  const count = cart.count;
 
-  const [count, setCount] = useState(cart.count);
   const countUp = () => {
-    setCount(count + 1);
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     localStorage.setItem(
       'cart',
@@ -49,7 +48,6 @@ function CartProduct(props) {
 
   const countDown = async () => {
     if (count > 1) {
-      setCount(count - 1);
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
       localStorage.setItem(
         'cart',
@@ -92,7 +90,7 @@ function CartProduct(props) {
     <tr className={css.container}>
       <td className={css.info}>
         <button onClick={deleteProduct}>삭제</button>
-        {image && <Image className={css.img} size={70} src={image} />}
+        {image && <Image className={css.img} size={70} src={image} id={id} />}
         <div className={css.product_name}>
           <div>{name}</div>
           <div className={css.sub_category}>{subCategory}</div>
@@ -105,8 +103,12 @@ function CartProduct(props) {
           <button onClick={countUp}>+</button>
         </div>
       </td>
-      <td className={css.price}>₩ {price}</td>
-      <td className={css.price}>₩ {count * price}</td>
+      <td className={css.price}>
+        ₩ {price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+      </td>
+      <td className={css.price}>
+        ₩ {(count * price)?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+      </td>
       {firstProduct && (
         <td className={css.ship}>
           <div>₩ 2,500</div>

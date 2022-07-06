@@ -7,7 +7,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "distribute": "npm i && npm run build && pm2 serve build 3000 --name <project-front> --spa"
+    "distribute": "npm i && npm run build && pm2 serve build 3000 --name LushAndCode --spa"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",

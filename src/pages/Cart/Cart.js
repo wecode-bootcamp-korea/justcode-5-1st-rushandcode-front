@@ -2,8 +2,20 @@ import React, { useEffect, useState } from 'react';
 import css from './Cart.module.scss';
 import CartProduct from '../../components/CartProduct/CartProduct';
 import { useNavigate } from 'react-router-dom';
+import Spinner from '../../components/Spinner/Spinner';
 
 function Cart() {
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    let timer = setTimeout(() => {
+      setLoading(false);
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   const navigate = useNavigate();
 
   const cartList = JSON.parse(localStorage.getItem('cart'));
@@ -42,6 +54,7 @@ function Cart() {
 
   return (
     <div className={css.container}>
+      {loading && <Spinner visible={loading} />}
       <h2>SHOPPING CART</h2>
       <table>
         <caption>제품</caption>
@@ -77,12 +90,22 @@ function Cart() {
       </table>
       <div className={css.order_price}>
         <span>총 {totalCount || 0}개의 금액</span>{' '}
-        <span className={css.price}>₩ {isExist ? 0 : totalPrice}</span> +{' '}
-        <span>배송비</span>{' '}
-        <span className={css.price}>₩ {isExist ? 0 : 2500}</span> ={' '}
+        <span className={css.price}>
+          ₩{' '}
+          {isExist
+            ? 0
+            : totalPrice?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+        </span>{' '}
+        + <span>배송비</span>{' '}
+        <span className={css.price}>₩ {isExist ? 0 : '2,500'}</span> ={' '}
         <span className={css.price}>총 주문금액</span>{' '}
         <span className={css.total_price}>
-          ₩ {isExist ? 0 : totalPrice + 2500}
+          ₩{' '}
+          {isExist
+            ? 0
+            : (totalPrice + 2500)
+                ?.toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
         </span>
       </div>
       <button onClick={delCart} className={css.delete_btn}>
