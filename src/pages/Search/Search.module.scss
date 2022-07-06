@@ -1,10 +1,10 @@
-.wrapBar {
+.wrap_bar {
   width: 100%;
   display: flex;
   justify-content: center;
   height: 200px;
 }
-.searchBar {
+.search_bar {
   margin-top: 100px;
   border: none;
   width: 50%;
@@ -14,12 +14,8 @@
   text-align: center;
   border-bottom: 3px solid;
 }
-.productinfo {
-  text-align: center;
-  font-size: 30px;
-  margin: 30px;
-}
-.howMany {
+
+.how_many {
   font-family: sans-serif;
   font-size: 30px;
   padding-bottom: 5px;

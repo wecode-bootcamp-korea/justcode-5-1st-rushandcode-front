@@ -15,6 +15,7 @@ const Searchdetail = ({ data }) => {
         className={css.img}
         src={data.productImages[0].url}
         onClick={gotoproduct}
+        alt="제품이미지"
       />
       <p className={css.info}>{data.name}</p>
       <p className={css.info}> {data.hashtags}</p>

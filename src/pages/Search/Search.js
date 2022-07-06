@@ -56,24 +56,24 @@ const Search = () => {
     } else if (value === '클렌저' || value === '로션' || value === '핸드앤풋') {
       navigate(`/products?mainCategory=보디&subCategory=${body(value)}`);
     }
-  }, [value]);
+  }, [value, navigate]);
   return (
     <>
-      <div className={css.wrapBar}>
+      <div className={css.wrap_bar}>
         <input
-          className={css.searchBar}
+          className={css.search_bar}
           type="text"
           placeholder="원하시는 제품을 검색하세요."
           onKeyPress={e => {
             if (e.key === 'Enter') {
-              setValue(e.target.value);
+              setValue(e.target.value.replace(/ /g, ''));
               setFilterData(data);
             }
           }}
         />
       </div>
-      <p className={css.howMany}>검색결과 {filter.length}개 </p>
-      <div className={css.wrapdetail}>
+      <p className={css.how_many}>검색결과 {filter.length}개 </p>
+      <div className={css.wrap_detail}>
         {filter.map(data => (
           <Searchdetail key={data.id} data={data} />
         ))}
