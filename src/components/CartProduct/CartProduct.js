@@ -90,7 +90,7 @@ function CartProduct(props) {
     <tr className={css.container}>
       <td className={css.info}>
         <button onClick={deleteProduct}>삭제</button>
-        {image && <Image className={css.img} size={70} src={image} />}
+        {image && <Image className={css.img} size={70} src={image} id={id} />}
         <div className={css.product_name}>
           <div>{name}</div>
           <div className={css.sub_category}>{subCategory}</div>
