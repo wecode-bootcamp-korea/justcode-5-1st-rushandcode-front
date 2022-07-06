@@ -1,12 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import BASE_URL from '../../config';
-
 import css from './Login.module.scss';
+import Spinner from '../../components/Spinner/Spinner';
 
 function Login() {
-  const [id, setId] = useState('');
-  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    let timer = setTimeout(() => {
+      setLoading(false);
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  const [loginValue, setLoginValue] = useState({
+    id: '',
+    password: '',
+  });
+  const { id, password } = loginValue;
+
+  const onChange = e => {
+    const { value, name } = e.target;
+    setLoginValue(prev => {
+      return { ...prev, [name]: value };
+    });
+  };
 
   const navigate = useNavigate();
   const gotomain = () => {
@@ -39,8 +60,10 @@ function Login() {
       })
       .catch(err => {
         alert(err.message);
-        setId('');
-        setPassword('');
+        setLoginValue({
+          id: '',
+          password: '',
+        });
       });
   };
 
@@ -55,6 +78,7 @@ function Login() {
 
   return (
     <div className={css.container}>
+      {loading && <Spinner visible={loading} />}
       <div className={css.login_box}>
         <div className={css.login}>로그인</div>
         <div className={css.membership}>
@@ -79,9 +103,7 @@ function Login() {
               type="email"
               placeholder="아이디"
               value={id}
-              onChange={e => {
-                setId(e.target.value);
-              }}
+              onChange={onChange}
             />
           </div>
           <div className={css.pw_input}>
@@ -98,9 +120,7 @@ function Login() {
               minLength={5}
               placeholder="비밀번호"
               value={password}
-              onChange={e => {
-                setPassword(e.target.value);
-              }}
+              onChange={onChange}
             />
           </div>
           <div className={css.save_id_checkbox}>
