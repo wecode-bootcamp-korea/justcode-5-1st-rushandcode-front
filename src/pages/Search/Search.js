@@ -7,6 +7,7 @@ import BASE_URL from '../../config';
 const Search = () => {
   const [value, setValue] = useState('');
   const [data, setData] = useState([]);
+  const [filterData, setFilterData] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,13 +16,10 @@ const Search = () => {
       .then(res => setData(res.products));
   }, []);
 
-  const filter = data.filter(products => products.name.includes(`${value}`));
+  const filter = filterData.filter(products =>
+    products.name.includes(`${value}`)
+  );
 
-  const selectMain = (value, e) => {
-    if (e.target.value.includes(`${value}`)) {
-      navigate(`/products?mainCategory=${value}`);
-    }
-  };
   const name = source => {
     const query = source.split('');
     if (query.length >= 3) {
@@ -40,63 +38,42 @@ const Search = () => {
       return split[0] + split[1] + '%20' + split[2] + '%20' + split[3];
     }
   };
-
-  const selectSubBath = (search, e) => {
-    if (e.target.value.includes(`${search}`)) {
-      navigate(`/products?mainCategory=배쓰&subCategory=${name(search)}
-      `);
+  useEffect(() => {
+    if (value === '배쓰' || value === '샤워' || value === '보디') {
+      navigate(`/products?mainCategory=${value}`);
+    } else if (
+      value === '배쓰밤' ||
+      value === '버블바' ||
+      value === '배쓰오일'
+    ) {
+      navigate(`/products?mainCategory=배쓰&subCategory=${name(value)}`);
+    } else if (
+      value === '솝' ||
+      value === '샤워젤' ||
+      value === '보디컨디셔너'
+    ) {
+      navigate(`/products?mainCategory=샤워&subCategory=${name(value)}`);
+    } else if (value === '클렌저' || value === '로션' || value === '핸드앤풋') {
+      navigate(`/products?mainCategory=보디&subCategory=${body(value)}`);
     }
-  };
-
-  const selectSubShower = (search, e) => {
-    if (e.target.value.includes(`${search}`)) {
-      navigate(`/products?mainCategory=샤워&subCategory=${name(search)}
-      `);
-    }
-  };
-  const selectSubBody = (search, e) => {
-    if (e.target.value.includes(`${search}`)) {
-      navigate(`/products?mainCategory=보디&subCategory=${body(search)}
-      `);
-    }
-  };
+  }, [value, navigate]);
   return (
     <>
-      <div className={css.wrapBar}>
+      <div className={css.wrap_bar}>
         <input
-          className={css.searchBar}
+          className={css.search_bar}
           type="text"
           placeholder="원하시는 제품을 검색하세요."
           onKeyPress={e => {
-            setValue(e.target.value);
             if (e.key === 'Enter') {
-              if (value === '배쓰' || value === '샤워' || value === '보디') {
-                selectMain(value, e);
-              } else if (
-                value === '배쓰밤' ||
-                value === '버블바' ||
-                value === '배쓰오일'
-              ) {
-                selectSubBath(value, e);
-              } else if (
-                value === '솝' ||
-                value === '샤워젤' ||
-                value === '보디컨디셔너'
-              ) {
-                selectSubShower(value, e);
-              } else if (
-                value === '클렌저' ||
-                value === '로션' ||
-                value === '핸드앤풋'
-              ) {
-                selectSubBody(value, e);
-              }
-              console.log(filter);
+              setValue(e.target.value.replace(/ /g, ''));
+              setFilterData(data);
             }
           }}
         />
       </div>
-      <div className={css.wrapdetail}>
+      <p className={css.how_many}>검색결과 {filter.length}개 </p>
+      <div className={css.wrap_detail}>
         {filter.map(data => (
           <Searchdetail key={data.id} data={data} />
         ))}
