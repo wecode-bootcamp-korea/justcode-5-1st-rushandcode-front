@@ -1,4 +1,11 @@
 /* 상품 페이지 - 상품 목록 */
+@mixin size($w: null, $h: null, $m: null, $lh: null) {
+  width: $w;
+  height: $h;
+  margin: $m;
+  line-height: $lh;
+}
+
 .product_list {
   width: 100%;
   overflow: hidden;
@@ -8,21 +15,16 @@
     margin-bottom: 30px;
     text-align: center;
     .prd_img {
-      width: 285px;
-      height: 285px;
+      @include size(285px, 285px);
       img {
-        width: 100%;
-        height: 100%;
+        @include size(100%, 100%);
         object-fit: cover;
       }
     }
     .prd_label {
       span {
         display: inline-block;
-        width: 60px;
-        height: 20px;
-        margin: 5px 2px;
-        line-height: 20px;
+        @include size(60px, 20px, 5px 2px, 20px);
         border-radius: 10px;
         color: white;
         font-size: 12px;

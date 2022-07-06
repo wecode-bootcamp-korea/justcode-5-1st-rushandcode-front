@@ -8,11 +8,7 @@ import css from './Products.module.scss';
 import BASE_URL from '../../config';
 
 function Products() {
-  function useQuery() {
-    return new URLSearchParams(useLocation().search);
-  }
-
-  let query = useQuery();
+  let query = new URLSearchParams(useLocation().search);
 
   let mainCategory = query.get('mainCategory');
   let subCategory = query.get('subCategory');
