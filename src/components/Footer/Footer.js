@@ -16,9 +16,9 @@ function Footer() {
         <video
           className={css.video}
           src="https://player.vimeo.com/external/538877060.hd.mp4?s=4042b4dc217598f5ce7c4cf8b8c3787b42218ea3&profile_id=174"
-          autoPlay="true"
-          muted="true"
-          loop="true"
+          autoPlay={true}
+          muted={true}
+          loop={true}
         />
       </div>
       <div className={css.footer_info}>
