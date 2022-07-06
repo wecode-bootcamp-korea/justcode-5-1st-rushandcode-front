@@ -7,6 +7,7 @@ import css from './ProductDetail.module.scss';
 import ProductShipping from '../../components/ProductShipping/ProductShipping';
 import ProductReview from '../../components/ProductReview/ProductReview';
 import NotFound from '../../components/NotFound/NotFound';
+import BASE_URL from '../../config';
 
 function ProductDetail() {
   const id = useLocation().pathname.split('/')[2];
@@ -16,7 +17,7 @@ function ProductDetail() {
   const [isUpdated, setIsUpdated] = useState(false);
   useEffect(() => {
     setIsUpdated(false);
-    fetch(`http://localhost:10010/products/${id}`, {
+    fetch(`${BASE_URL}/products/${id}`, {
       method: 'GET',
     })
       .then(res => res.json())

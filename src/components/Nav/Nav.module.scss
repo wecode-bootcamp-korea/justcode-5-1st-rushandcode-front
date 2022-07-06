@@ -57,6 +57,13 @@
           border-bottom: 10px solid #333;
         }
       }
+      .nav_intro,
+      .nav_store,
+      .nav_spa {
+        span {
+          cursor: pointer;
+        }
+      }
     }
   }
   &_icon {

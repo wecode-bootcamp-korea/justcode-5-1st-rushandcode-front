@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import BASE_URL from '../../config';
 
 import css from './Signup.module.scss';
 
@@ -17,7 +18,7 @@ function Signup() {
   };
 
   const sendUserSignUp = () => {
-    fetch('http://localhost:10010/signup', {
+    fetch(`${BASE_URL}/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

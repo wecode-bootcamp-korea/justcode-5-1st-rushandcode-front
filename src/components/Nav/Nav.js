@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faMagnifyingGlass,
@@ -10,6 +10,9 @@ import logo from './image/rush_logo.png';
 import css from './Nav.module.scss';
 
 function Nav() {
+  const locaction = useLocation().pathname;
+  const search = useLocation().search;
+
   const [hideMenu, setHideMenu] = useState(false);
   const [hideMyPage, setHideMyPage] = useState(false);
 
@@ -45,13 +48,13 @@ function Nav() {
               {hideMenu && <span className={css.selected} />}
             </li>
             <li className={css.nav_intro}>
-              <Link to>러쉬 소개</Link>
+              <span>러쉬 소개</span>
             </li>
             <li className={css.nav_store}>
-              <Link to>매장 안내</Link>
+              <span>매장 안내</span>
             </li>
             <li className={css.nav_spa}>
-              <Link to>스파</Link>
+              <span>스파</span>
             </li>
             <li className={css.nav_event}>
               <Link to="/event">이벤트</Link>
@@ -98,7 +101,7 @@ function Nav() {
                 </li>
               </Link>
             ) : (
-              <Link to>
+              <Link to={locaction + search}>
                 <li onClick={() => logout()}>로그아웃</li>
               </Link>
             )}
