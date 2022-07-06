@@ -21,10 +21,9 @@ function CartProduct(props) {
   const name = productInfo?.name;
   const subCategory = productInfo?.sub_category;
   const price = productInfo.price;
+  const count = cart.count;
 
-  const [count, setCount] = useState(cart.count);
   const countUp = () => {
-    setCount(count + 1);
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     localStorage.setItem(
       'cart',
@@ -49,7 +48,6 @@ function CartProduct(props) {
 
   const countDown = async () => {
     if (count > 1) {
-      setCount(count - 1);
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
       localStorage.setItem(
         'cart',
