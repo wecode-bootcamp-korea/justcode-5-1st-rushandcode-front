@@ -2,8 +2,20 @@ import React, { useEffect, useState } from 'react';
 import css from './Cart.module.scss';
 import CartProduct from '../../components/CartProduct/CartProduct';
 import { useNavigate } from 'react-router-dom';
+import Spinner from '../../components/Spinner/Spinner';
 
 function Cart() {
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    let timer = setTimeout(() => {
+      setLoading(false);
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   const navigate = useNavigate();
 
   const cartList = JSON.parse(localStorage.getItem('cart'));
@@ -42,6 +54,7 @@ function Cart() {
 
   return (
     <div className={css.container}>
+      {loading && <Spinner visible={loading} />}
       <h2>SHOPPING CART</h2>
       <table>
         <caption>제품</caption>
