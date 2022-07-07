@@ -91,21 +91,13 @@ function Cart() {
       <div className={css.order_price}>
         <span>총 {totalCount || 0}개의 금액</span>{' '}
         <span className={css.price}>
-          ₩{' '}
-          {isExist
-            ? 0
-            : totalPrice?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+          ₩ {isExist ? 0 : totalPrice?.toLocaleString()}
         </span>{' '}
         + <span>배송비</span>{' '}
         <span className={css.price}>₩ {isExist ? 0 : '2,500'}</span> ={' '}
         <span className={css.price}>총 주문금액</span>{' '}
         <span className={css.total_price}>
-          ₩{' '}
-          {isExist
-            ? 0
-            : (totalPrice + 2500)
-                ?.toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+          ₩ {isExist ? 0 : (totalPrice + 2500).toLocaleString()}
         </span>
       </div>
       <button onClick={delCart} className={css.delete_btn}>
