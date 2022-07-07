@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
-const Image = ({ src, size, width, height, setImage, ...props }) => {
+const Image = ({ src, size, width, height, setImage, id, ...props }) => {
+  const navigate = useNavigate();
   return (
     <Outter>
       <Inner
@@ -10,7 +12,10 @@ const Image = ({ src, size, width, height, setImage, ...props }) => {
         size={size}
         width={width}
         height={height}
-        onClick={() => (setImage ? setImage(src) : {})}
+        onClick={() => {
+          if (setImage) setImage(src);
+          else if (id) navigate(`/productdetail/${id}`);
+        }}
       />
     </Outter>
   );

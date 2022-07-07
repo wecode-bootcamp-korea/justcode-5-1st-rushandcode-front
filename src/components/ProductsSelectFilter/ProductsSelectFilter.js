@@ -45,7 +45,7 @@ function ProductsSelectFilter(props) {
             className={
               appear ? css.drop_list_arrow_up : css.drop_list_arrow_down
             }
-          ></span>
+          />
         </div>
         <ul
           className={css.select_filter_drop}
