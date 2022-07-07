@@ -3,25 +3,14 @@ import css from './Review.module.scss';
 import ReviewModal from '../ReviewModal/ReviewModal';
 import BASE_URL from '../../config';
 
-function Review(props) {
-  const { id, userId, userName, review, stars, updatedAt, setIsUpdated } =
-    props;
-  const time = updatedAt.split(' ')[0];
-  const myId = localStorage.getItem('user_id');
-  const isMyReview = userId === Number(myId);
+const rate = ['☆☆☆☆☆', '★☆☆☆☆', '★★☆☆☆', '★★★☆☆', '★★★★☆', '★★★★★'];
 
-  let rate;
-  if (stars === 1) {
-    rate = '★☆☆☆☆';
-  } else if (stars === 2) {
-    rate = '★★☆☆☆';
-  } else if (stars === 3) {
-    rate = '★★★☆☆';
-  } else if (stars === 4) {
-    rate = '★★★★☆';
-  } else if (stars === 5) {
-    rate = '★★★★★';
-  }
+function Review(props) {
+  const { setIsUpdated, review } = props;
+  const { id, user_id, user_name, content, stars, updated_at } = review;
+  const time = updated_at?.split(' ')[0];
+  const myId = localStorage.getItem('user_id');
+  const isMyReview = user_id === Number(myId);
 
   const delReview = () => {
     if (window.confirm('정말로 삭제하시겠습니까?')) {
@@ -48,18 +37,18 @@ function Review(props) {
       <ReviewModal
         close={closeModal}
         open={modalOpen}
-        content={review}
+        content={content}
         stars={stars}
         header="상품후기 수정하기"
         id={id}
         setIsUpdated={setIsUpdated}
       />
       <div className={css.review_info}>
-        <div className={css.rate}>{rate}</div>
+        <div className={css.rate}>{rate[stars]}</div>
         <div className={css.date}>{time}</div>
-        <div className={css.username}>{userName}</div>
+        <div className={css.user_name}>{user_name}</div>
       </div>
-      <span className={css.text}>{review}</span>
+      <span className={css.text}>{content}</span>
       <div className={css.buttons}>
         {isMyReview && <button onClick={openModal}>수정</button>}
         {isMyReview && <button onClick={delReview}>삭제</button>}
