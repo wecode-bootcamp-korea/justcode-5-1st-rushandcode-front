@@ -103,12 +103,8 @@ function CartProduct(props) {
           <button onClick={countUp}>+</button>
         </div>
       </td>
-      <td className={css.price}>
-        ₩ {price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-      </td>
-      <td className={css.price}>
-        ₩ {(count * price)?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-      </td>
+      <td className={css.price}>₩ {price?.toLocaleString()}</td>
+      <td className={css.price}>₩ {(count * price)?.toLocaleString}</td>
       {firstProduct && (
         <td className={css.ship}>
           <div>₩ 2,500</div>
