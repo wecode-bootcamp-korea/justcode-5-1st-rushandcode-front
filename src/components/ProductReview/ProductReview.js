@@ -4,6 +4,7 @@ import css from './ProductReview.module.scss';
 import ProductTab from '../ProductTab/ProductTab';
 import Review from './Review';
 import BASE_URL from '../../config';
+import ReviewStar from './ReviewStar';
 
 function ProductReview(props) {
   const { reviewList, setIsUpdated } = props;
@@ -72,15 +73,12 @@ function ProductReview(props) {
           <div className={css.rate}>
             <div className={css.rate_text}>평가</div>
             {starList.map((star, idx) => (
-              <li key={idx}>
-                <input
-                  type="radio"
-                  value={5 - idx}
-                  name="rate"
-                  onChange={handleRadioInput}
-                />
-                {star}
-              </li>
+              <ReviewStar
+                key={star}
+                idx={idx}
+                star={star}
+                handleRadioInput={handleRadioInput}
+              />
             ))}
           </div>
           <div className={css.textarea}>
@@ -99,12 +97,7 @@ function ProductReview(props) {
           return (
             <Review
               key={review.id}
-              id={review.id}
-              userName={review.user_name}
-              userId={review.user_id}
-              review={review.content}
-              stars={review.stars}
-              updatedAt={review.updated_at}
+              review={review}
               setIsUpdated={setIsUpdated}
             />
           );
