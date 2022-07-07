@@ -27,7 +27,7 @@ function Home() {
   });
 
   return (
-    <div className={css.home_container}>
+    <>
       <First />
       <div className={css.second_banner_wraper}>
         <h2 className={css.banner_text}>나만 알고 싶은 향기</h2>
@@ -44,26 +44,26 @@ function Home() {
           알리고 있습니다. ”
         </p>
       </div>
-      <div className={css.lastBanner}>
-        <div className={css.lastBannerLeft}>
-          <dl className={css.lastBannerText}>
-            <dt className={css.lastBannerMainText}>시네스티지아</dt>
-            <p className={css.lastBannerSubText}>
+      <div className={css.last_banner}>
+        <div className={css.last_banner_left}>
+          <dl className={css.last_banner_text}>
+            <dt className={css.last_banner_main_text}>시네스티지아</dt>
+            <p className={css.last_banner_sub_text}>
               개인 맞춤형 보디 트린트먼트 오감을 자극하는 보디 마사지는 긴장을
               풀어주고, 스트레스를 완화하여 활력을 불어넣어 줍니다. 한순간에
               모든 감각을 사로잡는 특별함을 느껴보세요.
             </p>
           </dl>
         </div>
-        <div className={css.lastBannerRight}>
+        <div className={css.last_banner_right}>
           <img
-            className={css.lastBannerRightImg}
+            className={css.last_banner_right_img}
             src="https://media4.giphy.com/media/TZN3HY3SZfWw0/giphy.webp?cid=ecf05e47alsh6ws4gzjf5auj1oixd6bdqdbfts4swtdb0c1s&rid=giphy.webp&ct=g"
             alt="배너"
           />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

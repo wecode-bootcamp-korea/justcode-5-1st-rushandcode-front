@@ -11,7 +11,7 @@ function Footer() {
     navigate('/');
   };
   return (
-    <div className={css.container}>
+    <>
       <div className={css.footer_banner}>
         <video
           className={css.video}
@@ -30,7 +30,7 @@ function Footer() {
           <li className={css.footer_info_li}>영상정보관리지침</li>
         </ul>
       </div>
-    </div>
+    </>
   );
 }
 
