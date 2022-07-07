@@ -8,10 +8,13 @@ function First() {
 
   const ToTalIndex = 4;
 
+  const [start, setStart] = useState(0);
+  const [end, setEnd] = useState(0);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       if (currentIndex <= ToTalIndex) {
-        setCurrentIndex(currentIndex + 1);
+        setCurrentIndex(prev => prev + 1);
         slider.current.style.transform = `translate(-${
           currentIndex * 16.6666
         }%)`;
@@ -57,10 +60,45 @@ function First() {
     setCurrentIndex(4);
   };
 
+  useEffect(() => {
+    if (end - start > 300 && currentIndex < 4) {
+      slider.current.style.transform = `translate(-${
+        (currentIndex + 1) * 16.6666
+      }%)`;
+      slider.current.style.transition = `transform 1s`;
+      setCurrentIndex(prev => prev + 1);
+    }
+    if (end - start > 300 && currentIndex === 4) {
+      alert('마지막장입니다.');
+    }
+    if (end - start < -300 && currentIndex > 0) {
+      slider.current.style.transform = `translate(-${
+        (currentIndex - 1) * 16.6666
+      }%)`;
+      slider.current.style.transition = `transform 1s`;
+      setCurrentIndex(prev => prev - 1);
+    }
+    if (end - start < -300 && currentIndex === 0) {
+      alert('첫번째 장입니다.');
+    }
+  }, [end]);
+
   return (
-    <div className={css.wrap}>
-      <div className={css.wrapercontainer}>
-        <div ref={slider} className={css.container}>
+    <>
+      <div className={css.wraper_container}>
+        <div
+          ref={slider}
+          className={css.container}
+          onMouseDown={e => {
+            e.target.draggable = false;
+            e.target.style.cursor = 'grabbing';
+            setStart(e.clientX);
+          }}
+          onMouseUp={e => {
+            setEnd(e.clientX);
+            e.target.style.cursor = 'pointer';
+          }}
+        >
           <div className={css.inner}>
             <img
               className={css.img}
@@ -105,14 +143,14 @@ function First() {
           </div>
         </div>
       </div>
-      <div className={css.wrapbutton}>
+      <div className={css.wrap_button}>
         <button className={css.button} onClick={first_button} />
         <button className={css.button} onClick={second_button} />
         <button className={css.button} onClick={third_button} />
         <button className={css.button} onClick={fourth_button} />
         <button className={css.button} onClick={fifth_button} />
       </div>
-    </div>
+    </>
   );
 }
 

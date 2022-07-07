@@ -1,27 +1,30 @@
 .wraper {
   width: 60vw;
   overflow: hidden;
-}
-.container {
-  width: 240vw;
-  display: flex;
+
+  .container {
+    width: 240vw;
+    display: flex;
+  }
 }
 .wrap_button {
   display: flex;
   justify-content: center;
   margin-top: 20px;
-}
-.button {
-  border-radius: 100%;
-  background-color: transparent;
-  width: 15px;
-  height: 15px;
-  margin-right: 10px;
-  border: 2.5px solid black;
-  outline: none;
-  cursor: pointer;
-}
-.button:focus {
-  background-color: black;
-  opacity: 1;
+
+  .button {
+    border-radius: 100%;
+    background-color: transparent;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    border: 2.5px solid black;
+    outline: none;
+    cursor: pointer;
+
+    &:focus {
+      background-color: black;
+      opacity: 1;
+    }
+  }
 }
