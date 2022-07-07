@@ -1,15 +1,16 @@
 import React, { useRef, useEffect, useState } from 'react';
 import css from './First.module.scss';
-
+import { Modal } from './Modal';
 function First() {
   const slider = useRef();
+
+  const [onOff, setOnOff] = useState(false);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const ToTalIndex = 4;
 
   const [start, setStart] = useState(0);
-  const [end, setEnd] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -60,32 +61,36 @@ function First() {
     setCurrentIndex(4);
   };
 
-  useEffect(() => {
-    if (end - start > 300 && currentIndex < 4) {
+  const onMouseUp = e => {
+    e.target.style.cursor = 'grab';
+    if (e.clientX - start > 300 && currentIndex < 4) {
       slider.current.style.transform = `translate(-${
         (currentIndex + 1) * 16.6666
       }%)`;
       slider.current.style.transition = `transform 1s`;
       setCurrentIndex(prev => prev + 1);
     }
-    if (end - start > 300 && currentIndex === 4) {
-      alert('마지막장입니다.');
+    if (e.clientX - start > 300 && currentIndex === 4) {
+      setOnOff(prev => !prev);
     }
-    if (end - start < -300 && currentIndex > 0) {
+    if (e.clientX - start < -300 && currentIndex > 0) {
       slider.current.style.transform = `translate(-${
         (currentIndex - 1) * 16.6666
       }%)`;
       slider.current.style.transition = `transform 1s`;
       setCurrentIndex(prev => prev - 1);
     }
-    if (end - start < -300 && currentIndex === 0) {
-      alert('첫번째 장입니다.');
+    if (e.clientX - start < -300 && currentIndex === 0) {
+      setOnOff(prev => !prev);
     }
-  }, [end]);
+  };
 
   return (
     <>
       <div className={css.wraper_container}>
+        {onOff ? (
+          <Modal setOnOff={setOnOff} currentIndex={currentIndex} />
+        ) : null}
         <div
           ref={slider}
           className={css.container}
@@ -94,10 +99,7 @@ function First() {
             e.target.style.cursor = 'grabbing';
             setStart(e.clientX);
           }}
-          onMouseUp={e => {
-            setEnd(e.clientX);
-            e.target.style.cursor = 'pointer';
-          }}
+          onMouseUp={onMouseUp}
         >
           <div className={css.inner}>
             <img
