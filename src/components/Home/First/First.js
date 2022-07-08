@@ -1,17 +1,21 @@
 import React, { useRef, useEffect, useState } from 'react';
 import css from './First.module.scss';
-
+import { Modal } from './Modal';
 function First() {
   const slider = useRef();
+
+  const [onOff, setOnOff] = useState(false);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const ToTalIndex = 4;
 
+  const [start, setStart] = useState(0);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       if (currentIndex <= ToTalIndex) {
-        setCurrentIndex(currentIndex + 1);
+        setCurrentIndex(prev => prev + 1);
         slider.current.style.transform = `translate(-${
           currentIndex * 16.6666
         }%)`;
@@ -57,10 +61,46 @@ function First() {
     setCurrentIndex(4);
   };
 
+  const onMouseUp = e => {
+    e.target.style.cursor = 'grab';
+    if (e.clientX - start > 300 && currentIndex < 4) {
+      slider.current.style.transform = `translate(-${
+        (currentIndex + 1) * 16.6666
+      }%)`;
+      slider.current.style.transition = `transform 1s`;
+      setCurrentIndex(prev => prev + 1);
+    }
+    if (e.clientX - start > 300 && currentIndex === 4) {
+      setOnOff(prev => !prev);
+    }
+    if (e.clientX - start < -300 && currentIndex > 0) {
+      slider.current.style.transform = `translate(-${
+        (currentIndex - 1) * 16.6666
+      }%)`;
+      slider.current.style.transition = `transform 1s`;
+      setCurrentIndex(prev => prev - 1);
+    }
+    if (e.clientX - start < -300 && currentIndex === 0) {
+      setOnOff(prev => !prev);
+    }
+  };
+
   return (
-    <div className={css.wrap}>
-      <div className={css.wrapercontainer}>
-        <div ref={slider} className={css.container}>
+    <>
+      <div className={css.wraper_container}>
+        {onOff ? (
+          <Modal setOnOff={setOnOff} currentIndex={currentIndex} />
+        ) : null}
+        <div
+          ref={slider}
+          className={css.container}
+          onMouseDown={e => {
+            e.target.draggable = false;
+            e.target.style.cursor = 'grabbing';
+            setStart(e.clientX);
+          }}
+          onMouseUp={onMouseUp}
+        >
           <div className={css.inner}>
             <img
               className={css.img}
@@ -105,14 +145,14 @@ function First() {
           </div>
         </div>
       </div>
-      <div className={css.wrapbutton}>
+      <div className={css.wrap_button}>
         <button className={css.button} onClick={first_button} />
         <button className={css.button} onClick={second_button} />
         <button className={css.button} onClick={third_button} />
         <button className={css.button} onClick={fourth_button} />
         <button className={css.button} onClick={fifth_button} />
       </div>
-    </div>
+    </>
   );
 }
 

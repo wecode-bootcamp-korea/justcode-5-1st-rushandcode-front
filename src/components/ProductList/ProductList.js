@@ -26,9 +26,7 @@ function Productslist({ data }) {
               </div>
               <div className={css.prd_price}>
                 <span>₩</span>
-                <span>
-                  {price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                </span>
+                <span>{price?.toLocaleString()}</span>
               </div>
             </Link>
           </li>

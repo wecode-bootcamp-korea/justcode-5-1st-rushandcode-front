@@ -34,14 +34,7 @@ function Second() {
     <div className={css.wraper}>
       <div ref={slider} className={css.container}>
         {productData.map(productData => (
-          <Secondmap
-            key={productData.id}
-            id={productData.id}
-            name={productData.name}
-            price={productData.price}
-            hashtags={productData.hashtags}
-            url={productData.productImages[0].url}
-          />
+          <Secondmap key={productData.id} productData={productData} />
         ))}
       </div>
       <div className={css.wrap_button}>

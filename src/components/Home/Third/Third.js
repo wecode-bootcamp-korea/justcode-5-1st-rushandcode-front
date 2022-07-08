@@ -10,7 +10,7 @@ function Third() {
     if (page <= 0) {
       setPage(pages);
     } else {
-      setPage(page - 1);
+      setPage(prev => prev - 1);
     }
   };
 
@@ -18,7 +18,7 @@ function Third() {
     if (page >= pages) {
       setPage(0);
     } else {
-      setPage(page + 1);
+      setPage(prev => prev + 1);
     }
   };
 

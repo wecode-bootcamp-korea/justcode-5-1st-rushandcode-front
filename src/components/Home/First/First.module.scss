@@ -1,44 +1,44 @@
-.wrap {
-  position: relative;
-}
-.wrapercontainer {
+.wraper_container {
   position: relative;
   width: 100%;
   overflow: hidden;
+
+  .container {
+    width: 600%;
+    display: flex;
+    cursor: pointer;
+  }
+  .inner {
+    width: 100%;
+  }
+  .img {
+    width: 100%;
+    height: 580px;
+    margin-bottom: 50px;
+    object-fit: cover;
+  }
 }
-.container {
-  width: 600%;
-  display: flex;
-}
-.inner {
-  width: 100%;
-}
-.img {
-  width: 100%;
-  height: 580px;
-  margin-bottom: 50px;
-  object-fit: cover;
-}
-.wrapbutton {
+.wrap_button {
   position: absolute;
   right: 0;
   top: 35%;
-}
-.button {
-  border-radius: 100%;
-  height: 15px;
-  width: 15px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  outline: none;
-  color: black;
-  display: block;
-  border-style: none;
-  background-color: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.572);
-}
 
-.button:focus {
-  background-color: white;
-  opacity: 1;
+  .button {
+    border-radius: 100%;
+    height: 15px;
+    width: 15px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    outline: none;
+    color: black;
+    display: block;
+    border-style: none;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.572);
+
+    &:focus {
+      background-color: white;
+      opacity: 1;
+    }
+  }
 }
