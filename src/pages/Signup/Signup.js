@@ -1,22 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BASE_URL from '../../config';
-
 import css from './Signup.module.scss';
 
 const point = 'https://img.icons8.com/emoji/344/red-square-emoji.png';
 
 function Signup() {
-  const [id, setId] = useState('');
-  const [password, setPassword] = useState('');
-  const [checkPassword, setCheckPassword] = useState('');
-  const [name, setName] = useState('');
-
-  const navigate = useNavigate();
-  const gotologin = () => {
-    navigate('/login');
-  };
-
   const sendUserSignUp = () => {
     fetch(`${BASE_URL}/signup`, {
       method: 'POST',
@@ -40,12 +29,30 @@ function Signup() {
         alert(err.message);
       });
   };
+
+  const [signupValue, setSignupValue] = useState({
+    id: '',
+    password: '',
+    checkPassword: '',
+    name: '',
+  });
+  const { id, password, checkPassword, name } = signupValue;
+  const [length, setLength] = useState();
+  const [invalidId, setInvalidId] = useState(false);
+  const [invalidPw, setInvalidPw] = useState(false);
+  const [invalidCheckPw, setInvalidCheckPw] = useState(false);
+  const [invalidName, setInvalidName] = useState(false);
+  const navigate = useNavigate();
+  const gotologin = () => {
+    navigate('/login');
+  };
+
   const validation = (idText, pwText, checkPwText, nameText) => {
     if (
-      idText.length < 4 ||
-      pwText.length < 7 ||
+      idText?.length < 4 ||
+      pwText?.length < 7 ||
       pwText !== checkPwText ||
-      nameText.length < 1
+      nameText?.length < 1
     ) {
       return false;
     }
@@ -53,6 +60,26 @@ function Signup() {
   };
 
   const valid = validation(id, password, checkPassword, name);
+
+  const invalidIdTextTag = useRef('');
+  const invalidIdInputTag = useRef('');
+  const invalidPwTextTag = useRef('');
+  const invalidPwInputTag = useRef('');
+  const invalidCheckPwTextTag = useRef('');
+  const invalidCheckPwInputTag = useRef('');
+  const invalidNameTextTag = useRef('');
+  const invalidNameInputTag = useRef('');
+
+  const num = /[0-9]/g; // 입력한 pw에 숫자가 포함되어 있으면 0이상 숫자 전달됨.
+  const eng = /[a-z]/gi; // 입력한 pw에 영문이 포함되어 있으면 0이상 숫자 전달됨.
+  const spe = /[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi; // 입력한 pw에 특수문가거 포함되어 있으면 0이상 숫자 전달됨.
+
+  // 안전한 비밀번호인지 확인
+  // isSafe 값이 1 : 안전함(영문,숫자,특수문자 중 2개 이상 들어감. 0 : 안전하지 않음...
+  const isSafe =
+    (num.test(password) && eng.test(password)) ||
+    (num.test(password) && spe.test(password)) ||
+    (eng.test(password) && spe.test(password));
 
   return (
     <div className={css.container}>
@@ -82,88 +109,80 @@ function Signup() {
                 아이디
               </span>
               <input
-                id="id_input"
-                className={css.basic_input}
+                ref={invalidIdInputTag}
+                className={
+                  id?.length >= 4 || id?.length === 0
+                    ? css.basic_input
+                    : css.red_input
+                }
                 name="id"
                 type="text"
                 value={id}
                 onChange={e => {
-                  setId(e.target.value);
-                  const length = e.target.value.length;
-                  const el = document.getElementById('id_comment');
-                  const el2 = document.getElementById('id_input');
-                  if (length === 0) {
-                    el.className = `${css.display_none}`;
-                    el2.className = `${css.basic_input}`;
-                  } else if (length < 4) {
-                    el.textContent = '최소 4 이상 입력해주세요.';
-                    el.className = `${css.black_text}`;
-                    el2.className = `${css.red_input}`;
-                  } else {
-                    el.textContent = '사용가능한 아이디입니다.';
-                    el.className = `${css.green_text}`;
-                    el2.className = `${css.basic_input}`;
-                  }
+                  setInvalidId(false);
+                  setSignupValue({ ...signupValue, id: e.target.value });
+                  setLength(e.target.value.length);
                 }}
               />
             </div>
             {/* 아이디 comment 부분 입니다. */}
-            <div id="id_comment" />
-
+            {invalidId && (
+              <div ref={invalidIdTextTag} className={css.black_text}>
+                필수항목입니다.
+              </div>
+            )}
+            {id?.length > 0 && id?.length < 4 && (
+              <div ref={invalidIdTextTag} className={css.black_text}>
+                최소 4 이상 입력해주세요.
+              </div>
+            )}
+            {id?.length >= 4 && (
+              <div className={css.green_text}>사용가능한 아이디입니다.</div>
+            )}
             <div className={css.input_box}>
               <span className={css.info_text}>
                 <img src={point} alt="point" />
                 비밀번호
               </span>
               <input
-                id="pw_input"
-                className={css.basic_input}
+                ref={invalidPwInputTag}
+                className={
+                  isSafe === true ||
+                  password?.length >= 7 ||
+                  password?.length === 0
+                    ? css.basic_input
+                    : css.red_input
+                }
                 name="password"
                 type="password"
                 value={password}
                 onChange={e => {
-                  setPassword(e.target.value);
-
-                  const num = e.target.value.search(/[0-9]/g); // 입력한 pw에 숫자가 포함되어 있으면 0이상 숫자 전달됨.
-                  const eng = e.target.value.search(/[a-z]/gi); // 입력한 pw에 영문이 포함되어 있으면 0이상 숫자 전달됨.
-                  const spe = e.target.value.search(
-                    /[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi
-                  ); // 입력한 pw에 특수문가거 포함되어 있으면 0이상 숫자 전달됨.
-
-                  const length = e.target.value.length;
-                  const el = document.getElementById('pw_comment');
-                  const el2 = document.getElementById('pw_input');
-                  // 안전한 비밀번호인지 확인
-                  // isSafe 값이 1 : 안전함(영문,숫자,특수문자 중 2개 이상 들어감. 0 : 안전하지 않음...
-                  const isSafe =
-                    (num >= 0 && eng >= 0) ||
-                    (num >= 0 && spe >= 0) ||
-                    (eng >= 0 && spe >= 0);
-
-                  if (length === 0) {
-                    el.className = `${css.display_none}`;
-                    el2.className = `${css.basic_input}`;
-                  } else if (length < 7) {
-                    el.textContent = '최소 7 이상 입력해주세요.';
-                    el.className = `${css.black_text}`;
-                    el2.className = `${css.red_input}`;
-                  } else {
-                    if (isSafe === true) {
-                      el.textContent = '안전한 비밀번호 입니다.';
-                      el.className = `${css.green_text}`;
-                      el2.className = `${css.basic_input}`;
-                    } else {
-                      el.textContent =
-                        '사용불가! 영문대/소문자, 숫자, 특수문자 중 2가지 이상 조합하세요.';
-                      el.className = `${css.black_text}`;
-                      el2.className = `${css.red_input}`;
-                    }
-                  }
+                  setInvalidPw(false);
+                  setSignupValue({ ...signupValue, password: e.target.value });
+                  setLength(e.target.value.length);
                 }}
               />
             </div>
             {/* 비번 comment 부분 입니다. */}
-            <div id="pw_comment" />
+            {invalidPw && (
+              <div ref={invalidPwTextTag} className={css.black_text}>
+                필수항목입니다.
+              </div>
+            )}
+            {password?.length > 0 && password?.length < 7 && (
+              <div ref={invalidPwTextTag} className={css.black_text}>
+                최소 7 이상 입력해주세요.
+              </div>
+            )}
+            {password?.length > 6 && isSafe !== true && (
+              <div className={css.black_text}>
+                사용불가! 영문대/소문자, 숫자, 특수문자 중 2가지 이상
+                조합하세요.
+              </div>
+            )}
+            {isSafe === true && (
+              <div className={css.green_text}>안전한 비밀번호 입니다.</div>
+            )}
 
             <div className={css.input_box}>
               <span className={css.info_text}>
@@ -171,60 +190,68 @@ function Signup() {
                 비밀번호 확인
               </span>
               <input
-                id="pw_check_input"
-                className={`${css.basic_input} ${
-                  checkPassword.length > 0 &&
-                  password !== checkPassword &&
-                  css.red_input
-                }`}
+                ref={invalidCheckPwInputTag}
+                className={
+                  checkPassword?.length === 0 || password === checkPassword
+                    ? css.basic_input
+                    : css.red_input
+                }
                 name="passwordCheck"
                 type="password"
                 value={checkPassword}
                 onChange={e => {
-                  setCheckPassword(e.target.value);
-                  const length = e.target.value.length;
-                  const el = document.getElementById('pw_check_comment');
-                  const el2 = document.getElementById('pw_check_input');
-
-                  if (length === 0) {
-                    el.className = `${css.display_none}`;
-                    el2.className = `${css.basic_input}`;
-                  } else if (password !== e.target.value) {
-                    el.textContent = '비밀번호가 다릅니다.';
-                    el.className = `${css.black_text}`;
-                  } else {
-                    el.className = `${css.display_none}`;
-                    el2.className = `${css.basic_input}`;
-                  }
+                  setInvalidCheckPw(false);
+                  setSignupValue({
+                    ...signupValue,
+                    checkPassword: e.target.value,
+                  });
+                  setLength(e.target.value.length);
                 }}
               />
             </div>
             {/* 비번확인 comment 부분 입니다. */}
-            <div id="pw_check_comment" />
-
+            {invalidCheckPw && (
+              <div ref={invalidCheckPwTextTag} className={css.black_text}>
+                필수항목입니다.
+              </div>
+            )}
+            {password === checkPassword && (
+              <div ref={invalidCheckPwTextTag} className={css.display_none} />
+            )}
+            {checkPassword?.length > 0 && password !== checkPassword && (
+              <div className={css.black_text}>비밀번호가 다릅니다.</div>
+            )}
             <div className={css.input_box}>
               <span className={css.info_text}>
                 <img src={point} alt="point" />
                 이름
               </span>
               <input
-                id="name_input"
-                className={css.basic_input}
+                ref={invalidNameInputTag}
+                className={
+                  name?.length === 0 || name?.length > 1
+                    ? css.basic_input
+                    : css.red_input
+                }
                 name="name"
                 type="text"
                 value={name}
                 onChange={e => {
-                  setName(e.target.value);
-                  const el = document.getElementById('name_comment');
-                  const el2 = document.getElementById('name_input');
-
-                  el.className = `${css.display_none}`;
-                  el2.className = `${css.basic_input}`;
+                  setInvalidName(false);
+                  setSignupValue({ ...signupValue, name: e.target.value });
+                  setLength(e.target.value.length);
                 }}
               />
             </div>
-            {/* 이름 comment 부분 입니다. */}
-            <div id="name_comment" />
+            {/* 이름확인 comment 부분 입니다. */}
+            {invalidName && (
+              <div ref={invalidNameTextTag} className={css.black_text}>
+                필수항목입니다.
+              </div>
+            )}
+            {name?.length >= 1 && (
+              <div ref={invalidNameTextTag} className={css.display_none} />
+            )}
 
             <div className={css.nick_name_input_box}>
               <span className={css.nick_name_text}>닉네임</span>
@@ -282,35 +309,23 @@ function Signup() {
                 e.preventDefault();
                 if (valid) {
                   sendUserSignUp();
-                } else {
-                  if (id.length < 4) {
-                    const el = document.getElementById('id_comment');
-                    el.className = `${css.red_text}`;
-                    el.textContent = '필수항목입니다.';
-                    const el2 = document.getElementById('id_input');
-                    el2.className = `${css.red_input}`;
-                  }
-                  if (password.length < 7) {
-                    const el = document.getElementById('pw_comment');
-                    el.className = `${css.red_text}`;
-                    el.textContent = '필수항목입니다.';
-                    const el2 = document.getElementById('pw_input');
-                    el2.className = `${css.red_input}`;
-                  }
-                  if (checkPassword.length === 0) {
-                    const el = document.getElementById('pw_check_comment');
-                    el.className = `${css.red_text}`;
-                    el.textContent = '필수항목입니다.';
-                    const el2 = document.getElementById('pw_check_input');
-                    el2.className = `${css.red_input}`;
-                  }
-                  if (name.length === 0) {
-                    const el = document.getElementById('name_comment');
-                    el.className = `${css.red_text}`;
-                    el.textContent = '필수항목입니다.';
-                    const el2 = document.getElementById('name_input');
-                    el2.className = `${css.red_input}`;
-                  }
+                }
+                if (id.length < 4) {
+                  setInvalidId(true);
+                  invalidIdInputTag.current.className = css.red_input;
+                }
+                if (password.length < 7) {
+                  setInvalidPw(true);
+                  invalidPwInputTag.current.className = css.red_input;
+                }
+                if (checkPassword.length === 0) {
+                  setInvalidCheckPw(true);
+
+                  invalidCheckPwInputTag.current.className = css.red_input;
+                }
+                if (name.length < 1) {
+                  setInvalidName(true);
+                  invalidNameInputTag.current.className = css.red_input;
                 }
               }}
             >
