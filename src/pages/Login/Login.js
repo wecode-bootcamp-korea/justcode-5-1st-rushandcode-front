@@ -4,7 +4,8 @@ import BASE_URL from '../../config';
 import css from './Login.module.scss';
 import Spinner from '../../components/Spinner/Spinner';
 
-function Login() {
+function Login(props) {
+  const { setUser } = props;
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
@@ -49,6 +50,11 @@ function Login() {
           localStorage.setItem('token', res.data[0]);
           localStorage.setItem('user_name', res.data[1].user_name);
           localStorage.setItem('user_id', res.data[1].id);
+          setUser({
+            token: res.data[0],
+            user_name: res.data[1].user_name,
+            user_id: res.data[1].id,
+          });
         } else {
           const error = new Error('잘못된 아이디이거나 비밀번호입니다.');
           error.statusCode = 400;
