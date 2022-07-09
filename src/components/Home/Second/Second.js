@@ -37,7 +37,6 @@ function Second() {
     setStart(e.clientX);
     setIsPressed(true);
     e.target.draggable = false;
-    console.log('다운작동중');
   };
 
   const onMouseUp = e => {
@@ -53,7 +52,6 @@ function Second() {
     });
 
     setIsPressed(false);
-    console.log('업작동중');
   };
 
   const onMouseLeave = e => {
@@ -68,12 +66,10 @@ function Second() {
         return prev + e.clientX - start;
       }
     });
-    console.log('리브작동중');
   };
 
   const onMouseMove = e => {
     if (isPressed) {
-      console.log('프레스 무브 작동중');
       slider.current.style.transition = 'transform 0.1s';
       slider.current.style.transform = `translate(-${
         (currentSpot + e.clientX - start - 45 < 0
@@ -83,7 +79,6 @@ function Second() {
           ? 2000
           : currentSpot + e.clientX - start - 45
       }px)`;
-      console.log(currentSpot + e.clientX - start - 45);
     }
   };
   return (
