@@ -8,6 +8,10 @@
     border-radius: 30%;
     object-fit: cover;
     cursor: pointer;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
   }
   ul {
     .products_info {
