@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Nav from '../components/Nav/Nav';
 import Login from '../pages/Login/Login';
@@ -15,13 +15,14 @@ import Cart from '../pages/Cart/Cart';
 import Search from './Search/Search';
 
 function App() {
+  const [user, setUser] = useState();
   return (
     <BrowserRouter>
       <ScrollToTop />
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/products" element={<Products />} />
         <Route path="/productdetail/:id" element={<ProductDetail />} />

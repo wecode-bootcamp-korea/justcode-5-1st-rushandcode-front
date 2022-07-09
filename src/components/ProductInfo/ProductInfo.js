@@ -154,9 +154,7 @@ function ProductInfo(props) {
       <div className={css.good_to_know}>Good to Know</div>
       <div className={css.price}>
         <div>판매가</div>
-        <div className={css.price_num}>
-          ₩ {price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-        </div>
+        <div className={css.price_num}>₩ {price?.toLocaleString()}</div>
       </div>
       <div className={css.weight}>
         <div>상품무게</div>
@@ -169,21 +167,15 @@ function ProductInfo(props) {
           <input disabled type="number" value={count} />
           <button onClick={countUp}>+</button>
         </div>
-        <div className={css.price_num}>
-          ₩ {totalPrice?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-        </div>
+        <div className={css.price_num}>₩ {totalPrice?.toLocaleString()}</div>
       </div>
       <div className={css.sum}>
         <div>총 제품금액</div>
-        <div className={css.sum_num}>
-          ₩ {totalPrice?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-        </div>
+        <div className={css.sum_num}>₩ {totalPrice?.toLocaleString()}</div>
       </div>
       <div className={css.sum}>
         <div>총 합계금액</div>
-        <div className={css.sum_num}>
-          ₩ {totalPrice?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-        </div>
+        <div className={css.sum_num}>₩ {totalPrice?.toLocaleString()}</div>
       </div>
       <div className={css.buttons}>
         <button onClick={addCart} className={css.cart}>
