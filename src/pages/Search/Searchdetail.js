@@ -44,11 +44,13 @@ const Searchdetail = ({ data }) => {
       e.nativeEvent.offsetX - e.target.getBoundingClientRect().width / 10
     }px`;
     backImg.current.style.top = `${
-      e.nativeEvent.offsetY - e.target.getBoundingClientRect().width / 10
+      e.nativeEvent.offsetY - e.target.getBoundingClientRect().height / 10
     }px`;
     backImg.current.style.backgroundPosition = `-${
-      (e.nativeEvent.offsetX - 25) * 2
-    }px -${(e.nativeEvent.offsetY - 25) * 2}px`;
+      (e.nativeEvent.offsetX - e.target.getBoundingClientRect().width / 20) * 2
+    }px -${
+      (e.nativeEvent.offsetY - e.target.getBoundingClientRect().height / 20) * 2
+    }px`;
   };
   return (
     <div className={css.product}>
