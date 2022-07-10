@@ -36,16 +36,18 @@ function Second() {
   const onMouseDown = e => {
     setStart(e.clientX);
     setIsPressed(true);
+    slider.current.style.transition = 'transform 0.1s';
     e.target.draggable = false;
   };
 
   const onMouseUp = e => {
+    slider.current.style.transition = 'transform 1s';
     setCurrentSpot(prev => {
       if (prev < 0) {
         return 0;
       }
-      if (prev > 2000) {
-        return 2000;
+      if (prev > 2015) {
+        return 2015;
       } else {
         return prev + e.clientX - start;
       }
@@ -55,6 +57,7 @@ function Second() {
   };
 
   const onMouseLeave = e => {
+    slider.current.style.transition = 'transform 1s';
     setIsPressed(false);
     setCurrentSpot(prev => {
       if (prev < 0) {
@@ -70,14 +73,13 @@ function Second() {
 
   const onMouseMove = e => {
     if (isPressed) {
-      slider.current.style.transition = 'transform 0.1s';
       slider.current.style.transform = `translate(-${
         (currentSpot + e.clientX - start - 45 < 0
           ? 0
           : currentSpot + e.clientX - start - 45,
-        currentSpot + e.clientX - start - 45 > 2000)
-          ? 2000
-          : currentSpot + e.clientX - start - 45
+        currentSpot + e.clientX - start - 45 > 2015
+          ? 2015
+          : currentSpot + e.clientX - start - 45)
       }px)`;
     }
   };
