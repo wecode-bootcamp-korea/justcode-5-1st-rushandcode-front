@@ -1,6 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import css from './ProductsSelectFilter.module.scss';
+
+function SortItem(props) {
+  const { to, sort, sortKR, sortEN, onClick } = props;
+
+  return (
+    <>
+      <Link to={to}>
+        <li
+          className={`${css.drop_list} ${sort === sortEN && css.active}`}
+          onClick={onClick}
+        >
+          {sortKR}
+        </li>
+      </Link>
+    </>
+  );
+}
 
 function ProductsSelectFilter(props) {
   const { mainCategory, subCategory, sort } = props;
@@ -28,6 +45,12 @@ function ProductsSelectFilter(props) {
   const mainURL = `/products?mainCategory=${mainCategory}`;
   const mainSubURL = `/products?mainCategory=${mainCategory}&subCategory=${subCategory}`;
 
+  const prdSort = [
+    { id: 1, sortKR: '인기순', sortEN: 'sell' },
+    { id: 2, sortKR: '낮은가격순', sortEN: 'asc' },
+    { id: 3, sortKR: '높은가격순', sortEN: 'desc' },
+  ];
+
   return (
     <div className={css.list_header}>
       {mainCategory && subCategory === null && <h2>{mainCategory}</h2>}
@@ -53,82 +76,44 @@ function ProductsSelectFilter(props) {
         >
           {mainCategory && subCategory === null && (
             <>
-              <Link to={`/products?mainCategory=${mainCategory}`}>
-                <li
-                  className={`${css.drop_list} ${sort === null && css.active}`}
+              <SortItem
+                to={`${mainURL}`}
+                onClick={clickDropList}
+                sort={sort}
+                sortKR="추천순"
+                sortEN={null}
+              />
+              {prdSort.map(data => (
+                <SortItem
+                  key={data.id}
+                  to={`${mainURL}&sort=${data?.sortEN}`}
                   onClick={clickDropList}
-                >
-                  추천순
-                </li>
-              </Link>
-              <Link to={`${mainURL}&sort=sell`}>
-                <li
-                  className={`${css.drop_list} ${
-                    sort === 'sell' && css.active
-                  }`}
-                  onClick={clickDropList}
-                >
-                  인기순
-                </li>
-              </Link>
-              <Link to={`${mainURL}&sort=asc`}>
-                <li
-                  className={`${css.drop_list} ${sort === 'asc' && css.active}`}
-                  onClick={clickDropList}
-                >
-                  낮은가격순
-                </li>
-              </Link>
-              <Link to={`${mainURL}&sort=desc`}>
-                <li
-                  className={`${css.drop_list} ${
-                    sort === 'desc' && css.active
-                  }`}
-                  onClick={clickDropList}
-                >
-                  높은가격순
-                </li>
-              </Link>
+                  sort={sort}
+                  sortKR={data?.sortKR}
+                  sortEN={data?.sortEN}
+                />
+              ))}
             </>
           )}
           {mainCategory && subCategory && (
             <>
-              <Link to={`${mainSubURL}`}>
-                <li
-                  className={`${css.drop_list} ${sort === null && css.active}`}
+              <SortItem
+                to={`${mainSubURL}`}
+                onClick={clickDropList}
+                sort={sort}
+                sortKR="추천순"
+                sortEN={null}
+              />
+              {prdSort.map(data => (
+                <SortItem
+                  key={data.id}
+                  to={`${mainSubURL}&sort=${data?.sortEN}`}
                   onClick={clickDropList}
-                >
-                  추천순
-                </li>
-              </Link>
-              <Link to={`${mainSubURL}&sort=sell`}>
-                <li
-                  className={`${css.drop_list} ${
-                    sort === 'sell' && css.active
-                  }`}
-                  onClick={clickDropList}
-                >
-                  인기순
-                </li>
-              </Link>
-              <Link to={`${mainSubURL}&sort=asc`}>
-                <li
-                  className={`${css.drop_list} ${sort === 'asc' && css.active}`}
-                  onClick={clickDropList}
-                >
-                  낮은가격순
-                </li>
-              </Link>
-              <Link to={`${mainSubURL}&sort=desc`}>
-                <li
-                  className={`${css.drop_list} ${
-                    sort === 'desc' && css.active
-                  }`}
-                  onClick={clickDropList}
-                >
-                  높은가격순
-                </li>
-              </Link>
+                  sort={sort}
+                  sortKR={data?.sortKR}
+                  sortEN={data?.sortEN}
+                />
+              ))}
             </>
           )}
         </ul>
