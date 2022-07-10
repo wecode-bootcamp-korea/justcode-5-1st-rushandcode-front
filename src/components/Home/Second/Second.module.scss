@@ -5,6 +5,7 @@
   .container {
     width: 240vw;
     display: flex;
+    transition: transform 1s;
   }
 }
 .wrap_button {
